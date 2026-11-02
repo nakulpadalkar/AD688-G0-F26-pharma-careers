@@ -1,1 +1,0 @@
-# AD688-G0-F26-pharma-careers
