@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Pharma",
     "section": "",
-    "text": "Pharma Careers\nBoston University’s Metropolitan College offers a variety of programs and resources for students. We are interested in proposing data analytics programs to help students develop skills in Pharma Data Analytics Careers (Pesqueira and Sousa 2024).\n\n\n\n\n\nReferences\n\nPesqueira, Antonio, and Maria José Sousa. 2024. “Exploring the Role of Big Data Analytics and Dynamic Capabilities in ESG Programs Within Pharmaceuticals.” Software Quality Journal 32 (2): 607–40."
+    "text": "Pharma Careers\nBoston University’s Metropolitan College offers a variety of programs and resources for students. We are interested in proposing data analytics programs to help students develop skills in Pharma Data Analytics Careers (Pesqueira and Sousa 2024).\n\nimport pandas as pd\n\ndata_location = \"C:/Users/npadalka/Downloads/Jobs_2026/\"\n# find parquet files in the directory\nimport os\nparquet_files = [f for f in os.listdir(data_location) if f.endswith('.parquet')]\ndata = os.path.join(data_location, parquet_files[0])\nSAMPLE = True\nNUM_ROWS =1000\n# read sample 1000 rows from the parquet file\ndf = pd.read_parquet(data, nrows=NUM_ROWS if SAMPLE else None)\ndf.to_parquet(\"outputs/Jobs_2026_sample.parquet\", index=False)\ndf_sample = pd.read_parquet(\"outputs/Jobs_2026_sample.parquet\")\ndf_sample.head()\n\n\n\n\n\n\nReferences\n\nPesqueira, Antonio, and Maria José Sousa. 2024. “Exploring the Role of Big Data Analytics and Dynamic Capabilities in ESG Programs Within Pharmaceuticals.” Software Quality Journal 32 (2): 607–40."
   },
   {
     "objectID": "about.html",
