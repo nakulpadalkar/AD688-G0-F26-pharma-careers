@@ -1,0 +1,8 @@
+---
+title: "Pharma"
+bibliography: references.bib
+---
+
+# Pharma Careers
+
+Boston University's Metropolitan College offers a variety of programs and resources for students. We are interested in proposing data analytics programs to help students develop skills in Pharma Data Analytics Careers [@pesqueira2024exploring].
