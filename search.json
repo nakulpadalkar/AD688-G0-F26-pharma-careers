@@ -12,5 +12,12 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "eda_pharma.html",
+    "href": "eda_pharma.html",
+    "title": "Exploratory Data Analysis",
+    "section": "",
+    "text": "Exploratory Data Analysis\n\nimport pandas as pd"
   }
 ]
