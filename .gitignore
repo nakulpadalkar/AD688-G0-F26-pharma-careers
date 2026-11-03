@@ -221,3 +221,7 @@ __marimo__/
 
 /.quarto/
 **/*.quarto_ipynb
+
+docs/private/
+
+outputs/us-employer-inventory/raw/

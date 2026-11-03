@@ -1,0 +1,14 @@
+---
+title: ""
+pagetitle: "US opportunity map"
+---
+
+```{=html}
+<div class="career-app focused-page">
+<section id="opportunities" class="section-block"><div class="section-heading"><div><p class="eyebrow">THE GEOGRAPHY OF OPPORTUNITY</p><h2>Explore the US evidence.</h2></div><span class="pill">METEOR historical snapshot</span></div><p class="section-intro">State-level signals from the commercial candidate screen. Location text is conservatively interpreted; this maps observed records, not current vacancies or a census of demand.</p><div class="map-layout"><div class="panel map-panel"><div class="panel-top"><h3>Commercial analytics footprint</h3><label class="compact">Map measure<select id="map-measure"><option value="records">Observed records</option><option value="share">Share of mapped records</option><option value="texts">Distinct employer/text pairs</option></select></label></div><div id="map" class="map-container"></div><div id="map-legend" class="legend"></div><p class="tiny">Albers equal-area mainland; Alaska and Hawaii inset at separate scales. DC is available in the table. Pale states mean no assigned records in this screen, not no jobs.</p></div><div class="panel state-detail" role="complementary"><p class="eyebrow">STATE EVIDENCE</p><h3 id="state-name">United States</h3><strong id="state-count" class="big-number">—</strong><p id="state-description">Mapped historical records</p><div id="state-ranking"></div><p id="geo-coverage" class="tiny"></p><button id="reset-state" class="text-button" type="button">Reset state selection ↺</button></div></div><p id="map-selection" class="tiny" role="status" aria-live="polite">Historical records by state.</p><details class="data-details"><summary>Accessible state table & geographic exclusions</summary><div id="state-table" class="table-wrap"></div><div id="geo-exclusions"></div></details></section>
+</div>
+```
+
+{{< include _includes/footer.html >}}
+
+{{< include _includes/explorer-scripts.html >}}

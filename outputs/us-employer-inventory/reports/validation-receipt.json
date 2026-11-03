@@ -1,0 +1,11 @@
+{
+  "scope": "Expanded pharmaceutical data and analytics careers",
+  "postings": 1127,
+  "employers": 13,
+  "render": "8 pages, exit 0",
+  "inventory": "INVENTORY_TESTS_OK, exit 0",
+  "links": "EVIDENCE_OK: 282 local links/anchors, exit 0",
+  "interactions": "INTERACTIONS_OK, exit 0",
+  "hashes": "../manifests/expanded-validation-hashes.json",
+  "deployment": "Verified output copied to local _site; no external deployment"
+}

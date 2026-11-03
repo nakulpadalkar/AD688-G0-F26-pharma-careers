@@ -1,30 +1,10 @@
 ---
-title: "Pharma"
-bibliography: references.bib
+title: ""
+pagetitle: Pharma Career Intelligence
+description: "Pharmaceutical analytics careers grounded in METEOR, BLS, O*NET and employer evidence."
+
 ---
 
-# Pharma Careers
+{{< include _includes/dashboard.html >}}
 
-Boston University's Metropolitan College offers a variety of programs and resources for students. We are interested in proposing data analytics programs to help students develop skills in Pharma Data Analytics Careers [@pesqueira2024exploring].
-
-
-```{python}
-#| echo: true
-#| eval: false
-#| df-print: paged
-
-import pandas as pd
-
-data_location = "C:/Users/npadalka/Downloads/Jobs_2026/"
-# find parquet files in the directory
-import os
-parquet_files = [f for f in os.listdir(data_location) if f.endswith('.parquet')]
-data = os.path.join(data_location, parquet_files[0])
-SAMPLE = True
-NUM_ROWS =1000
-# read sample 1000 rows from the parquet file
-df = pd.read_parquet(data, nrows=NUM_ROWS if SAMPLE else None)
-df.to_parquet("outputs/Jobs_2026_sample.parquet", index=False)
-df_sample = pd.read_parquet("outputs/Jobs_2026_sample.parquet")
-df_sample.head()
-```
+{{< include _includes/explorer-scripts.html >}}

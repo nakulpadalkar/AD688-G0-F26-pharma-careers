@@ -1,0 +1,35 @@
+{
+  "alias": "local",
+  "checked_at_utc": "2026-11-03T01:42:15.865450+00:00",
+  "transaction": [
+    "on",
+    "repeatable read"
+  ],
+  "query": "SELECT id,source,external_id,title,company_name,location_text,city,state,countryiso,posted_at,apply_url,is_active,is_duplicate,description,html_description_text,alive,alive_checked_at,alive_valid_until,requirements_summary,responsibilities_summary,technical_tools_summary FROM met_career_match_jobposting WHERE company_name ~* %s ORDER BY id",
+  "company_patterns": {
+    "AbbVie": "\\mabbvie\\M",
+    "Iovance Biotherapeutics": "\\miovance\\M",
+    "Amgen": "\\mamgen\\M",
+    "AstraZeneca": "\\mastra\\s?zeneca\\M",
+    "Takeda": "\\mtakeda\\M",
+    "Gilead Sciences": "\\mgilead\\M",
+    "Regeneron": "\\mregeneron\\M",
+    "Pfizer": "\\mpfizer\\M",
+    "Novartis": "\\mnovartis\\M",
+    "Sanofi": "\\msanofi\\M",
+    "Neurocrine Biosciences": "\\mneurocrine\\M",
+    "Otsuka": "\\motsuka\\M",
+    "Teva": "\\mteva\\M",
+    "Vertex Pharmaceuticals": "\\mvertex\\M",
+    "IQVIA": "\\miqvia\\M"
+  },
+  "date_window": "All available posting dates; no row limit",
+  "missing_columns": [],
+  "row_count": 18443,
+  "timestamp_lookup_at_utc": "2026-11-03T01:55:43.131332+00:00",
+  "timestamp_rows_found": 18443,
+  "source_json_sha256": "ac045ab7df2cc8b995ffd01fa3f15135a2849ab8f95791e08a17436d127cf80a",
+  "parquet_sha256": "c9e9115246f2d6b5565451327250f25913ca77c020cd283f26d1f7f3e4ba821a",
+  "compression": "zstd",
+  "date_note": "created_at is database creation/collection time, not actual posting time; no fabricated date imputation."
+}

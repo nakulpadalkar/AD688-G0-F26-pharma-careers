@@ -1,0 +1,14 @@
+---
+title: ""
+pagetitle: "Skills & tasks"
+---
+
+```{=html}
+<div class="career-app focused-page">
+<section id="skills" class="section-block"><p class="eyebrow">THE SKILL SIGNAL</p><h2>Tools matter. Judgment connects them.</h2><div class="skills-page-layout"><div class="panel"><h3>Skills in direct employer postings</h3><p class="tiny">Pharmaceutical analysis combines technical tools with knowledge of the underlying data. These counts show which tools, vendors and datasets appear in the US posting collection across commercial, clinical, scientific and operational work.</p><label>Evidence scope<select id="skill-scope"><option value="us">All eligible US postings</option><option value="data">Postings mentioning tracked data products / datasets</option></select></label><p id="skill-summary" class="tiny" role="status" aria-live="polite"></p><p id="skill-hint" class="skill-hint">Bubble area represents the number of postings mentioning each skill.</p><p id="skill-status" class="skill-status" role="status" aria-live="polite" aria-atomic="true"></p><div class="skill-explorer"><div id="skill-bars" class="skill-bubbles" role="group" aria-label="Skills by posting count"></div><div id="skill-detail" class="skill-detail" role="region" aria-label="Selected skill evidence"></div></div><p class="tiny">Each skill counts once per posting. Categories overlap, and mentions include both required and preferred skills. Percentages describe this collection.</p><a href="outputs/us-employer-inventory/curated/employer-analysis.parquet" download>Download skill counts and source annotations &#8595;</a></div><div class="panel task-panel"><span class="pill">O*NET 15-2051.01</span><h3>Business intelligence in practice</h3><ul><li>Repository queries connect business questions to available evidence.</li><li>Recurring reports and dashboards make performance visible.</li><li>Documented requirements and clear explanations support decisions.</li></ul><p>In pharma, these tasks depend on understanding the coverage and limits of claims, prescription, payer and patient-support data.</p><a href="https://www.onetonline.org/link/summary/15-2051.01" target="_blank" rel="noopener">Explore O*NET tasks &#8599;</a><p class="tiny">Business intelligence sits within SOC 15-2051. Wage estimates for that parent occupation cover a broader set of roles.</p></div></div></section>
+</div>
+```
+
+{{< include _includes/footer.html >}}
+
+{{< include _includes/explorer-scripts.html >}}

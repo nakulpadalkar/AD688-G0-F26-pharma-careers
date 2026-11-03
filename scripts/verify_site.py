@@ -1,0 +1,74 @@
+"""Focused evidence and generated-asset checks; no network or server."""
+import hashlib, json, re
+from pathlib import Path
+from html.parser import HTMLParser
+from urllib.parse import urlsplit, unquote
+from build_evidence import locate
+from artifact_io import read_data,artifact_path,TASK
+from build_site_data import map_svg, employer_analysis
+ROOT=Path(__file__).resolve().parents[1]
+def read(name):return read_data(name)
+d=read('meteor.json'); n=d['counts']['commercial_candidates']
+assert n==1353
+assert sum(m['records'] for m in d['monthly'])==n
+assert len(d['monthly'])==21 and len({m['month'] for m in d['monthly']})==21
+assert sum(d['geography']['buckets'].values())==n
+assert sum(s['records'] for s in d['geography']['states'])==d['geography']['mapped_records']==654
+assert len(d['geography']['states'])==51
+for s in d['geography']['states']:assert 0<=s['distinct_employer_text_hashes']<=s['records']
+controls=[('Boston, MA','',('mapped_state','MA')),('Washington, DC','',('mapped_state','DC')),('Remote','',('remote_unallocated',None)),('Hyderabad, Indiana','',('location_conflict',None)),('Toronto, Ontario','',('explicit_non_us',None)),('Boston, MA','CA',('explicit_non_us',None)),('California; New York','',('ambiguous_or_multi_location',None)),('United States','',('us_unallocated',None)),('','',('unknown',None)),('Poland, Ohio','',('mapped_state','OH')),('IN OFFICE','',('unknown',None))]
+for location,country,expected in controls:assert locate({'location_text':location,'countryiso':country})==expected,(location,expected)
+assert len(read('reviewed-examples.json'))==13
+jobs=read('current-jobs.json')
+assert len({j['company'] for j in jobs})>=8
+assert len({(j['company'],j['id']) for j in jobs})==len(jobs)
+for j in jobs:
+    assert j['checked_on']=='2026-11-02' and j['url'].startswith('https://')
+    assert j['required'] and j['source_access'] and j['country']
+    assert (j['salary_min'] is None and j['salary_max'] is None) or 0<j['salary_min']<j['salary_max']
+    assert set(j['skills'])==set(j['skill_evidence']) and len(j['skills'])==len(set(j['skills']))
+    assert all(j['skill_evidence'].values())
+    if j['availability']=='application_observed':assert j['source_access']=='Readable employer page'
+assert read('employer-analysis.json')==employer_analysis(read('database-jobs.json'))
+b=read('benchmarks.json');assert b['wage_year']==2025
+assert b['industry']['employment_2035']>b['industry']['employment_2025']
+for s in d['skills']:assert 0<=s['records']<=s['denominator']==n
+bundle=(TASK/'web/dashboard-data.js').read_text(encoding='utf-8')
+payload=json.loads(bundle.removeprefix('window.PHARMA_DATA = ').strip().removesuffix(';').replace('<\\/','</'))
+for key,name in [('meteor','meteor.json'),('current','current-jobs.json'),('historical','reviewed-examples.json'),('benchmarks','benchmarks.json'),('employer_analysis','employer-analysis.json'),('jobs','database-jobs.json'),('inventory','inventory-summary.json')]:assert payload[key]==read(name),f'Stale bundle: {key}'
+assert payload['map']==map_svg(read('usa_110m.json'))
+assert len(re.findall('data-state=',payload['map']))==51
+assert not re.search(r'NaN|Infinity',payload['map'])
+assert set(re.findall(r'data-state="([A-Z]{2})"',payload['map']))=={s['code'] for s in d['geography']['states']}
+class Links(HTMLParser):
+    def __init__(self):super().__init__();self.links=[];self.ids=[]
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs)
+        if 'id' in a:self.ids.append(a['id'])
+        for k in ['src','href']:
+            if k in a:self.links.append(a[k])
+site=ROOT/'_site'; checked=0
+for page in ['index.html','geography.html','outlook.html','jobs.html','skills.html','work.html','eda_pharma.html','about.html']:
+    file=site/page;p=Links();p.feed(file.read_text(encoding='utf-8'));assert len(p.ids)==len(set(p.ids)),f'Duplicate id: {page}'
+    for link in p.links:
+        u=urlsplit(link)
+        if u.scheme or link.startswith('//'):continue
+        target=(file.parent/unquote(u.path)).resolve() if u.path else file
+        assert target.exists(),f'Broken local link: {page}: {link}'
+        if u.fragment and target.suffix=='.html':
+            q=Links();q.feed(target.read_text(encoding='utf-8'));assert unquote(u.fragment) in q.ids,f'Broken anchor {link}'
+        checked+=1
+resources=['outputs/us-employer-inventory/web/dashboard-data.js','scripts/dashboard.js','styles.css']+[artifact_path(name).relative_to(ROOT).as_posix() for name in ['meteor','current-jobs','benchmarks','employer-analysis','us-jobs','database-jobs','inventory-summary','all-employer-records']]
+for rel in resources:
+    assert (ROOT/rel).read_bytes()==(site/rel).read_bytes(),f'Stale published resource: {rel}'
+assert not (site/'outputs/us-employer-inventory/raw').exists()
+for forbidden in ['candidates.json','audit.json','.env','build_evidence.py','company-coverage-local.json','company-coverage-azure.json','audit_company_coverage.py','inventory-local.json','inventory-azure.json','geography-review.json','fetch_inventory.py']:
+    assert not list(site.rglob(forbidden)),f'Unexpected source in site: {forbidden}'
+assert 'Tools mentioned in METEOR' not in (site/'skills.html').read_text(encoding='utf-8')
+assert 'home-inventory-metric' in (site/'index.html').read_text(encoding='utf-8')
+for rel in ['scripts/dashboard.js','jobs.qmd','skills.qmd']:
+    assert not any(bad in (ROOT/rel).read_text(encoding='utf-8') for bad in ['Ã','â€','Â·','â†','�']),f'Encoding artifact: {rel}'
+
+assert read('us-jobs.json')==read('database-jobs.json')
+assert 'job-country' not in (site/'jobs.html').read_text(encoding='utf-8')
+print(f'EVIDENCE_OK: 11 geography controls, count reconciliation, 51 map states, fresh bundles, {checked} local links and anchors')

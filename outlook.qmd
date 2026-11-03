@@ -1,0 +1,14 @@
+---
+title: ""
+pagetitle: "Market outlook"
+---
+
+```{=html}
+<div class="career-app focused-page">
+<section id="outlook" class="section-block"><div class="section-heading"><div><p class="eyebrow">THE BIGGER LABOR MARKET</p><h2>Growth, with the right context.</h2></div><span class="pill">BLS · 2025–2035</span></div><p class="section-intro">These national occupations overlap with commercial analytics work. They include all industries and experience levels; their wages are benchmarks, not expected certificate starting salaries.</p><div class="outlook-grid" id="benchmark-cards"></div><div class="panel industry-panel" id="industry"><div><p class="eyebrow">NAICS 3254 / BLS MATRIX 325400</p><h3>Pharmaceutical & medicine manufacturing</h3><p>355,400 jobs in 2025 → 380,500 projected in 2035.</p><p class="tiny">All occupations in the industry. Analytics also exists in consulting and data vendors. NAICS classifies establishments; it does not itself forecast growth.</p><a href="https://www.bls.gov/emp/tables/industry-employment-and-output.htm" target="_blank" rel="noopener">BLS industry projection ↗</a> · <a href="https://www.census.gov/naics/?input=3254&year=2022&details=3254" target="_blank" rel="noopener">NAICS definition ↗</a></div><div class="industry-growth"><strong>+7.1%</strong><span>over the decade</span><small>0.7% annual compound growth</small></div></div><div class="comparison-note"><strong>How METEOR compares</strong><p>BLS estimates employment and projected growth. METEOR observes advertisements in a changing collection. O*NET describes work. Their different populations provide complementary views of careers, rather than a common vacancy-rate measure.</p><a href="eda_pharma.html#comparison">View the comparison framework →</a></div></section>
+</div>
+```
+
+{{< include _includes/footer.html >}}
+
+{{< include _includes/explorer-scripts.html >}}

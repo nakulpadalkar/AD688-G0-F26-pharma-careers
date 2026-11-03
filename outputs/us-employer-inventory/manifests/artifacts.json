@@ -1,0 +1,67 @@
+{
+  "task": "us-employer-inventory",
+  "source_table": "met_career_match_jobposting",
+  "source_counts": {
+    "azure": 4549,
+    "local": 18443
+  },
+  "us_posting_identities": 1127,
+  "employers_searched": 15,
+  "employers_with_matches": 13,
+  "date_basis_counts": {
+    "database_created_at_proxy": 537,
+    "source_reported_posted_at": 590
+  },
+  "raw_date_basis_counts": {
+    "azure": {
+      "database_created_at_proxy": 2189,
+      "source_reported_posted_at": 2360
+    },
+    "local": {
+      "database_created_at_proxy": 11789,
+      "source_reported_posted_at": 6654
+    }
+  },
+  "files": [
+    {
+      "path": "curated/all-employer-records.parquet",
+      "rows": 22992,
+      "bytes": 843715
+    },
+    {
+      "path": "curated/database-jobs.parquet",
+      "rows": 1127,
+      "bytes": 129497
+    },
+    {
+      "path": "curated/employer-analysis.parquet",
+      "rows": 1,
+      "bytes": 44312
+    },
+    {
+      "path": "curated/inventory-summary.parquet",
+      "rows": 1,
+      "bytes": 61887
+    },
+    {
+      "path": "curated/us-jobs.parquet",
+      "rows": 1127,
+      "bytes": 129497
+    },
+    {
+      "path": "raw/azure.parquet",
+      "rows": 4549,
+      "bytes": 4672742
+    },
+    {
+      "path": "raw/local.parquet",
+      "rows": 18443,
+      "bytes": 24226776
+    },
+    {
+      "path": "reports/geography-review.parquet",
+      "rows": 1243,
+      "bytes": 52812
+    }
+  ]
+}
