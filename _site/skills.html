@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -44,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dde1045613841c21001f88a52bd2de6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8763b6963a94d0d356ac49f3b82285df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,9 +108,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -166,8 +202,194 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="career-app focused-page">
-<section id="skills" class="section-block"><p class="eyebrow">THE SKILL SIGNAL</p><h2>Tools matter. Judgment connects them.</h2><div class="skills-page-layout"><div class="panel"><h3>Skills in direct employer postings</h3><p class="tiny">Pharmaceutical analysis combines technical tools with knowledge of the underlying data. These counts show which tools, vendors and datasets appear in the US posting collection across commercial, clinical, scientific and operational work.</p><label>Evidence scope<select id="skill-scope"><option value="us">All eligible US postings</option><option value="data">Postings mentioning tracked data products / datasets</option></select></label><p id="skill-summary" class="tiny" role="status" aria-live="polite"></p><p id="skill-hint" class="skill-hint">Bubble area represents the number of postings mentioning each skill.</p><p id="skill-status" class="skill-status" role="status" aria-live="polite" aria-atomic="true"></p><div class="skill-explorer"><div id="skill-bars" class="skill-bubbles" role="group" aria-label="Skills by posting count"></div><div id="skill-detail" class="skill-detail" role="region" aria-label="Selected skill evidence"></div></div><p class="tiny">Each skill counts once per posting. Categories overlap, and mentions include both required and preferred skills. Percentages describe this collection.</p><a href="outputs/us-employer-inventory/curated/employer-analysis.parquet" download="">Download skill counts and source annotations ↓</a></div><div class="panel task-panel"><span class="pill">O*NET 15-2051.01</span><h3>Business intelligence in practice</h3><ul><li>Repository queries connect business questions to available evidence.</li><li>Recurring reports and dashboards make performance visible.</li><li>Documented requirements and clear explanations support decisions.</li></ul><p>In pharma, these tasks depend on understanding the coverage and limits of claims, prescription, payer and patient-support data.</p><a href="https://www.onetonline.org/link/summary/15-2051.01" target="_blank" rel="noopener">Explore O*NET tasks ↗</a><p class="tiny">Business intelligence sits within SOC 15-2051. Wage estimates for that parent occupation cover a broader set of roles.</p></div></div></section>
+<div class="career-app focused-page native-analytics">
+<div id="skills" class="section-block">
+<p><span class="eyebrow">THE SKILL SIGNAL</span></p>
+<section id="tools-matter.-judgment-connects-them." class="level2">
+<h2 data-anchor-id="tools-matter.-judgment-connects-them.">Tools matter. Judgment connects them.</h2>
+<div class="section-intro">
+<p>Pharmaceutical analysis combines technical tools with knowledge of the underlying data. Explore the tools, vendors and datasets mentioned in US postings across commercial, clinical, scientific and operational work.</p>
+</div>
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="20" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 19;"><span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>skillData <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"outputs/us-employer-inventory/web/skills-data.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>scope <span class="op">=</span> skillData<span class="op">.</span><span class="at">scopes</span>[scopeKey]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>skillRows <span class="op">=</span> scope<span class="op">.</span><span class="at">skills</span><span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="op">...</span>d<span class="op">,</span> <span class="dt">share</span><span class="op">:</span> d<span class="op">.</span><span class="at">denominator</span> <span class="op">?</span> <span class="dv">100</span> <span class="op">*</span> d<span class="op">.</span><span class="at">records</span> <span class="op">/</span> d<span class="op">.</span><span class="at">denominator</span> <span class="op">:</span> <span class="dv">0</span>}))<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">.</span><span class="fu">includes</span>(skillSearch<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">toLowerCase</span>()))<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> b[skillMetric] <span class="op">-</span> a[skillMetric] <span class="op">||</span> a<span class="op">.</span><span class="at">name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">name</span>))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>selectedSkill <span class="op">=</span> skillRows<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span> <span class="op">===</span> skillName)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>evidenceRows <span class="op">=</span> selectedSkill <span class="op">?</span> selectedSkill<span class="op">.</span><span class="at">sources</span><span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> evidenceEmployer <span class="op">===</span> <span class="st">"All employers"</span> <span class="op">||</span> d<span class="op">.</span><span class="at">company</span> <span class="op">===</span> evidenceEmployer) <span class="op">:</span> []</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<section id="explore-the-evidence" class="level3 panel analytics-controls">
+<h3 data-anchor-id="explore-the-evidence">Explore the evidence</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="31" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 30;"><span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>viewof scopeKey <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"All US postings"</span><span class="op">,</span> <span class="st">"us"</span>]<span class="op">,</span> [<span class="st">"Analytics-relevant US postings"</span><span class="op">,</span> <span class="st">"analytics"</span>]<span class="op">,</span> [<span class="st">"Postings mentioning tracked data products / datasets"</span><span class="op">,</span> <span class="st">"data"</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Evidence scope"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"us"</span>})</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>viewof skillSearch <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"Find a skill"</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"SQL, Python, claims…"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">""</span>})</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>viewof skillMetric <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"Posting mentions"</span><span class="op">,</span> <span class="st">"records"</span>]<span class="op">,</span> [<span class="st">"Share of scope (%)"</span><span class="op">,</span> <span class="st">"share"</span>]<span class="op">,</span> [<span class="st">"Employers"</span><span class="op">,</span> <span class="st">"companies"</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Compare"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"records"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="36" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 35;"><span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p class="context-note" role="status"&gt;</span><span class="sc">${</span>scope<span class="op">.</span><span class="at">records</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)<span class="sc">}</span><span class="vs"> US postings across </span><span class="sc">${</span>scope<span class="op">.</span><span class="at">companies</span><span class="sc">}</span><span class="vs"> employers in this scope. Showing </span><span class="sc">${</span>skillRows<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> matching skills. Shares use all </span><span class="sc">${</span>scope<span class="op">.</span><span class="at">records</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)<span class="sc">}</span><span class="vs"> postings in the selected scope, including those without tracked skill mentions.&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<div id="skills-chart" class="panel analytics-chart ojs-track-layout">
+<section id="skills-in-employer-postings" class="level3">
+<h3 data-anchor-id="skills-in-employer-postings">Skills in employer postings</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="44" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>skillRows<span class="op">.</span><span class="at">length</span> <span class="op">?</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">560</span><span class="op">,</span> layoutWidth[<span class="st">"skills-chart"</span>] <span class="op">-</span> <span class="dv">50</span>)<span class="op">,</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">80</span> <span class="op">+</span> skillRows<span class="op">.</span><span class="at">length</span> <span class="op">*</span> <span class="dv">34</span><span class="op">,</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">180</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"inherit"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"#15335b"</span>}<span class="op">,</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> skillMetric <span class="op">===</span> <span class="st">"share"</span> <span class="op">?</span> <span class="st">"Share of selected scope (%)"</span> <span class="op">:</span> skillMetric <span class="op">===</span> <span class="st">"companies"</span> <span class="op">?</span> <span class="st">"Employers"</span> <span class="op">:</span> <span class="st">"Posting mentions"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">zero</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> skillRows<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span>)}<span class="op">,</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barX</span>(skillRows<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> skillMetric<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span> <span class="op">===</span> skillName <span class="op">?</span> <span class="st">"#923364"</span> <span class="op">:</span> <span class="st">"#235eb5"</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">records</span><span class="sc">}</span><span class="vs"> postings · </span><span class="sc">${</span>d<span class="op">.</span><span class="at">share</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% · </span><span class="sc">${</span>d<span class="op">.</span><span class="at">companies</span><span class="sc">}</span><span class="vs"> employers`</span>})<span class="op">,</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(skillRows<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> skillMetric<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> skillMetric <span class="op">===</span> <span class="st">"share"</span> <span class="op">?</span> d<span class="op">.</span><span class="at">share</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>) <span class="op">+</span> <span class="st">"%"</span> <span class="op">:</span> d[skillMetric]<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)<span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span>})<span class="op">,</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>])</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>}) <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p role="status"&gt;No skills match this search. Clear the search or try another term.&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="tiny">
+<p>Bars are ranked by the selected measure. The highlighted skill is selected in the evidence panel below. Each skill counts once per posting; categories overlap and include required and preferred mentions. These percentages describe the collection, not the wider job market. On small screens, swipe across the chart or tables to see more.</p>
+</div>
+</section>
+</div>
+<section id="skill-comparison-table" class="level3 panel analytics-table">
+<h3 data-anchor-id="skill-comparison-table">Skill comparison table</h3>
+<p>Click a column heading to sort. Scope and search apply to both the chart and table.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="70" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 69;"><span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(skillRows<span class="op">,</span> {<span class="dt">select</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">rows</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">maxHeight</span><span class="op">:</span> <span class="dv">440</span><span class="op">,</span> <span class="dt">layout</span><span class="op">:</span> <span class="st">"auto"</span><span class="op">,</span> <span class="dt">columns</span><span class="op">:</span> [<span class="st">"name"</span><span class="op">,</span> <span class="st">"records"</span><span class="op">,</span> <span class="st">"share"</span><span class="op">,</span> <span class="st">"companies"</span>]<span class="op">,</span> <span class="dt">header</span><span class="op">:</span> {<span class="dt">name</span><span class="op">:</span> <span class="st">"Skill / data signal"</span><span class="op">,</span> <span class="dt">records</span><span class="op">:</span> <span class="st">"Postings"</span><span class="op">,</span> <span class="dt">share</span><span class="op">:</span> <span class="st">"Share of scope"</span><span class="op">,</span> <span class="dt">companies</span><span class="op">:</span> <span class="st">"Employers"</span>}<span class="op">,</span> <span class="dt">format</span><span class="op">:</span> {<span class="dt">share</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>) <span class="op">+</span> <span class="st">"%"</span>}})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="inspect-the-source-evidence" class="level3 panel analytics-evidence analytics-table">
+<h3 data-anchor-id="inspect-the-source-evidence">Inspect the source evidence</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="79" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 78;"><span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>viewof skillName <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(skillRows<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span>)<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Skill"</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> <span class="op">!</span>skillRows<span class="op">.</span><span class="at">length</span>})</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>viewof evidenceEmployer <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"All employers"</span><span class="op">,</span> <span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(selectedSkill <span class="op">?</span> selectedSkill<span class="op">.</span><span class="at">sources</span><span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">company</span>)<span class="op">.</span><span class="fu">sort</span>() <span class="op">:</span> [])]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Source employer"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All employers"</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> <span class="op">!</span>selectedSkill})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="84" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>selectedSkill <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;p role="status"&gt;&lt;strong&gt;</span><span class="sc">${</span>selectedSkill<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/strong&gt; appears in &lt;strong&gt;</span><span class="sc">${</span>selectedSkill<span class="op">.</span><span class="at">records</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)<span class="sc">}</span><span class="vs">&lt;/strong&gt; postings (</span><span class="sc">${</span>selectedSkill<span class="op">.</span><span class="at">share</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% of this scope) across &lt;strong&gt;</span><span class="sc">${</span>selectedSkill<span class="op">.</span><span class="at">companies</span><span class="sc">}</span><span class="vs">&lt;/strong&gt; employers. Showing </span><span class="sc">${</span>evidenceRows<span class="op">.</span><span class="at">length</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)<span class="sc">}</span><span class="vs"> source records.&lt;/p&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p role="status"&gt;No skill selected. Clear the search to inspect evidence.&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-1" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="85" data-source-offset="-439"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 84;"><span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(evidenceRows<span class="op">,</span> {<span class="dt">select</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">rows</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> <span class="dt">maxHeight</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span> <span class="dt">layout</span><span class="op">:</span> <span class="st">"auto"</span><span class="op">,</span> <span class="dt">columns</span><span class="op">:</span> [<span class="st">"company"</span><span class="op">,</span> <span class="st">"id"</span><span class="op">,</span> <span class="st">"url"</span><span class="op">,</span> <span class="st">"evidence"</span>]<span class="op">,</span> <span class="dt">header</span><span class="op">:</span> {<span class="dt">company</span><span class="op">:</span> <span class="st">"Employer"</span><span class="op">,</span> <span class="dt">id</span><span class="op">:</span> <span class="st">"Posting identity"</span><span class="op">,</span> <span class="dt">url</span><span class="op">:</span> <span class="st">"Source"</span><span class="op">,</span> <span class="dt">evidence</span><span class="op">:</span> <span class="st">"Evidence annotation"</span>}<span class="op">,</span> <span class="dt">format</span><span class="op">:</span> {<span class="dt">url</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="ss">/</span><span class="sc">^</span><span class="ss">https</span><span class="sc">?</span><span class="ss">:</span><span class="sc">\/\/</span><span class="ss">/i</span><span class="op">.</span><span class="fu">test</span>(d <span class="op">||</span> <span class="st">""</span>) <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;a href=</span><span class="sc">${</span>d<span class="sc">}</span><span class="vs"> target="_blank" rel="noopener"&gt;Employer posting ↗&lt;/a&gt;`</span> <span class="op">:</span> <span class="st">"No source URL"</span>}})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="tiny">
+<p>Detected in stored role text; required/preferred status is not classified. These historical advertisements have not been verified as current openings, and source links may no longer be active.</p>
+</div>
+<p><a href="outputs/us-employer-inventory/curated/employer-analysis.parquet">Download skill counts and source annotations ↓</a></p>
+</section>
+<div class="panel task-panel">
+<p><span class="pill">O*NET 15-2051.01</span></p>
+<section id="business-intelligence-in-practice" class="level3">
+<h3 data-anchor-id="business-intelligence-in-practice">Business intelligence in practice</h3>
+<ul>
+<li>Repository queries connect business questions to available evidence.</li>
+<li>Recurring reports and dashboards make performance visible.</li>
+<li>Documented requirements and clear explanations support decisions.</li>
+</ul>
+<p>In pharma, these tasks depend on understanding the coverage and limits of claims, prescription, payer and patient-support data.</p>
+<p><a href="https://www.onetonline.org/link/summary/15-2051.01">Explore O*NET tasks ↗</a></p>
+<div class="tiny">
+<p>Business intelligence sits within SOC 15-2051. Wage estimates for that parent occupation cover a broader set of roles.</p>
+</div>
+</section>
+</div>
+</section>
+</div>
 </div>
 <footer class="site-evidence-footer">
 <div>
@@ -181,12 +403,21 @@ Evidence for your next step.
 </div>
 <small>Proposed Pharmaceutical Commercial Data Certificate · Employer evidence and US labor-market context.</small>
 </footer>
-<script src="outputs/us-employer-inventory/web/dashboard-data.js"></script>
-<script src="scripts/dashboard.js"></script>
 
 
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNraWxsRGF0YSA9IEZpbGVBdHRhY2htZW50KFwib3V0cHV0cy91cy1lbXBsb3llci1pbnZlbnRvcnkvd2ViL3NraWxscy1kYXRhLmpzb25cIikuanNvbigpXHJcbnNjb3BlID0gc2tpbGxEYXRhLnNjb3Blc1tzY29wZUtleV1cclxuc2tpbGxSb3dzID0gc2NvcGUuc2tpbGxzLm1hcChkID0+ICh7Li4uZCwgc2hhcmU6IGQuZGVub21pbmF0b3IgPyAxMDAgKiBkLnJlY29yZHMgLyBkLmRlbm9taW5hdG9yIDogMH0pKS5maWx0ZXIoZCA9PiBkLm5hbWUudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhza2lsbFNlYXJjaC50cmltKCkudG9Mb3dlckNhc2UoKSkpLnNvcnQoKGEsIGIpID0+IGJbc2tpbGxNZXRyaWNdIC0gYVtza2lsbE1ldHJpY10gfHwgYS5uYW1lLmxvY2FsZUNvbXBhcmUoYi5uYW1lKSlcclxuc2VsZWN0ZWRTa2lsbCA9IHNraWxsUm93cy5maW5kKGQgPT4gZC5uYW1lID09PSBza2lsbE5hbWUpXHJcbmV2aWRlbmNlUm93cyA9IHNlbGVjdGVkU2tpbGwgPyBzZWxlY3RlZFNraWxsLnNvdXJjZXMuZmlsdGVyKGQgPT4gZXZpZGVuY2VFbXBsb3llciA9PT0gXCJBbGwgZW1wbG95ZXJzXCIgfHwgZC5jb21wYW55ID09PSBldmlkZW5jZUVtcGxveWVyKSA6IFtdXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzY29wZUtleSA9IElucHV0cy5zZWxlY3QobmV3IE1hcChbW1wiQWxsIFVTIHBvc3RpbmdzXCIsIFwidXNcIl0sIFtcIkFuYWx5dGljcy1yZWxldmFudCBVUyBwb3N0aW5nc1wiLCBcImFuYWx5dGljc1wiXSwgW1wiUG9zdGluZ3MgbWVudGlvbmluZyB0cmFja2VkIGRhdGEgcHJvZHVjdHMgLyBkYXRhc2V0c1wiLCBcImRhdGFcIl1dKSwge2xhYmVsOiBcIkV2aWRlbmNlIHNjb3BlXCIsIHZhbHVlOiBcInVzXCJ9KVxyXG52aWV3b2Ygc2tpbGxTZWFyY2ggPSBJbnB1dHMudGV4dCh7bGFiZWw6IFwiRmluZCBhIHNraWxsXCIsIHBsYWNlaG9sZGVyOiBcIlNRTCwgUHl0aG9uLCBjbGFpbXPigKZcIiwgdmFsdWU6IFwiXCJ9KVxyXG52aWV3b2Ygc2tpbGxNZXRyaWMgPSBJbnB1dHMuc2VsZWN0KG5ldyBNYXAoW1tcIlBvc3RpbmcgbWVudGlvbnNcIiwgXCJyZWNvcmRzXCJdLCBbXCJTaGFyZSBvZiBzY29wZSAoJSlcIiwgXCJzaGFyZVwiXSwgW1wiRW1wbG95ZXJzXCIsIFwiY29tcGFuaWVzXCJdXSksIHtsYWJlbDogXCJDb21wYXJlXCIsIHZhbHVlOiBcInJlY29yZHNcIn0pXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPHAgY2xhc3M9XCJjb250ZXh0LW5vdGVcIiByb2xlPVwic3RhdHVzXCI+JHtzY29wZS5yZWNvcmRzLnRvTG9jYWxlU3RyaW5nKFwiZW4tVVNcIil9IFVTIHBvc3RpbmdzIGFjcm9zcyAke3Njb3BlLmNvbXBhbmllc30gZW1wbG95ZXJzIGluIHRoaXMgc2NvcGUuIFNob3dpbmcgJHtza2lsbFJvd3MubGVuZ3RofSBtYXRjaGluZyBza2lsbHMuIFNoYXJlcyB1c2UgYWxsICR7c2NvcGUucmVjb3Jkcy50b0xvY2FsZVN0cmluZyhcImVuLVVTXCIpfSBwb3N0aW5ncyBpbiB0aGUgc2VsZWN0ZWQgc2NvcGUsIGluY2x1ZGluZyB0aG9zZSB3aXRob3V0IHRyYWNrZWQgc2tpbGwgbWVudGlvbnMuPC9wPmBcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2tpbGxSb3dzLmxlbmd0aCA/IFBsb3QucGxvdCh7XHJcbiAgd2lkdGg6IE1hdGgubWF4KDU2MCwgbGF5b3V0V2lkdGhbXCJza2lsbHMtY2hhcnRcIl0gLSA1MCksXHJcbiAgaGVpZ2h0OiA4MCArIHNraWxsUm93cy5sZW5ndGggKiAzNCxcclxuICBtYXJnaW5MZWZ0OiAxODAsIG1hcmdpblJpZ2h0OiA1NSxcclxuICBzdHlsZToge2ZvbnRGYW1pbHk6IFwiaW5oZXJpdFwiLCBmb250U2l6ZTogXCIxMnB4XCIsIGJhY2tncm91bmQ6IFwidHJhbnNwYXJlbnRcIiwgY29sb3I6IFwiIzE1MzM1YlwifSxcclxuICB4OiB7bGFiZWw6IHNraWxsTWV0cmljID09PSBcInNoYXJlXCIgPyBcIlNoYXJlIG9mIHNlbGVjdGVkIHNjb3BlICglKVwiIDogc2tpbGxNZXRyaWMgPT09IFwiY29tcGFuaWVzXCIgPyBcIkVtcGxveWVyc1wiIDogXCJQb3N0aW5nIG1lbnRpb25zXCIsIGdyaWQ6IHRydWUsIHplcm86IHRydWV9LFxyXG4gIHk6IHtsYWJlbDogbnVsbCwgZG9tYWluOiBza2lsbFJvd3MubWFwKGQgPT4gZC5uYW1lKX0sXHJcbiAgbWFya3M6IFtcclxuICAgIFBsb3QuYmFyWChza2lsbFJvd3MsIHt4OiBza2lsbE1ldHJpYywgeTogXCJuYW1lXCIsIGZpbGw6IGQgPT4gZC5uYW1lID09PSBza2lsbE5hbWUgPyBcIiM5MjMzNjRcIiA6IFwiIzIzNWViNVwiLCB0aXRsZTogZCA9PiBgJHtkLm5hbWV9OiAke2QucmVjb3Jkc30gcG9zdGluZ3MgwrcgJHtkLnNoYXJlLnRvRml4ZWQoMSl9JSDCtyAke2QuY29tcGFuaWVzfSBlbXBsb3llcnNgfSksXHJcbiAgICBQbG90LnRleHQoc2tpbGxSb3dzLCB7eDogc2tpbGxNZXRyaWMsIHk6IFwibmFtZVwiLCB0ZXh0OiBkID0+IHNraWxsTWV0cmljID09PSBcInNoYXJlXCIgPyBkLnNoYXJlLnRvRml4ZWQoMSkgKyBcIiVcIiA6IGRbc2tpbGxNZXRyaWNdLnRvTG9jYWxlU3RyaW5nKFwiZW4tVVNcIiksIGR4OiA3LCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCJ9KSxcclxuICAgIFBsb3QucnVsZVgoWzBdKVxyXG4gIF1cclxufSkgOiBodG1sYDxwIHJvbGU9XCJzdGF0dXNcIj5ObyBza2lsbHMgbWF0Y2ggdGhpcyBzZWFyY2guIENsZWFyIHRoZSBzZWFyY2ggb3IgdHJ5IGFub3RoZXIgdGVybS48L3A+YFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJJbnB1dHMudGFibGUoc2tpbGxSb3dzLCB7c2VsZWN0OiBmYWxzZSwgcm93czogMTIsIG1heEhlaWdodDogNDQwLCBsYXlvdXQ6IFwiYXV0b1wiLCBjb2x1bW5zOiBbXCJuYW1lXCIsIFwicmVjb3Jkc1wiLCBcInNoYXJlXCIsIFwiY29tcGFuaWVzXCJdLCBoZWFkZXI6IHtuYW1lOiBcIlNraWxsIC8gZGF0YSBzaWduYWxcIiwgcmVjb3JkczogXCJQb3N0aW5nc1wiLCBzaGFyZTogXCJTaGFyZSBvZiBzY29wZVwiLCBjb21wYW5pZXM6IFwiRW1wbG95ZXJzXCJ9LCBmb3JtYXQ6IHtzaGFyZTogZCA9PiBkLnRvRml4ZWQoMSkgKyBcIiVcIn19KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2Ygc2tpbGxOYW1lID0gSW5wdXRzLnNlbGVjdChza2lsbFJvd3MubWFwKGQgPT4gZC5uYW1lKSwge2xhYmVsOiBcIlNraWxsXCIsIGRpc2FibGVkOiAhc2tpbGxSb3dzLmxlbmd0aH0pXHJcbnZpZXdvZiBldmlkZW5jZUVtcGxveWVyID0gSW5wdXRzLnNlbGVjdChbXCJBbGwgZW1wbG95ZXJzXCIsIC4uLm5ldyBTZXQoc2VsZWN0ZWRTa2lsbCA/IHNlbGVjdGVkU2tpbGwuc291cmNlcy5tYXAoZCA9PiBkLmNvbXBhbnkpLnNvcnQoKSA6IFtdKV0sIHtsYWJlbDogXCJTb3VyY2UgZW1wbG95ZXJcIiwgdmFsdWU6IFwiQWxsIGVtcGxveWVyc1wiLCBkaXNhYmxlZDogIXNlbGVjdGVkU2tpbGx9KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJzZWxlY3RlZFNraWxsID8gaHRtbGA8cCByb2xlPVwic3RhdHVzXCI+PHN0cm9uZz4ke3NlbGVjdGVkU2tpbGwubmFtZX08L3N0cm9uZz4gYXBwZWFycyBpbiA8c3Ryb25nPiR7c2VsZWN0ZWRTa2lsbC5yZWNvcmRzLnRvTG9jYWxlU3RyaW5nKFwiZW4tVVNcIil9PC9zdHJvbmc+IHBvc3RpbmdzICgke3NlbGVjdGVkU2tpbGwuc2hhcmUudG9GaXhlZCgxKX0lIG9mIHRoaXMgc2NvcGUpIGFjcm9zcyA8c3Ryb25nPiR7c2VsZWN0ZWRTa2lsbC5jb21wYW5pZXN9PC9zdHJvbmc+IGVtcGxveWVycy4gU2hvd2luZyAke2V2aWRlbmNlUm93cy5sZW5ndGgudG9Mb2NhbGVTdHJpbmcoXCJlbi1VU1wiKX0gc291cmNlIHJlY29yZHMuPC9wPmAgOiBodG1sYDxwIHJvbGU9XCJzdGF0dXNcIj5ObyBza2lsbCBzZWxlY3RlZC4gQ2xlYXIgdGhlIHNlYXJjaCB0byBpbnNwZWN0IGV2aWRlbmNlLjwvcD5gXHJcbklucHV0cy50YWJsZShldmlkZW5jZVJvd3MsIHtzZWxlY3Q6IGZhbHNlLCByb3dzOiA4LCBtYXhIZWlnaHQ6IDM2MCwgbGF5b3V0OiBcImF1dG9cIiwgY29sdW1uczogW1wiY29tcGFueVwiLCBcImlkXCIsIFwidXJsXCIsIFwiZXZpZGVuY2VcIl0sIGhlYWRlcjoge2NvbXBhbnk6IFwiRW1wbG95ZXJcIiwgaWQ6IFwiUG9zdGluZyBpZGVudGl0eVwiLCB1cmw6IFwiU291cmNlXCIsIGV2aWRlbmNlOiBcIkV2aWRlbmNlIGFubm90YXRpb25cIn0sIGZvcm1hdDoge3VybDogZCA9PiAvXmh0dHBzPzpcXC9cXC8vaS50ZXN0KGQgfHwgXCJcIikgPyBodG1sYDxhIGhyZWY9JHtkfSB0YXJnZXQ9XCJfYmxhbmtcIiByZWw9XCJub29wZW5lclwiPkVtcGxveWVyIHBvc3Rpbmcg4oaXPC9hPmAgOiBcIk5vIHNvdXJjZSBVUkxcIn19KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3Njb3BlS2V5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NraWxsU2VhcmNoJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NraWxsTWV0cmljJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NraWxsTmFtZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdldmlkZW5jZUVtcGxveWVyJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {

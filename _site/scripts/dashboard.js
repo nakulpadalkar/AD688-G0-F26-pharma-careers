@@ -6,7 +6,7 @@ if(!D) return;
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=n=>Number(n).toLocaleString('en-US');
 const money=n=>'$'+number(n);
-if ($('home-inventory-metric')) $('home-inventory-metric').innerHTML=`<strong>${D.inventory.employers_with_jobs}</strong><p>employers with US postings</p><small>${D.inventory.job_count} combined posting identities</small>`;
+if ($('home-inventory-metric')) $('home-inventory-metric').innerHTML=`<strong>${D.inventory.employers_with_jobs}</strong><p>employers with US postings</p><small>${number(D.inventory.job_count)} combined posting identities</small>`;
 if ($('map')) {
 const states=D.meteor.geography.states, mapped=D.meteor.geography.mapped_records;
 let selected=null;
@@ -23,14 +23,18 @@ $('state-ranking').innerHTML=[...states].sort((a,b)=>b.records-a.records).slice(
 document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>selectState(b.dataset.pick)));
 $('geo-coverage').textContent=`${number(mapped)} of ${number(D.meteor.counts.commercial_candidates)} screened records mapped (${(mapped/D.meteor.counts.commercial_candidates*100).toFixed(1)}%). Location-text inference; not verified US vacancy counts.`;
 $('state-table').innerHTML='<table><caption>Historical candidate records by inferred state</caption><thead><tr><th>State</th><th>Records</th><th>Share of mapped</th><th>Distinct employer/text pairs</th></tr></thead><tbody>'+states.map(s=>`<tr><td>${s.name}</td><td>${s.records}</td><td>${(s.records/mapped*100).toFixed(1)}%</td><td>${s.distinct_employer_text_hashes}</td></tr>`).join('')+'</tbody></table>';
-$('geo-exclusions').innerHTML='<p>All 1,353 candidates reconcile to these mutually exclusive geographic buckets:</p><ul>'+Object.entries(D.meteor.geography.buckets).map(([k,v])=>`<li>${escape(k.replaceAll('_',' '))}: ${number(v)}</li>`).join('')+'</ul><p>Repeated employer/text pairs are not confirmed duplicate vacancies; the same pair can appear in more than one state. Remote records are not assigned to every state.</p>';
+$('geo-exclusions').innerHTML=`<p>All ${number(D.meteor.counts.commercial_candidates)} candidates reconcile to these mutually exclusive geographic buckets:</p><ul>`+Object.entries(D.meteor.geography.buckets).map(([k,v])=>`<li>${escape(k.replaceAll('_',' '))}: ${number(v)}</li>`).join('')+'</ul><p>Repeated employer/text pairs are not confirmed duplicate vacancies; the same pair can appear in more than one state. Remote records are not assigned to every state.</p>';
 drawMap();
 }
-if ($('benchmark-cards')) $('benchmark-cards').innerHTML=D.benchmarks.occupations.map(b=>`<article class="benchmark-card"><span class="tiny">SOC ${b.soc} \u00b7 NATIONAL PROXY</span><h3>${b.name}</h3><strong class="benchmark-growth">+${b.growth}%</strong><span class="tiny"> &nbsp; projected, 2025\u20132035</span><div class="growth-track" aria-hidden="true"><span style="width:${b.growth/35*100}%"></span></div><div class="benchmark-facts"><div><strong>${money(b.median)}</strong><small>May 2025 median annual wage</small></div><div><strong>${number(b.openings)}</strong><small>Projected annual openings</small></div></div><p class="tiny">Openings include replacement needs; they are not currently advertised jobs.</p><a href="${b.url}" target="_blank" rel="noopener">BLS source \u2197</a> &nbsp; <a href="${b.onet}" target="_blank" rel="noopener">O*NET occupation \u2197</a></article>`).join('');
 if ($('job-cards')) {
 const usJobs=D.jobs, companies=D.inventory.companies, pageSize=12;
-$('raw-coverage').textContent=`Raw employer-name matches: ${number(D.inventory.source_counts.local)} local records + ${number(D.inventory.source_counts.azure)} Azure records. After employer identity, cross-store deduplication, US-location and relevance checks: ${D.inventory.job_count} eligible posting identities. Source totals include overlaps and excluded records.`;
+$('raw-coverage').textContent=`Raw employer-name matches: ${number(D.inventory.source_counts.local)} local records + ${number(D.inventory.source_counts.azure)} Azure records. After employer identity, cross-store deduplication, US-location checks: ${number(D.inventory.job_count)} US posting identities. ${number(D.inventory.analytics_relevant_jobs)} match the optional analytics screen. Source totals include overlaps and excluded records.`;
 let page=1;
+function jobDateTag(job){
+ if(job.posted_on) return `<time datetime="${escape(job.posted_on)}" title="Source-reported posting date">${escape(job.posted_on)}</time>`;
+ const pulled=job.first_recorded_on;
+ return pulled?`<span class="job-pull-date" title="First recorded in our database; used as a pull-date proxy. Employer posting date and current availability are unknown.">Pulled \u00b7 <time datetime="${escape(pulled)}">${escape(pulled)}</time></span>`:'<span class="job-pull-date">Posting and pull dates unknown</span>';
+}
 function jobFactTags(job){
  const tags=[
   ...(job.requirements.degrees_mentioned.length?[['Degree mention',job.requirements.degrees_mentioned.join(', ')]]:[]),
@@ -41,8 +45,8 @@ function jobFactTags(job){
  return tags.length?`<ul class="job-fact-tags" aria-label="Detected text mentions">${tags.map(([label,value])=>`<li><span class="tag-label">${escape(label)}:</span> ${escape(value)}</li>`).join('')}</ul>`:'';
 }
 function renderJobs(){
- const company=$('job-employer').value||'__all__',q=$('job-search').value.trim().toLowerCase(),lev=$('job-level').value,signal=$('job-signal').value,store=$('job-store').value;
- const matching=usJobs.filter(j=>(lev==='all'||j.level===lev)&&(signal==='all'||(signal==='any'?j.data_signals.length>0:j.data_signals.includes(signal)))&&(store==='all'||(store==='both'?j.stores.length===2:j.stores.includes(store)))&&[j.title,j.location,...j.skills,...j.requirements.degrees_mentioned].join(' ').toLowerCase().includes(q));
+ const company=$('job-employer').value||'__all__',q=$('job-search').value.trim().toLowerCase(),lev=$('job-level').value,signal=$('job-signal').value,relevance=$('job-relevance').value;
+ const matching=usJobs.filter(j=>(relevance==='all'||(relevance==='analytics'?j.analytics_relevant:!j.analytics_relevant))&&(lev==='all'||j.level===lev)&&(signal==='all'||(signal==='any'?j.data_signals.length>0:j.data_signals.includes(signal)))&&[j.title,j.location,...j.skills,...j.requirements.degrees_mentioned].join(' ').toLowerCase().includes(q));
  const counts=[...companies].sort((a,b)=>a.company.localeCompare(b.company)).map(c=>{const rows=matching.filter(j=>j.company===c.company);return {...c,matching:rows.length,local:rows.filter(j=>j.stores.includes('local')).length,azure:rows.filter(j=>j.stores.includes('azure')).length,both:rows.filter(j=>j.stores.length===2).length};});
  $('employer-count').textContent=`${matching.length} matching US postings \u00b7 ${counts.filter(c=>c.matching>0).length} employers with matches \u00b7 ${companies.length} employers searched`;
  $('job-employer').innerHTML=`<option value="__all__">All employers (${matching.length})</option>`+counts.map(c=>`<option value="${escape(c.company)}">${escape(c.company)} (${c.matching})</option>`).join('');
@@ -55,43 +59,12 @@ function renderJobs(){
  const pages=Math.max(1,Math.ceil(jobs.length/pageSize));page=Math.min(page,pages);
  $('job-count').textContent=`${jobs.length} matching postings for ${company==='__all__'?'all employers':company}. Historical database evidence; not live-rechecked.`;
  $('job-page').textContent=`Page ${page} of ${pages}`;$('job-prev').disabled=page===1;$('job-next').disabled=page===pages;
- $('job-cards').innerHTML=jobs.length?jobs.slice((page-1)*pageSize,page*pageSize).map(j=>`<article class="job-card" data-posting-id="${escape(j.id)}"><div class="job-company">${escape(j.company)}</div><h3>${escape(j.title)}</h3><p class="job-meta">${escape(j.location)} \u00b7 ${escape(j.level)} \u00b7 ${j.date_basis==='source_reported_posted_at'?escape(j.display_on||'Date unavailable'):j.date_basis==='database_created_at_proxy'?`First recorded: ${escape(j.display_on||'Unknown')}`:'Date unavailable'}</p><p class="tiny">${escape(j.stores.join(' + '))} \u00b7 ${j.source_records} source records combined<br>US evidence: ${escape(j.geography_basis.replaceAll('_',' '))}</p>${jobFactTags(j)}<p class="tiny">Qualification mentions may describe degree alternatives or different types of experience. ${escape(j.status)}.</p><div class="chips">${j.skills.map(x=>`<span>${escape(x)}</span>`).join('')}</div></article>`).join(''):'<p class="empty-state">No eligible postings match this employer and these filters. A zero reflects stored evidence and screening, not an absence of employment opportunities.</p>';
+ $('job-cards').innerHTML=jobs.length?jobs.slice((page-1)*pageSize,page*pageSize).map(j=>`<article class="job-card" data-posting-id="${escape(j.id)}"><div class="job-company">${escape(j.company)}</div><h3>${escape(j.title)}</h3><p class="job-meta">${escape(j.location)} \u00b7 ${escape(j.level)} \u00b7 ${jobDateTag(j)}</p><p class="tiny">${escape(j.stores.join(' + '))} \u00b7 ${j.source_records} source records combined<br>US evidence: ${escape(j.geography_basis.replaceAll('_',' '))}</p>${jobFactTags(j)}<p class="tiny">Qualification mentions may describe degree alternatives or different types of experience. ${escape(j.status)}.</p><div class="chips">${j.skills.map(x=>`<span>${escape(x)}</span>`).join('')}</div></article>`).join(''):'<p class="empty-state">No eligible postings match this employer and these filters. A zero reflects stored evidence and screening, not an absence of employment opportunities.</p>';
 }
-['job-employer','job-level','job-signal','job-store'].forEach(id=>$(id).addEventListener('change',()=>{page=1;renderJobs();}));
+['job-employer','job-level','job-signal','job-relevance'].forEach(id=>$(id).addEventListener('change',()=>{page=1;renderJobs();}));
 $('job-search').addEventListener('input',()=>{page=1;renderJobs();});
 $('job-prev').addEventListener('click',()=>{if(page>1){page--;renderJobs();}});
 $('job-next').addEventListener('click',()=>{page++;renderJobs();});renderJobs();
-}
-if ($('skill-bars')) {
-let selectedSkillKey=null;
-function showSkill(index){
- const scope=D.employer_analysis.scopes[$('skill-scope').value],s=scope.skills[index];
- if(!s) return;
- const key=$('skill-scope').value+':'+index;
- if(key===selectedSkillKey) return;
- selectedSkillKey=key;
- const companies=[...new Set(s.sources.map(x=>x.company))].sort();
- $('skill-detail').innerHTML=`<p class="eyebrow">SKILL EVIDENCE</p><h3>${escape(s.name)}</h3><div class="skill-detail-metrics"><div><strong>${number(s.records)}</strong><span>posting identities</span></div><div><strong>${number(s.companies)}</strong><span>company labels</span></div></div><p><strong>${(s.records/s.denominator*100).toFixed(1)}%</strong> of ${number(s.denominator)} postings in this scope mention this skill.</p><p class="tiny">Companies: ${companies.map(escape).join(', ')}.</p><details><summary>Inspect stored source examples</summary><ul>${s.sources.slice(0,5).map(x=>`<li>${x.url?`<a href="${escape(x.url)}" target="_blank" rel="noopener">${escape(x.company)} \u2197</a>`:escape(x.company)} \u00b7 ${escape(x.id)}</li>`).join('')}</ul><a href="jobs.html">Explore all matching roles \u2192</a></details><p class="tiny">Historical posting evidence. Required and preferred mentions are not classified separately.</p>`;
- $('skill-bars').dataset.activeSkill=String(index);
- document.querySelectorAll('[data-skill-index]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.skillIndex)===index)));
- $('skill-status').textContent=`${s.name}: ${s.records} postings, ${s.companies} companies, ${(s.records/s.denominator*100).toFixed(1)} percent of selected postings.`;
-}
-function renderSkills(){
- const scope=D.employer_analysis.scopes[$('skill-scope').value],peak=Math.max(1,...scope.skills.map(s=>s.records));
- $('skill-summary').textContent=`${scope.records} US data and analytics postings across ${scope.companies} companies. Each skill counts once per posting; required and preferred mentions are combined.`;
- $('skill-bars').innerHTML=scope.skills.map((s,i)=>`<button type="button" class="skill-bubble" aria-controls="skill-detail" aria-describedby="skill-hint" aria-pressed="false" data-skill-index="${i}" style="--bubble-size:${(188*Math.sqrt(s.records/peak)).toFixed(2)}px" aria-label="${escape(s.name)}: ${s.records} posting identities, ${s.companies} companies, ${(s.records/s.denominator*100).toFixed(1)} percent. Show evidence."><span>${escape(s.name)}</span><strong>${s.records}</strong></button>`).join('');
- selectedSkillKey=null;
- showSkill(0);
-}
-function inspectSkill(event){
- // Moving across a bubble's child text must not rebuild or collapse its evidence.
- // Hover must not replace source links while a keyboard user is reading them.
- if(event.type==='mouseover' && document.activeElement && $('skill-detail').contains(document.activeElement)) return;
- const button=event.target.closest('[data-skill-index]');
- if(button)showSkill(Number(button.dataset.skillIndex));
-}
-['mouseover','focusin','click'].forEach(event=>$('skill-bars').addEventListener(event,inspectSkill));
-$('skill-scope').addEventListener('change',renderSkills);renderSkills();
 }
 if ($('scenario')) {
 const scenarios=[

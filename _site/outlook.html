@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Market outlook – PHARMA / CAREERS</title>
+<title>Growth &amp; Pay – PHARMA / CAREERS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -44,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dde1045613841c21001f88a52bd2de6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8763b6963a94d0d356ac49f3b82285df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,9 +108,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -166,8 +202,152 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="career-app focused-page">
-<section id="outlook" class="section-block"><div class="section-heading"><div><p class="eyebrow">THE BIGGER LABOR MARKET</p><h2>Growth, with the right context.</h2></div><span class="pill">BLS · 2025–2035</span></div><p class="section-intro">These national occupations overlap with commercial analytics work. They include all industries and experience levels; their wages are benchmarks, not expected certificate starting salaries.</p><div class="outlook-grid" id="benchmark-cards"></div><div class="panel industry-panel" id="industry"><div><p class="eyebrow">NAICS 3254 / BLS MATRIX 325400</p><h3>Pharmaceutical &amp; medicine manufacturing</h3><p>355,400 jobs in 2025 → 380,500 projected in 2035.</p><p class="tiny">All occupations in the industry. Analytics also exists in consulting and data vendors. NAICS classifies establishments; it does not itself forecast growth.</p><a href="https://www.bls.gov/emp/tables/industry-employment-and-output.htm" target="_blank" rel="noopener">BLS industry projection ↗</a> · <a href="https://www.census.gov/naics/?input=3254&amp;year=2022&amp;details=3254" target="_blank" rel="noopener">NAICS definition ↗</a></div><div class="industry-growth"><strong>+7.1%</strong><span>over the decade</span><small>0.7% annual compound growth</small></div></div><div class="comparison-note"><strong>How METEOR compares</strong><p>BLS estimates employment and projected growth. METEOR observes advertisements in a changing collection. O*NET describes work. Their different populations provide complementary views of careers, rather than a common vacancy-rate measure.</p><a href="eda_pharma.html#comparison">View the comparison framework →</a></div></section>
+<div class="career-app focused-page native-analytics">
+<div id="outlook" class="section-block">
+<p><span class="eyebrow">THE BIGGER LABOR MARKET</span></p>
+<section id="growth-with-the-right-context." class="level2">
+<h2 data-anchor-id="growth-with-the-right-context.">Growth, with the right context.</h2>
+<div class="section-intro">
+<p>Compare national occupations that overlap with commercial analytics work. These benchmarks include all industries and experience levels; they are not expected certificate starting salaries.</p>
+</div>
+<p><span class="pill">BLS · 2025–2035 projections · May 2025 wages</span></p>
+<div class="cell hidden">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="22" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 21;"><span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>benchmarks <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"outputs/us-employer-inventory/web/outlook-data.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>occupations <span class="op">=</span> benchmarks<span class="op">.</span><span class="at">occupations</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>metricLabels <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"Projected growth (%)"</span><span class="op">,</span> <span class="st">"growth"</span>]<span class="op">,</span> [<span class="st">"Median annual wage ($)"</span><span class="op">,</span> <span class="st">"median"</span>]<span class="op">,</span> [<span class="st">"Annual projected openings"</span><span class="op">,</span> <span class="st">"openings"</span>]])</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>formatMetric <span class="op">=</span> (value<span class="op">,</span> key) <span class="kw">=&gt;</span> key <span class="op">===</span> <span class="st">"median"</span> <span class="op">?</span> <span class="st">"$"</span> <span class="op">+</span> value<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>) <span class="op">:</span> key <span class="op">===</span> <span class="st">"growth"</span> <span class="op">?</span> value <span class="op">+</span> <span class="st">"%"</span> <span class="op">:</span> value<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> occupations<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> selectedOccupations<span class="op">.</span><span class="fu">includes</span>(d<span class="op">.</span><span class="at">name</span>))<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> b[metric] <span class="op">-</span> a[metric])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<section id="choose-your-comparison" class="level3 panel analytics-controls">
+<h3 data-anchor-id="choose-your-comparison">Choose your comparison</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="33" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 32;"><span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>viewof selectedOccupations <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>(occupations<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span>)<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Occupations"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> occupations<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span>)})</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>viewof metric <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(metricLabels<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Compare"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"growth"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<div id="growth-chart" class="panel analytics-chart ojs-track-layout">
+<section id="occupation-comparison" class="level3">
+<h3 data-anchor-id="occupation-comparison">Occupation comparison</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="41" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 40;"><span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>comparison<span class="op">.</span><span class="at">length</span> <span class="op">?</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">560</span><span class="op">,</span> layoutWidth[<span class="st">"growth-chart"</span>] <span class="op">-</span> <span class="dv">50</span>)<span class="op">,</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">130</span> <span class="op">+</span> comparison<span class="op">.</span><span class="at">length</span> <span class="op">*</span> <span class="dv">65</span><span class="op">,</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">220</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">65</span><span class="op">,</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"inherit"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"#15335b"</span>}<span class="op">,</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> [<span class="op">...</span>metricLabels]<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d[<span class="dv">1</span>] <span class="op">===</span> metric)[<span class="dv">0</span>]<span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">zero</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> comparison<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span>)}<span class="op">,</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barX</span>(comparison<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> metric<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#235eb5"</span><span class="op">,</span> <span class="dt">insetTop</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">insetBottom</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">name</span><span class="sc">}\n${</span><span class="fu">formatMetric</span>(d[metric]<span class="op">,</span> metric)<span class="sc">}\n</span><span class="vs">SOC </span><span class="sc">${</span>d<span class="op">.</span><span class="at">soc</span><span class="sc">}</span><span class="vs">`</span>})<span class="op">,</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(comparison<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> metric<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">formatMetric</span>(d[metric]<span class="op">,</span> metric)<span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#15335b"</span>})<span class="op">,</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>])</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>}) <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p role="status"&gt;Select at least one occupation to compare.&lt;/p&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="tiny">
+<p>Change the measure to compare growth, wages or openings. Bars are ranked by the selected measure; hover for occupation details. Exact values and source links appear below. On small screens, swipe across the chart or table to see more.</p>
+</div>
+</section>
+</div>
+<section id="compare-the-numbers" class="level3 panel analytics-table">
+<h3 data-anchor-id="compare-the-numbers">Compare the numbers</h3>
+<p>Click a column heading to sort. The table follows your occupation selection.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="67" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(comparison<span class="op">,</span> {</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>  <span class="dt">select</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">rows</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">maxHeight</span><span class="op">:</span> <span class="dv">340</span><span class="op">,</span> <span class="dt">layout</span><span class="op">:</span> <span class="st">"auto"</span><span class="op">,</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>  <span class="dt">columns</span><span class="op">:</span> [<span class="st">"name"</span><span class="op">,</span> <span class="st">"soc"</span><span class="op">,</span> <span class="st">"growth"</span><span class="op">,</span> <span class="st">"median"</span><span class="op">,</span> <span class="st">"openings"</span><span class="op">,</span> <span class="st">"url"</span><span class="op">,</span> <span class="st">"onet"</span>]<span class="op">,</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {<span class="dt">name</span><span class="op">:</span> <span class="st">"Occupation"</span><span class="op">,</span> <span class="dt">soc</span><span class="op">:</span> <span class="st">"SOC"</span><span class="op">,</span> <span class="dt">growth</span><span class="op">:</span> <span class="st">"Growth (%)"</span><span class="op">,</span> <span class="dt">median</span><span class="op">:</span> <span class="st">"Median wage"</span><span class="op">,</span> <span class="dt">openings</span><span class="op">:</span> <span class="st">"Annual openings"</span><span class="op">,</span> <span class="dt">url</span><span class="op">:</span> <span class="st">"BLS"</span><span class="op">,</span> <span class="dt">onet</span><span class="op">:</span> <span class="st">"O*NET"</span>}<span class="op">,</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {<span class="dt">growth</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">+</span> <span class="st">"%"</span><span class="op">,</span> <span class="dt">median</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">formatMetric</span>(d<span class="op">,</span> <span class="st">"median"</span>)<span class="op">,</span> <span class="dt">openings</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en-US"</span>)<span class="op">,</span> <span class="dt">url</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;a href=</span><span class="sc">${</span>d<span class="sc">}</span><span class="vs"> target="_blank" rel="noopener"&gt;Source ↗&lt;/a&gt;`</span><span class="op">,</span> <span class="dt">onet</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;a href=</span><span class="sc">${</span>d<span class="sc">}</span><span class="vs"> target="_blank" rel="noopener"&gt;Tasks ↗&lt;/a&gt;`</span>}</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="tiny">
+<p>Openings include replacement needs; they are not currently advertised jobs. Growth covers 2025–2035; wages are May 2025 medians.</p>
+</div>
+<p><a href="outputs/site-reference/data/benchmarks.parquet">Download national benchmarks</a></p>
+</section>
+<div id="industry" class="panel industry-panel">
+<div>
+<p><span class="eyebrow">NAICS 3254 / BLS MATRIX 325400</span></p>
+<section id="pharmaceutical-medicine-manufacturing" class="level3">
+<h3 data-anchor-id="pharmaceutical-medicine-manufacturing">Pharmaceutical &amp; medicine manufacturing</h3>
+<p>355,400 jobs in 2025 → 380,500 projected in 2035.</p>
+<div class="tiny">
+<p>All occupations in the industry. Analytics also exists in consulting and data vendors. NAICS classifies establishments; it does not itself forecast growth.</p>
+</div>
+<p><a href="https://www.bls.gov/emp/tables/industry-employment-and-output.htm">BLS industry projection ↗</a> · <a href="https://www.census.gov/naics/?input=3254&amp;year=2022&amp;details=3254">NAICS definition ↗</a></p>
+</section>
+</div>
+<div class="industry-growth">
+<p><strong>+7.1%</strong></p>
+<p><span class="tiny">over the decade</span></p>
+<p><span class="tiny">0.7% annual compound growth</span></p>
+</div>
+</div>
+<section id="how-meteor-compares" class="level3 comparison-note">
+<h3 data-anchor-id="how-meteor-compares">How METEOR compares</h3>
+<p>BLS estimates employment and projected growth. METEOR observes advertisements in a changing collection. O*NET describes work. Their different populations provide complementary views of careers, rather than a common vacancy-rate measure.</p>
+<p><a href="./eda_pharma.html#comparison">View the comparison framework →</a></p>
+</section>
+</section>
+</div>
 </div>
 <footer class="site-evidence-footer">
 <div>
@@ -181,12 +361,21 @@ Evidence for your next step.
 </div>
 <small>Proposed Pharmaceutical Commercial Data Certificate · Employer evidence and US labor-market context.</small>
 </footer>
-<script src="outputs/us-employer-inventory/web/dashboard-data.js"></script>
-<script src="scripts/dashboard.js"></script>
 
 
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJlbmNobWFya3MgPSBGaWxlQXR0YWNobWVudChcIm91dHB1dHMvdXMtZW1wbG95ZXItaW52ZW50b3J5L3dlYi9vdXRsb29rLWRhdGEuanNvblwiKS5qc29uKClcclxub2NjdXBhdGlvbnMgPSBiZW5jaG1hcmtzLm9jY3VwYXRpb25zXHJcbm1ldHJpY0xhYmVscyA9IG5ldyBNYXAoW1tcIlByb2plY3RlZCBncm93dGggKCUpXCIsIFwiZ3Jvd3RoXCJdLCBbXCJNZWRpYW4gYW5udWFsIHdhZ2UgKCQpXCIsIFwibWVkaWFuXCJdLCBbXCJBbm51YWwgcHJvamVjdGVkIG9wZW5pbmdzXCIsIFwib3BlbmluZ3NcIl1dKVxyXG5mb3JtYXRNZXRyaWMgPSAodmFsdWUsIGtleSkgPT4ga2V5ID09PSBcIm1lZGlhblwiID8gXCIkXCIgKyB2YWx1ZS50b0xvY2FsZVN0cmluZyhcImVuLVVTXCIpIDoga2V5ID09PSBcImdyb3d0aFwiID8gdmFsdWUgKyBcIiVcIiA6IHZhbHVlLnRvTG9jYWxlU3RyaW5nKFwiZW4tVVNcIilcclxuY29tcGFyaXNvbiA9IG9jY3VwYXRpb25zLmZpbHRlcihkID0+IHNlbGVjdGVkT2NjdXBhdGlvbnMuaW5jbHVkZXMoZC5uYW1lKSkuc29ydCgoYSwgYikgPT4gYlttZXRyaWNdIC0gYVttZXRyaWNdKVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2Ygc2VsZWN0ZWRPY2N1cGF0aW9ucyA9IElucHV0cy5jaGVja2JveChvY2N1cGF0aW9ucy5tYXAoZCA9PiBkLm5hbWUpLCB7bGFiZWw6IFwiT2NjdXBhdGlvbnNcIiwgdmFsdWU6IG9jY3VwYXRpb25zLm1hcChkID0+IGQubmFtZSl9KVxyXG52aWV3b2YgbWV0cmljID0gSW5wdXRzLnNlbGVjdChtZXRyaWNMYWJlbHMsIHtsYWJlbDogXCJDb21wYXJlXCIsIHZhbHVlOiBcImdyb3d0aFwifSlcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiY29tcGFyaXNvbi5sZW5ndGggPyBQbG90LnBsb3Qoe1xyXG4gIHdpZHRoOiBNYXRoLm1heCg1NjAsIGxheW91dFdpZHRoW1wiZ3Jvd3RoLWNoYXJ0XCJdIC0gNTApLFxyXG4gIGhlaWdodDogMTMwICsgY29tcGFyaXNvbi5sZW5ndGggKiA2NSxcclxuICBtYXJnaW5MZWZ0OiAyMjAsIG1hcmdpblJpZ2h0OiA2NSxcclxuICBzdHlsZToge2ZvbnRGYW1pbHk6IFwiaW5oZXJpdFwiLCBmb250U2l6ZTogXCIxMnB4XCIsIGJhY2tncm91bmQ6IFwidHJhbnNwYXJlbnRcIiwgY29sb3I6IFwiIzE1MzM1YlwifSxcclxuICB4OiB7bGFiZWw6IFsuLi5tZXRyaWNMYWJlbHNdLmZpbmQoZCA9PiBkWzFdID09PSBtZXRyaWMpWzBdLCBncmlkOiB0cnVlLCB6ZXJvOiB0cnVlfSxcclxuICB5OiB7bGFiZWw6IG51bGwsIGRvbWFpbjogY29tcGFyaXNvbi5tYXAoZCA9PiBkLm5hbWUpfSxcclxuICBtYXJrczogW1xyXG4gICAgUGxvdC5iYXJYKGNvbXBhcmlzb24sIHt4OiBtZXRyaWMsIHk6IFwibmFtZVwiLCBmaWxsOiBcIiMyMzVlYjVcIiwgaW5zZXRUb3A6IDEyLCBpbnNldEJvdHRvbTogMTIsIHRpdGxlOiBkID0+IGAke2QubmFtZX1cXG4ke2Zvcm1hdE1ldHJpYyhkW21ldHJpY10sIG1ldHJpYyl9XFxuU09DICR7ZC5zb2N9YH0pLFxyXG4gICAgUGxvdC50ZXh0KGNvbXBhcmlzb24sIHt4OiBtZXRyaWMsIHk6IFwibmFtZVwiLCB0ZXh0OiBkID0+IGZvcm1hdE1ldHJpYyhkW21ldHJpY10sIG1ldHJpYyksIGR4OiA3LCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsIGZpbGw6IFwiIzE1MzM1YlwifSksXHJcbiAgICBQbG90LnJ1bGVYKFswXSlcclxuICBdXHJcbn0pIDogaHRtbGA8cCByb2xlPVwic3RhdHVzXCI+U2VsZWN0IGF0IGxlYXN0IG9uZSBvY2N1cGF0aW9uIHRvIGNvbXBhcmUuPC9wPmBcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiSW5wdXRzLnRhYmxlKGNvbXBhcmlzb24sIHtcclxuICBzZWxlY3Q6IGZhbHNlLCByb3dzOiAxMCwgbWF4SGVpZ2h0OiAzNDAsIGxheW91dDogXCJhdXRvXCIsXHJcbiAgY29sdW1uczogW1wibmFtZVwiLCBcInNvY1wiLCBcImdyb3d0aFwiLCBcIm1lZGlhblwiLCBcIm9wZW5pbmdzXCIsIFwidXJsXCIsIFwib25ldFwiXSxcclxuICBoZWFkZXI6IHtuYW1lOiBcIk9jY3VwYXRpb25cIiwgc29jOiBcIlNPQ1wiLCBncm93dGg6IFwiR3Jvd3RoICglKVwiLCBtZWRpYW46IFwiTWVkaWFuIHdhZ2VcIiwgb3BlbmluZ3M6IFwiQW5udWFsIG9wZW5pbmdzXCIsIHVybDogXCJCTFNcIiwgb25ldDogXCJPKk5FVFwifSxcclxuICBmb3JtYXQ6IHtncm93dGg6IGQgPT4gZCArIFwiJVwiLCBtZWRpYW46IGQgPT4gZm9ybWF0TWV0cmljKGQsIFwibWVkaWFuXCIpLCBvcGVuaW5nczogZCA9PiBkLnRvTG9jYWxlU3RyaW5nKFwiZW4tVVNcIiksIHVybDogZCA9PiBodG1sYDxhIGhyZWY9JHtkfSB0YXJnZXQ9XCJfYmxhbmtcIiByZWw9XCJub29wZW5lclwiPlNvdXJjZSDihpc8L2E+YCwgb25ldDogZCA9PiBodG1sYDxhIGhyZWY9JHtkfSB0YXJnZXQ9XCJfYmxhbmtcIiByZWw9XCJub29wZW5lclwiPlRhc2tzIOKGlzwvYT5gfVxyXG59KVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlbGVjdGVkT2NjdXBhdGlvbnMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbWV0cmljJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
