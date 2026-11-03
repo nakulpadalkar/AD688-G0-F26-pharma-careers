@@ -1,0 +1,37 @@
+.context-note {
+  font-size: .76rem;
+  color: var(--muted);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.section-block {
+  padding-top: 65px;
+  scroll-margin-top: 70px;
+}
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.section-intro {
+  max-width: 850px;
+  color: var(--muted);
+  font-size: .91rem;
+}
+.pill {
+  display: inline-block;
+  padding: 5px 11px;
+  background: #fff0f7;
+  border: 1px solid #f3c2d9;
+  border-radius: 30px;
+  font-size: .66rem;
+  white-space: nowrap;
+  color: #923364;
+}
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 25px;
+}

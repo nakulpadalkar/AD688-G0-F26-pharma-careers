@@ -1,0 +1,59 @@
+/* Compact multipage navigation, inside the existing 1100px Quarto body. */
+.page-directory {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 18px;
+  margin: 30px 0;
+}
+.directory-card {
+  display: block;
+  padding: 24px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.directory-card:hover {
+  border-color: var(--blue);
+  background: #f2f6ff;
+}
+.directory-card h2 {
+  font-size: 1.12rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+.directory-card h2 span {
+  color: var(--blue);
+}
+.directory-card p {
+  font-size: .82rem;
+  color: var(--muted);
+  margin: 0;
+}
+.focused-page>.section-block {
+  padding-top: 15px;
+  margin-top: 0;
+  border-top: 0;
+}
+main.content>.site-evidence-footer {
+  max-width: 1100px;
+  margin: 35px auto 0;
+}
+@media (max-width:950px) {
+  .page-directory {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+}
+@media (max-width:600px) {
+  .page-directory {
+    grid-template-columns: 1fr;
+  }
+  .directory-card {
+    padding: 20px;
+  }
+
+}

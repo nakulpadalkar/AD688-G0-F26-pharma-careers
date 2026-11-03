@@ -1,8 +1,9 @@
 """Bundle checked snapshots and project cached US geography; no network or database."""
-import json, math
+import json, math, re
 from collections import Counter
 from pathlib import Path
 from artifact_io import read_data, write_data, TASK
+from site_metrics import derive_inventory, derive_metrics
 ROOT=Path(__file__).resolve().parents[1]
 def read(name): return read_data(name)
 def project(lon,lat,code):
@@ -40,7 +41,7 @@ def map_svg(topo):
 
 def employer_analysis(jobs):
     scopes={}
-    for name, selected in [('us',jobs), ('data',[j for j in jobs if j['data_signals']])]:
+    for name, selected in [('us',jobs), ('analytics',[j for j in jobs if j['analytics_relevant']]), ('data',[j for j in jobs if j['data_signals']])]:
         skills=[]
         for skill in sorted({s for j in selected for s in j['skills']}):
             matches=[j for j in selected if skill in j['skills']]
@@ -52,10 +53,23 @@ def build():
     (TASK/'web').mkdir(parents=True,exist_ok=True)
     bundle={'meteor':read('meteor.json'),'benchmarks':read('benchmarks.json'),'current':read('current-jobs.json'),'historical':read('reviewed-examples.json'),'map':map_svg(read('usa_110m.json'))}
     bundle['jobs']=read('database-jobs.json')
-    bundle['inventory']=read('inventory-summary.json')
+    bundle['inventory']=derive_inventory(bundle['jobs'], read('all-employer-records'), read('inventory-summary'))
+    write_data('inventory-summary', bundle['inventory'])
+    courses=len(re.findall(r'^\| \d+\.', (ROOT/'about.qmd').read_text(encoding='utf-8'), re.M))
+    bundle['metrics']=derive_metrics(bundle, courses)
+    write_data('site-metrics', bundle['metrics'])
+    # JSON is a YAML subset; Quarto resolves these variables during rendering.
+    (ROOT/'_variables.yml').write_text(json.dumps(bundle['metrics']['values'], ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    b=bundle['benchmarks']
+    benchmark_rows=[f"| Occupation | SOC | {b['wage_year']} median annual wage | {b['projection_period']} growth | Average annual projected openings |", '|---|---|---:|---:|---:|']
+    benchmark_rows += [f"| [{o['name']}]({o['url']}) | {o['soc']} | ${o['median']:,} | {o['growth']}% | {o['openings']:,} |" for o in b['occupations']]
+    (TASK/'web/benchmark-table.md').write_text('\n'.join(benchmark_rows)+'\n',encoding='utf-8')
     write_data('us-jobs',bundle['jobs'])
     bundle['employer_analysis']=employer_analysis(bundle['jobs'])
     write_data('employer-analysis',bundle['employer_analysis'])
+    # Focused attachments for native OJS pages; do not load the full jobs bundle.
+    for filename, payload in [('outlook-data.json', bundle['benchmarks']), ('skills-data.json', bundle['employer_analysis'])]:
+        (TASK/'web'/filename).write_text(json.dumps(payload, ensure_ascii=False)+'\n', encoding='utf-8')
     summary=bundle['inventory']
     rows=['| Employer | Combined US postings | Local | Azure | In both |','|---|---:|---:|---:|---:|']
     rows += [f"| {c['company']} | {c['jobs']} | {c['local_jobs']} | {c['azure_jobs']} | {c['both_jobs']} |" for c in summary['companies']]
@@ -63,14 +77,14 @@ def build():
     (TASK/'web/inventory-table.md').write_text('\n'.join(rows)+'\n',encoding='utf-8')
     (TASK/'web/inventory-metric.html').write_text(f"<strong>{summary['employers_with_jobs']}</strong><p>employers with US postings</p><small>{summary['job_count']} combined posting identities</small>",encoding='utf-8')
     dest=TASK/'web/dashboard-data.js';dest.write_text('window.PHARMA_DATA = '+json.dumps(bundle,ensure_ascii=False).replace('</','<\\/')+';\n',encoding='utf-8')
-    findings=[f"The snapshot contains **{summary['job_count']} US posting identities across {summary['employers_with_jobs']} employers with matches**, from {summary['source_counts']['local']:,} local and {summary['source_counts']['azure']:,} Azure employer-name-matched rows.", '', f"**{summary['data_signal_jobs']} / {summary['job_count']} ({summary['data_signal_jobs']/summary['job_count']:.1%})** mention a tracked vendor, product or dataset. These mentions connect analytical work to specific data sources. They include required and preferred skills; dataset terms also contribute to the relevance screen.", '', f"{summary['undated_jobs']} postings lack a source-reported date; the display uses a separately labeled database-creation proxy where available.", '', '| Degree term detected | Posting identities |', '|---|---:|']
+    findings=[f"All US roles are included by default; **{summary['analytics_relevant_jobs']:,}** pass the optional analytics screen and **{summary['other_us_jobs']:,}** do not. A failed rule match is not proof that a role contains no analytical work.", '', f"The snapshot contains **{summary['job_count']} US posting identities across {summary['employers_with_jobs']} employers with matches**, from {summary['source_counts']['local']:,} local and {summary['source_counts']['azure']:,} Azure employer-name-matched rows.", '', f"**{summary['data_signal_jobs']} / {summary['job_count']} ({summary['data_signal_jobs']/summary['job_count']:.1%})** mention a tracked vendor, product or dataset. These mentions connect analytical work to specific data sources. They include required and preferred skills; dataset terms also contribute to the optional analytics-relevance classification.", '', f"{summary['undated_jobs']} postings lack a source-reported date; the display uses a separately labeled database-creation proxy where available.", '', '| Degree term detected | Posting identities |', '|---|---:|']
     findings += [f'| {k} | {v} |' for k,v in summary['education'].items()]
     findings += ['',f"Categories overlap. No degree term was detected in {summary['degree_not_detected']} postings; {summary['equivalent_experience_language']} contain equivalent-experience language. These categories describe the wording of advertisements; eligibility depends on the full qualification requirements.", '', '| Career level from title | Postings | Frequent year expressions (posting counts) |', '|---|---:|---|']
     for level,counts in summary['experience_by_level'].items():
         terms=', '.join(f'{k} years ({v})' for k,v in sorted(counts.items(),key=lambda kv:-kv[1])[:6])
         findings.append(f"| {level} | {sum(j['level']==level for j in bundle['jobs'])} | {terms} |")
     findings += ['', 'Year expressions are not verified minimum requirements; several may occur in one posting for different degree alternatives or specialist experience.']
-    findings += ['', '### Why postings are included', '', '| Inclusion rule | Posting identities |', '|---|---:|']
+    findings += ['', '### Analytics-relevance classification', '', '| Classification reason (not an exclusion) | Posting identities |', '|---|---:|']
     findings += [f"| {k.replace('_', ' ')} | {v} |" for k,v in summary['relevance_counts'].items()]
     findings += ['', 'The inventory spans pharmaceutical data careers beyond commercial analytics. Clinical, scientific and operational specialties can require additional training beyond the proposed certificate.']
     (TASK/'web/inventory-findings.md').write_text('\n'.join(findings)+'\n',encoding='utf-8')

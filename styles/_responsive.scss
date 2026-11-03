@@ -1,0 +1,164 @@
+@media (max-width:950px) {
+  .hero {
+    padding: 35px;
+    grid-template-columns: 1fr;
+  }
+  .hero-visual {
+    display: none;
+  }
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+  .state-detail {
+    display: none;
+  }
+  .metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+  .metrics article:nth-child(2) {
+    border: 0;
+  }
+  .metrics article:nth-child(3) {
+    padding-left: 0;
+  }
+  .outlook-grid {
+    grid-template-columns: 1fr;
+  }
+  .benchmark-facts {
+    justify-content: flex-start;
+    gap: 40px;
+  }
+  .source-strip {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .pathway {
+    grid-template-columns: 1fr 1fr;
+  }
+  .industry-growth {
+    padding-left: 20px;
+  }
+
+}
+@media (max-width:600px) {
+  .career-app {
+    padding: 10px 12px;
+  }
+  .hero {
+    padding: 30px 24px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+  }
+  .source-strip small {
+    display: none;
+  }
+  .source-strip>span {
+    width: 100%;
+  }
+  .metrics article {
+    padding: 12px;
+  }
+  .metrics strong {
+    font-size: 2.2rem;
+  }
+  .section-block {
+    padding-top: 42px;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+  .panel {
+    padding: 18px;
+  }
+  .panel-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .compact {
+    width: 100%;
+  }
+  .job-grid,.two-columns,.scenario,.industry-panel,.filters {
+    grid-template-columns: 1fr;
+  }
+  .scenario {
+    gap: 20px;
+    padding: 24px;
+  }
+  .industry-growth {
+    border-left: 0;
+    border-top: 1px solid #c0d2ed;
+    padding: 20px 0 0;
+  }
+  .pathway {
+    gap: 18px;
+  }
+  .site-evidence-footer {
+    grid-template-columns: 1fr;
+  }
+  .site-evidence-footer small {
+    grid-column: 1;
+  }
+  .job-card {
+    padding: 23px;
+  }
+  .legend {
+    gap: 8px;
+  }
+  .map-container {
+    margin: 10px -12px;
+  }
+  .metric-label {
+    font-size: .59rem;
+  }
+  .metrics small {
+    font-size: .62rem;
+  }
+  .scenario-tabs button {
+    padding: 10px;
+    font-size: .7rem;
+  }
+
+}
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+  .button:hover {
+    transform: none;
+  }
+
+}
+@media print {
+  .navbar,.hero-visual,.filters,.scenario-tabs {
+    display: none;
+  }
+  .hero {
+    background: white;
+    color: #222;
+  }
+  .hero h1,.hero h1 em {
+    color: #15335b;
+  }
+  .career-app {
+    padding: 0;
+  }
+  .section-block {
+    break-inside: avoid;
+  }
+  .job-grid,.outlook-grid {
+    grid-template-columns: 1fr;
+  }
+  .panel,.job-card {
+    break-inside: avoid;
+  }
+
+}

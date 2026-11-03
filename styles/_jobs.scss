@@ -1,0 +1,72 @@
+.filters {
+  display: grid;
+  grid-template-columns: 1.1fr 1.6fr 1fr;
+  gap: 16px;
+  margin: 25px 0 12px;
+}
+.filters label {
+  font-size: .73rem;
+  font-weight: 600;
+}
+.filters input,.filters select {
+  margin-top: 7px;
+  font-size: .8rem;
+  height: 45px;
+}
+.job-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.job-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+.job-card h3 {
+  font-size: 1.28rem;
+  margin: 10px 0;
+}
+.job-company {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: .8rem;
+}
+.job-meta {
+  font-size: .75rem;
+  color: var(--muted);
+}
+.salary {
+  font-size: 1.35rem;
+  font-weight: 650;
+  margin: 12px 0 0;
+}
+.job-card dl {
+  font-size: .78rem;
+}
+.job-card dt {
+  margin-top: 12px;
+}
+.job-card dd {
+  margin-left: 0;
+  color: var(--muted);
+}
+.job-card .button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+.chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 10px 0 18px;
+}
+.chips span {
+  background: #edf3fc;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: .65rem;
+}

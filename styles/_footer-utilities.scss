@@ -1,0 +1,47 @@
+.site-evidence-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 70px;
+  padding: 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  font-size: .8rem;
+}
+.site-evidence-footer a {
+  display: block;
+  margin-bottom: 5px;
+}
+.site-evidence-footer small {
+  grid-column: 1/-1;
+  color: var(--muted);
+  font-size: .7rem;
+}
+.text-link {
+  font-size: .8rem;
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible {
+  outline: 3px solid #b8377c;
+  outline-offset: 4px;
+}
+.empty-state {
+  grid-column: 1/-1;
+  padding: 30px;
+  border: 1px dashed #a8bfdf;
+  border-radius: 8px;
+}
+.quarto-title-block {
+  padding-top: 35px;
+}
+.monthly-chart {
+  display: flex;
+  align-items: end;
+  height: 160px;
+  gap: 5px;
+  border-bottom: 1px solid #bfd0ea;
+  margin: 25px 0;
+}
+.monthly-chart div {
+  flex: 1;
+  background: #3974c9;
+  min-height: 2px;
+}

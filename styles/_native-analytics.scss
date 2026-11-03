@@ -1,0 +1,30 @@
+// Native Quarto/OJS components share the existing site palette and typography.
+.native-analytics {
+  .panel { margin-top: 22px; min-width: 0; }
+  .analytics-controls { background: #f0f5ff; border-top: 3px solid var(--blue); }
+  .analytics-evidence { border-top: 3px solid #923364; }
+  .cell-output-display { max-width: 100%; }
+  form { font: inherit; color: var(--ink); max-width: 100%; margin: 12px 0; }
+  form label { color: var(--ink); }
+  .analytics-controls form { width: 100%; --input-width: 420px; }
+  form:has(input[type=checkbox]) label { min-height: 44px; align-items: center; }
+  input[type=checkbox] { min-height: 20px; height: 20px; width: 20px; flex-shrink: 0; }
+  input, select, button { font: inherit; accent-color: var(--blue); }
+  input:not([type=checkbox]), select { border: 1px solid #a7bcd8; border-radius: 6px; padding: 5px 8px; background: white; color: var(--ink); }
+  :focus-visible { outline: 3px solid #923364; outline-offset: 3px; }
+  .analytics-chart { overflow-x: auto; }
+  .analytics-chart .cell-output-display { min-width: 560px; }
+  .analytics-chart svg { max-width: none; height: auto; }
+  .analytics-table .cell-output-display { overflow-x: auto; }
+  .analytics-table table { min-width: 600px; font-size: .85rem; color: var(--ink); }
+  .analytics-table th { background: #edf3fc; color: var(--navy); }
+  .analytics-table td, .analytics-table th { padding: 8px 10px; white-space: normal; line-height: 1.45; border-bottom: 1px solid var(--line); }
+  .analytics-table table a { white-space: nowrap; }
+  .industry-growth strong { font-size: 3.3rem; }
+  @media (max-width: 600px) {
+    .panel { padding: 16px 12px; }
+    form { width: 100%; }
+    .industry-panel { grid-template-columns: 1fr; gap: 8px; }
+    .industry-growth { border-left: 0; padding-left: 0; }
+  }
+}

@@ -1,0 +1,79 @@
+.outlook-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin: 25px 0;
+}
+.benchmark-card {
+  padding: 26px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.benchmark-card h3 {
+  margin-top: 10px;
+}
+.benchmark-growth {
+  font-size: 2.5rem;
+  letter-spacing: -.04em;
+  color: var(--blue);
+}
+.growth-track {
+  height: 5px;
+  background: #eaf0fa;
+  margin: 14px 0 22px;
+}
+.growth-track span {
+  height: 100%;
+  display: block;
+  background: #3974c9;
+}
+.benchmark-facts {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.benchmark-facts strong {
+  font-size: 1.1rem;
+  display: block;
+}
+.benchmark-facts small {
+  font-size: .65rem;
+  color: var(--muted);
+}
+.benchmark-card a {
+  font-size: .72rem;
+}
+.industry-panel {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr;
+  align-items: center;
+  gap: 30px;
+  background: #f0f5ff;
+}
+.industry-panel a {
+  font-size: .75rem;
+}
+.industry-growth {
+  border-left: 1px solid #c0d2ed;
+  padding-left: 40px;
+}
+.industry-growth strong {
+  display: block;
+  font-size: 3.3rem;
+  letter-spacing: -.04em;
+}
+.industry-growth span,.industry-growth small {
+  display: block;
+  font-size: .8rem;
+}
+.comparison-note {
+  margin-top: 20px;
+  border-left: 3px solid var(--blue);
+  padding: 5px 20px;
+  font-size: .81rem;
+}
+.comparison-note p {
+  margin: 5px 0;
+}

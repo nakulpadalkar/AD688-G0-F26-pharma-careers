@@ -1,11 +1,11 @@
 ---
 title: "The proposed certificate"
-description: "A four-course pharmaceutical commercial data pathway with explicit learning outcomes and portfolio evidence."
+description: "A pharmaceutical commercial data pathway with explicit learning outcomes and portfolio evidence."
 ---
 
 Pharmaceutical decisions depend on data collected across manufacturers, payers, providers, pharmacies and patient-support services. These sources differ in coverage, timing and definitions. Analysts need to understand those differences before combining records or interpreting a change in performance.
 
-The proposed **Pharmaceutical Commercial Data Certificate** connects that domain knowledge with data management, analysis and communication. Its four courses follow the work from understanding a source to explaining a decision. The curriculum reflects the August 30, 2026 syllabus draft; program approval and admissions criteria remain pending.
+The proposed **Pharmaceutical Commercial Data Certificate** connects that domain knowledge with data management, analysis and communication. Its {{< var course_count >}} courses follow the work from understanding a source to explaining a decision. The curriculum reflects the August 30, 2026 syllabus draft; program approval and admissions criteria remain pending.
 
 ## From data sources to decisions
 

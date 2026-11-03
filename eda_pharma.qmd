@@ -3,24 +3,24 @@ title: "Evidence & methods"
 description: "Sources, geographic coverage and comparability limits for pharmaceutical analytics career evidence."
 ---
 
-Pharmaceutical career evidence answers three different questions: what employers describe in job advertisements, where the collected roles are located, and how related occupations are projected to change. Employer postings, METEOR and BLS address these questions at different scales. The source review is dated November 2, 2026.
+Pharmaceutical career evidence answers three different questions: what employers describe in job advertisements, where the collected roles are located, and how related occupations are projected to change. Employer postings, METEOR and BLS address these questions at different scales. The source review is dated {{< var review_date >}}.
 
 ## METEOR historical evidence {#meteor}
 
-The saved IndustryClassification audit screened **7,526,775** local employability posting records dated January 1, 2025 through September 30, 2026 (UTC). The population includes all geographies and active/inactive history. The figures describe a saved historical collection.
+The saved IndustryClassification audit screened **{{< var meteor_database_records >}}** local employability posting records dated {{< var meteor_window >}}. The population includes all geographies and active/inactive history. The figures describe a saved historical collection.
 
 | Screen | Records | Interpretation |
 |---|---:|---|
-| Analytics/data title + pharma/biotech/vendor signal | 3,009 | Broad keyword candidates |
-| Additional commercial, payer, claims or stewardship signal | 1,353 | Historical commercial candidates |
-| Not marked duplicate by the database | 1,190 | Flag coverage, not confirmed unique vacancies |
-| Distinct normalized employer/description hashes | 1,178 | Text repetition measure |
-| Focused commercial / market-access titles | 121 | Narrower title screen, still unvalidated |
-| Manually annotated examples | 13 | Purposive examples, not a random validation sample |
+| Analytics/data title + pharma/biotech/vendor signal | {{< var meteor_broad_candidates >}} | Broad keyword candidates |
+| Additional commercial, payer, claims or stewardship signal | {{< var meteor_commercial_candidates >}} | Historical commercial candidates |
+| Not marked duplicate by the database | {{< var meteor_commercial_not_duplicate_flagged >}} | Flag coverage, not confirmed unique vacancies |
+| Distinct normalized employer/description hashes | {{< var meteor_commercial_distinct_employer_text >}} | Text repetition measure |
+| Focused commercial / market-access titles | {{< var meteor_focused_title_records >}} | Narrower title screen, still unvalidated |
+| Manually annotated examples | {{< var reviewed_examples >}} | Purposive examples, not a random validation sample |
 
-A pharma term can occur in a company description and a reimbursement term in employee benefits. Keyword matches alone do not establish role relevance. The 13 annotations provide examples of duties and entry expectations; they cannot estimate precision or prevalence across the full screen.
+A pharma term can occur in a company description and a reimbursement term in employee benefits. Keyword matches alone do not establish role relevance. The {{< var reviewed_examples >}} annotations provide examples of duties and entry expectations; they cannot estimate precision or prevalence across the full screen.
 
-The audit's original country field is blank for 1,326 of the 1,353 candidates. Missing country does not imply either US or non-US. Existing classification enrichment is also uncertain: 547 records contain syntactically valid 4–6 digit NAICS codes, but only 3 begin with 3254. These codes have not been validated against employer establishments. These assignments do not support estimates of pharmaceutical industry shares or growth.
+The audit's original country field is blank for {{< var blank_country >}} of the {{< var meteor_commercial_candidates >}} candidates. Missing country does not imply either US or non-US. Existing classification enrichment is also uncertain: {{< var naics_valid >}} records contain syntactically valid 4–6 digit NAICS codes, but only {{< var naics_pharma >}} begin with 3254. These codes have not been validated against employer establishments. These assignments do not support estimates of pharmaceutical industry shares or growth.
 
 ## Geography and the choropleth
 
@@ -30,7 +30,7 @@ State assignment uses explicit full state names or comma-delimited postal abbrev
 
 The map uses cached US boundary geometry from the reference classification site's `images/interactive/usa_110m.json` (Plotly-compatible topology). The mainland is projected using Albers equal-area conic (29.5° and 45.5° standard parallels, −96° central meridian). Alaska and Hawaii appear as separately scaled insets. This generalized 110m geometry is for national orientation; very small jurisdictions are better inspected in the accessible table. It is not a county or metropolitan-area map.
 
-The count and share views have explicit class breaks. Shares use only the 654 mapped records as denominator. The text-pair view reduces repeated employer/description text **within each state**; the same text may occur in multiple states. It is not a unique-vacancy map. A zero means no assigned record in the screened snapshot, not an absence of jobs.
+The count and share views have explicit class breaks. Shares use only the {{< var mapped_records >}} mapped records as denominator. The text-pair view reduces repeated employer/description text **within each state**; the same text may occur in multiple states. It is not a unique-vacancy map. A zero means no assigned record in the screened snapshot, not an absence of jobs.
 
 ## Comparable concepts, different measures {#comparison}
 
@@ -45,23 +45,19 @@ The count and share views have explicit class breaks. Shares use only the 654 ma
 
 ### Official benchmark vintage
 
-The retrieved BLS pages use **May 2025 median wages and 2025–2035 projections**, updated in October 2026. All benchmark comparisons on this site use that vintage.
+The retrieved BLS pages use **May {{< var wage_year >}} median wages and {{< var projection_period >}} projections**, updated in October 2026. All benchmark comparisons on this site use that vintage.
 
-| Occupation | SOC | May 2025 median annual wage | 2025–2035 growth | Average annual projected openings |
-|---|---|---:|---:|---:|
-| [Data scientists](https://www.bls.gov/ooh/math/data-scientists.htm) | 15-2051 | $120,230 | 35% | 24,800 |
-| [Operations research analysts](https://www.bls.gov/ooh/math/operations-research-analysts.htm) | 15-2031 | $88,940 | 12% | 7,500 |
-| [Market research analysts](https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm) | 13-1161 | $78,760 | 7% | 82,000 |
+{{< include outputs/us-employer-inventory/web/benchmark-table.md >}}
 
 Projected annual openings include replacement demand and are not a count of currently advertised vacancies. Wages cover all experience levels. These are editorially selected neighboring occupations, not validated automatic classifications of the METEOR records.
 
-[BLS industry table 2.11](https://www.bls.gov/emp/tables/industry-employment-and-output.htm) reports pharmaceutical and medicine manufacturing (matrix code 325400): 355.4 thousand jobs in 2025, 380.5 thousand projected in 2035, 7.1% total growth and 0.7% compound annual growth. The displayed jobs convert thousands to individual jobs. [NAICS 3254](https://www.census.gov/naics/?input=3254&year=2022&details=3254) defines the establishment grouping. Analysts working for consultants or data vendors may belong to other industries.
+[BLS industry table 2.11](https://www.bls.gov/emp/tables/industry-employment-and-output.htm) reports pharmaceutical and medicine manufacturing (matrix code 325400): {{< var industry_base >}} jobs in {{< var projection_start >}}, {{< var industry_projected >}} projected in {{< var projection_end >}}, {{< var industry_growth >}}% total growth and {{< var industry_annual_growth >}}% compound annual growth calculated from those endpoints. The displayed jobs convert thousands to individual jobs. [NAICS 3254](https://www.census.gov/naics/?input=3254&year=2022&details=3254) defines the establishment grouping. Analysts working for consultants or data vendors may belong to other industries.
 
 [O*NET Business Intelligence Analysts, 15-2051.01](https://www.onetonline.org/link/summary/15-2051.01), supports the task alignment around querying repositories, reports, dashboards and communication. This detailed occupation is within the data-scientist SOC parent; its parent wage covers a broader set of roles than business intelligence alone. O*NET-linked employment outlook is not an independent confirmation of BLS projections.
 
 ## US employer inventory and freshness
 
-The US inventory draws on 18,443 local PostgreSQL records and 4,549 Azure records associated with 15 employers. It includes all available dates, including records without a reported posting date. The source population is the stored job-posting collection; coverage varies by employer and collection period.
+The US inventory draws on {{< var local_records >}} local PostgreSQL records and {{< var azure_records >}} Azure records associated with {{< var employers_searched >}} employers. It includes all available dates, including records without a reported posting date. The source population is the stored job-posting collection; coverage varies by employer and collection period.
 
 The employer scope includes AbbVie, Iovance Biotherapeutics, Amgen, AstraZeneca, Takeda, Gilead Sciences, Regeneron, Pfizer, Novartis, Sanofi, Neurocrine Biosciences, Otsuka, Teva, Vertex Pharmaceuticals and IQVIA. IQVIA is included as a data/analytics employer as well as a vendor mentioned in other employers' descriptions.
 
@@ -71,21 +67,21 @@ Matching source/external identities and normalized requisition URLs join records
 
 ### Relevance and geography
 
-Roles qualify through data, analytics, informatics, biostatistics, epidemiology, HEOR, forecasting or business/operations analyst titles; through commercial-data titles and duties; or through explicit analytical duties paired with a technical tool such as SQL, Python, R, SAS, Tableau or Power BI. This broader inventory includes clinical, scientific and operational data careers. Generic employer boilerplate, Excel alone, and non-analytical laboratory or administrative roles do not qualify. The rules identify relevant records from titles and descriptions; individual matches have not all been manually reviewed. The certificate focuses on commercial data; inclusion in the broader inventory does not imply that the certificate prepares a learner for every listed specialty.
+The optional analytics-relevance filter matches roles through data, analytics, informatics, biostatistics, epidemiology, HEOR, forecasting or business/operations analyst titles; through commercial-data titles and duties; or through explicit analytical duties paired with a technical tool such as SQL, Python, R, SAS, Tableau or Power BI. This broader inventory includes clinical, scientific and operational data careers. Generic employer boilerplate, Excel alone, and non-analytical laboratory or administrative roles do not match that filter, but remain in the default US inventory. The rules identify relevant records from titles and descriptions; individual matches have not all been manually reviewed. The certificate focuses on commercial data; inclusion in the broader inventory does not imply that the certificate prepares a learner for every listed specialty.
 
 US evidence comes from an explicit country, a recognizable US location, or the location segment of an employer recruiting URL. A reference to supporting US teams in the job title or description is insufficient. Contradictory country evidence and unresolved locations are excluded and counted. Regeneron's Tarrytown and Sleepy Hollow recruiting locations are mapped only for that employer using its [official US location directory](https://www.regeneron.com/about/our-company/locations). Other city-only locations are not automatically geocoded. Employer-name collisions such as unrelated Vertex firms and Gilead Community Services are excluded.
 
-The inventory describes historical advertisements whose current availability has not been verified. Earlier manually reviewed employer pages form a separate archive. A zero employer count means no records met the relevance and US-location criteria in this collection.
+The inventory describes historical advertisements whose current availability has not been verified. Earlier manually reviewed employer pages form a separate archive. A zero employer count means no records met the employer and US-location criteria in this collection.
 
 ### Posting dates and collection-date proxies
 
-The raw local extract contains 6,654 source-reported posting timestamps and 11,789 records without them. Azure has 2,360 source timestamps and 2,189 missing. Every missing-date record in these snapshots has a database creation timestamp. Where a posting date is absent, the explorer uses the earliest creation timestamp in the combined record as **First recorded (date proxy)**. This is an approximate collection date, not a recovered or imputed posting date. Migration or batch ingestion can make it much later than the real posting.
+The raw local extract contains {{< var local_posted >}} source-reported posting timestamps and {{< var local_undated >}} records without them. Azure has {{< var azure_posted >}} source timestamps and {{< var azure_undated >}} missing. Where a posting date is absent, the explorer uses the earliest creation timestamp in the combined record as **Pulled (date proxy)**. This is an approximate collection date, not a recovered or imputed posting date. Migration or batch ingestion can make it much later than the real posting.
 
-The [complete source metadata](outputs/us-employer-inventory/curated/all-employer-records.parquet) contains all 22,992 source rows, including overlaps and excluded records. Posting dates and first-recorded dates remain separate. The US inventory contains the records that meet the employer, location and relevance criteria after matching duplicate identities.
+The [complete source metadata](outputs/us-employer-inventory/curated/all-employer-records.parquet) contains all {{< var raw_records >}} source rows, including overlaps and excluded records. Posting dates and first-recorded dates remain separate. The US inventory contains the records that meet the employer and location criteria after matching duplicate identities. Analytics relevance is an optional filter, not an inclusion requirement.
 
 ### Independent filters and skills
 
-Career level, data product/dataset, database store and text search filter the full US inventory independently of employer selection. The headline and per-employer table show the selected combination. Employer counts reflect the same combination of filters as the displayed postings.
+Analytics relevance, career level, data product/dataset and text search filter the full US inventory independently of employer selection. The headline and per-employer table show the selected combination. Employer counts reflect the same combination of filters as the displayed postings.
 
 IQVIA, Symphony, MMIT, claims and patient-level data are discovery signals. IQVIA is also an employer, so generic IQVIA company-introduction wording is excluded from its skill signal. Claims related to employee benefits are not treated as commercial claims-data skills. Each detected skill counts once per posting identity. Mentions do **not** establish that a named vendor is required, that all listed alternatives are mandatory, or that the candidate needs access to a licensed dataset.
 
@@ -107,6 +103,10 @@ The observed duties connect pharmaceutical source knowledge to data integration,
 - [Coverage and screening summary](outputs/us-employer-inventory/curated/inventory-summary.parquet): source counts, employer counts, exclusions and qualification observations.
 - [Skills analysis](outputs/us-employer-inventory/curated/employer-analysis.parquet): scope denominators and source-linked mention counts.
 - [Earlier direct-page research archive](outputs/employer-page-review/data/current-jobs.parquet): the original ten manually reviewed examples, separate from database inventory counts.
-- [Historical annotated examples](outputs/employer-page-review/data/reviewed-examples.parquet): thirteen older METEOR examples.
+- [Historical annotated examples](outputs/employer-page-review/data/reviewed-examples.parquet): {{< var reviewed_examples >}} older METEOR examples.
 
 The downloads preserve source dates, definitions and analysis denominators. Employer advertisements describe hiring expectations; evaluation of certificate outcomes would require separate graduate follow-up data.
+
+### Shared calculated statistics
+
+All pages use the [saved site metrics](outputs/site-reference/data/site-metrics.parquet), regenerated from the same saved records during each build. Inventory counts, date coverage and skill counts are recalculated; industry growth and compound annual growth use the saved BLS employment endpoints. Published occupational forecasts and wages remain attributed source inputs. The snapshot records its input hash so the displayed values can be traced to the evidence used.

@@ -1,14 +1,116 @@
 ---
 title: ""
-pagetitle: "Market outlook"
+pagetitle: "Growth & Pay"
+execute:
+  echo: false
 ---
 
-```{=html}
-<div class="career-app focused-page">
-<section id="outlook" class="section-block"><div class="section-heading"><div><p class="eyebrow">THE BIGGER LABOR MARKET</p><h2>Growth, with the right context.</h2></div><span class="pill">BLS · 2025–2035</span></div><p class="section-intro">These national occupations overlap with commercial analytics work. They include all industries and experience levels; their wages are benchmarks, not expected certificate starting salaries.</p><div class="outlook-grid" id="benchmark-cards"></div><div class="panel industry-panel" id="industry"><div><p class="eyebrow">NAICS 3254 / BLS MATRIX 325400</p><h3>Pharmaceutical & medicine manufacturing</h3><p>355,400 jobs in 2025 → 380,500 projected in 2035.</p><p class="tiny">All occupations in the industry. Analytics also exists in consulting and data vendors. NAICS classifies establishments; it does not itself forecast growth.</p><a href="https://www.bls.gov/emp/tables/industry-employment-and-output.htm" target="_blank" rel="noopener">BLS industry projection ↗</a> · <a href="https://www.census.gov/naics/?input=3254&year=2022&details=3254" target="_blank" rel="noopener">NAICS definition ↗</a></div><div class="industry-growth"><strong>+7.1%</strong><span>over the decade</span><small>0.7% annual compound growth</small></div></div><div class="comparison-note"><strong>How METEOR compares</strong><p>BLS estimates employment and projected growth. METEOR observes advertisements in a changing collection. O*NET describes work. Their different populations provide complementary views of careers, rather than a common vacancy-rate measure.</p><a href="eda_pharma.html#comparison">View the comparison framework →</a></div></section>
-</div>
+::: {.career-app .focused-page .native-analytics}
+::: {#outlook .section-block}
+[THE BIGGER LABOR MARKET]{.eyebrow}
+
+## Growth, with the right context.
+
+::: {.section-intro}
+Compare national occupations that overlap with commercial analytics work. These benchmarks include all industries and experience levels; they are not expected certificate starting salaries.
+:::
+
+[BLS · {{< var projection_period >}} projections · May {{< var wage_year >}} wages]{.pill}
+
+```{ojs}
+//| output: false
+benchmarks = FileAttachment("outputs/us-employer-inventory/web/outlook-data.json").json()
+occupations = benchmarks.occupations
+metricLabels = new Map([["Projected growth (%)", "growth"], ["Median annual wage ($)", "median"], ["Annual projected openings", "openings"]])
+formatMetric = (value, key) => key === "median" ? "$" + value.toLocaleString("en-US") : key === "growth" ? value + "%" : value.toLocaleString("en-US")
+comparison = occupations.filter(d => selectedOccupations.includes(d.name)).sort((a, b) => b[metric] - a[metric])
 ```
 
-{{< include _includes/footer.html >}}
+::: {.panel .analytics-controls}
+### Choose your comparison
 
-{{< include _includes/explorer-scripts.html >}}
+```{ojs}
+viewof selectedOccupations = Inputs.checkbox(occupations.map(d => d.name), {label: "Occupations", value: occupations.map(d => d.name)})
+viewof metric = Inputs.select(metricLabels, {label: "Compare", value: "growth"})
+```
+:::
+
+::: {#growth-chart .panel .analytics-chart .ojs-track-layout}
+### Occupation comparison
+
+```{ojs}
+comparison.length ? Plot.plot({
+  width: Math.max(560, layoutWidth["growth-chart"] - 50),
+  height: 130 + comparison.length * 65,
+  marginLeft: 220, marginRight: 65,
+  style: {fontFamily: "inherit", fontSize: "12px", background: "transparent", color: "#15335b"},
+  x: {label: [...metricLabels].find(d => d[1] === metric)[0], grid: true, zero: true},
+  y: {label: null, domain: comparison.map(d => d.name)},
+  marks: [
+    Plot.barX(comparison, {x: metric, y: "name", fill: "#235eb5", insetTop: 12, insetBottom: 12, title: d => `${d.name}\n${formatMetric(d[metric], metric)}\nSOC ${d.soc}`}),
+    Plot.text(comparison, {x: metric, y: "name", text: d => formatMetric(d[metric], metric), dx: 7, textAnchor: "start", fill: "#15335b"}),
+    Plot.ruleX([0])
+  ]
+}) : html`<p role="status">Select at least one occupation to compare.</p>`
+```
+
+::: {.tiny}
+Change the measure to compare growth, wages or openings. Bars are ranked by the selected measure; hover for occupation details. Exact values and source links appear below. On small screens, swipe across the chart or table to see more.
+:::
+:::
+
+::: {.panel .analytics-table}
+### Compare the numbers
+
+Click a column heading to sort. The table follows your occupation selection.
+
+```{ojs}
+Inputs.table(comparison, {
+  select: false, rows: 10, maxHeight: 340, layout: "auto",
+  columns: ["name", "soc", "growth", "median", "openings", "url", "onet"],
+  header: {name: "Occupation", soc: "SOC", growth: "Growth (%)", median: "Median wage", openings: "Annual openings", url: "BLS", onet: "O*NET"},
+  format: {growth: d => d + "%", median: d => formatMetric(d, "median"), openings: d => d.toLocaleString("en-US"), url: d => html`<a href=${d} target="_blank" rel="noopener">Source ↗</a>`, onet: d => html`<a href=${d} target="_blank" rel="noopener">Tasks ↗</a>`}
+})
+```
+
+::: {.tiny}
+Openings include replacement needs; they are not currently advertised jobs. Growth covers {{< var projection_period >}}; wages are May {{< var wage_year >}} medians.
+:::
+
+[Download national benchmarks](outputs/site-reference/data/benchmarks.parquet)
+:::
+
+::: {#industry .panel .industry-panel}
+::: {}
+[NAICS {{< var industry_naics >}} / BLS MATRIX {{< var industry_matrix >}}]{.eyebrow}
+
+### Pharmaceutical & medicine manufacturing
+
+{{< var industry_base >}} jobs in {{< var projection_start >}} → {{< var industry_projected >}} projected in {{< var projection_end >}}.
+
+::: {.tiny}
+All occupations in the industry. Analytics also exists in consulting and data vendors. NAICS classifies establishments; it does not itself forecast growth.
+:::
+
+[BLS industry projection ↗](https://www.bls.gov/emp/tables/industry-employment-and-output.htm) · [NAICS definition ↗](https://www.census.gov/naics/?input=3254&year=2022&details=3254)
+:::
+::: {.industry-growth}
+**+{{< var industry_growth >}}%**
+
+[over the decade]{.tiny}
+
+[{{< var industry_annual_growth >}}% annual compound growth]{.tiny}
+:::
+:::
+
+::: {.comparison-note}
+### How METEOR compares
+
+BLS estimates employment and projected growth. METEOR observes advertisements in a changing collection. O*NET describes work. Their different populations provide complementary views of careers, rather than a common vacancy-rate measure.
+
+[View the comparison framework →](eda_pharma.qmd#comparison)
+:::
+:::
+:::
+
+{{< include _includes/footer.html >}}

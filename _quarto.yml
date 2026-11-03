@@ -2,6 +2,8 @@ project:
   type: website
   pre-render:
     - python scripts/build_site_data.py
+  post-render:
+    - python scripts/test_site_metrics.py
   render:
     - index.qmd
     - geography.qmd
@@ -52,7 +54,7 @@ format:
   html:
     theme:
       - cosmo
-    css: styles.css
+      - styles/theme.scss
     toc: false
     page-layout: article
     grid:

@@ -61,3 +61,14 @@ for alias in ['local','azure']:
 assert all(j['display_on']==(j['posted_on'] or j['first_recorded_on']) for j in jobs)
 assert sum(j['date_basis']=='database_created_at_proxy' for j in jobs)==s['undated_jobs']
 print('INVENTORY_TESTS_OK: geography, employer identity, negative relevance controls, signal context, source identity, safe URLs and complete count reconciliation')
+
+assert len(jobs)==9493
+assert sum(j['analytics_relevant'] for j in jobs)==s['analytics_relevant_jobs']==1127
+assert sum(not j['analytics_relevant'] for j in jobs)==s['other_us_jobs']==8366
+assert s['undated_jobs']==5071
+baseline=json.loads((TASK/'reports/analytics-baseline-ids.json').read_text(encoding='utf-8'))
+assert {j['id'] for j in jobs if j['analytics_relevant']}==set(baseline)
+for j in jobs:
+ if j['id'] in baseline:
+  assert all(j[k]==v for k,v in baseline[j['id']].items())
+print('ALL_US_OK: 9493 total, 1127 analytics, 8366 other; 5071 pulled-date proxies; previous analytics IDs and dates preserved')

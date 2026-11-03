@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-padding-top: 90px;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter,"Segoe UI",sans-serif;
+  line-height: 1.65;
+}
+a {
+  color: #235eb5;
+  text-underline-offset: 4px;
+}
+h1,h2,h3 {
+  font-weight: 650;
+  letter-spacing: -.035em;
+  color: var(--ink);
+}
+h2 {
+  font-size: 2.2rem;
+  border: 0;
+  padding: 0;
+  margin: .3rem 0 1rem;
+}
+h3 {
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+p {
+  margin: 0 0 1rem;
+}
+.navbar {
+  background: var(--bg) !important;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 4%;
+}
+.navbar-brand {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--ink) !important;
+}
+.navbar .nav-link {
+  color: var(--ink) !important;
+  font-size: .88rem;
+}
+.navbar .nav-link.active {
+  color: var(--blue) !important;
+}
+#quarto-content {
+  margin: auto;
+}
+main.content {
+  padding-top: 0;
+}
+.career-app {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 0;
+}

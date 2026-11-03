@@ -1,7 +1,7 @@
 ---
 title: ""
 pagetitle: Pharma Career Intelligence
-description: "Pharmaceutical analytics careers grounded in METEOR, BLS, O*NET and employer evidence."
+description: "Pharmaceutical analytics careers grounded in Career Compass, METEOR, O*NET and NAICS."
 
 ---
 

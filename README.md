@@ -10,9 +10,13 @@ quarto render
 python scripts/verify_site.py
 node --check scripts/dashboard.js
 node scripts/test_dashboard.cjs
+node scripts/test_ojs.cjs
+python scripts/test_inventory.py
+python scripts/test_site_metrics.py
+uv run --with playwright python -X utf8 scripts/test_ojs_browser.py
 ```
 
-Open `_site/index.html` from the filesystem. All dashboard data, map geometry and scripts are bundled locally. No API keys, database connection or CDN is required. Publication was not performed by this build task. The existing GitHub Pages workflow remains in place.
+The build uses saved evidence and requires no database connection or API keys. Growth & Pay and Skills use native Quarto/OJS modules; use the published website for these interactive pages. Direct-file loading does not initialize their module runtime reliably, and Observable libraries may require network access. The browser check above intercepts local asset requests without starting a server. Pushes to main trigger the existing GitHub Pages publication workflow.
 
 ## Refresh evidence intentionally
 
@@ -41,7 +45,7 @@ The four-course pathway follows the Pharma Certificate project's August 30, 2026
 
 ## Quarto layout and HTML components
 
-`index.qmd` includes `_includes/dashboard.html`; Quarto owns navigation, page layout and rendering. Data-driven HTML/JS is supplied by the component and the generated snapshot bundle. The desktop grid reserves 1,000 px for body content and 140 px each for the sidebar and margin, with 20 px gutters. The layout contracts responsively on narrower screens. Edit the component rather than generated `_site/*.html` files.
+`index.qmd` includes `_includes/dashboard.html`; Quarto owns navigation, page layout and rendering. Data-driven HTML/JS is supplied by the component and the generated snapshot bundle. The desktop grid reserves 1,100 px for body content and 140 px each for the sidebar and margin, with 20 px gutters. The layout contracts responsively on narrower screens. Edit the component rather than generated `_site/*.html` files.
 
 ## Website pages
 
@@ -49,7 +53,7 @@ Home (`index.qmd`) is a compact introduction and page directory. `geography.qmd`
 
 Jobs and skills now use the direct employer sample. `build_site_data.py` derives `outputs/us-employer-inventory/curated/employer-analysis.parquet` from posting-level annotations. METEOR remains historical geography evidence; BLS remains market context. The database coverage audit is separate from the offline build; `scripts/audit_company_coverage.py --env-file <private-env-path> --alias local` (or `azure`) runs a bounded read-only audit and writes only aggregate operational receipts under `docs/`. Never publish environment files or connection details. See `outputs/employer-page-review/reports/direct-employer-review.md`.
 
-The jobs explorer now offers only US-located postings and requires an employer selection before displaying cards. It shows the distinct employer count and per-employer posting counts. `outputs/us-employer-inventory/curated/us-jobs.parquet` is the US download; the original mixed-country source file is retained as a research archive. Skills use US-only scopes.
+The jobs explorer defaults to all US-located postings and supports employer and analytics-relevance filters. It shows the distinct employer count and per-employer posting counts. `outputs/us-employer-inventory/curated/us-jobs.parquet` is the US download; the original mixed-country source file is retained as a research archive. Skills use US-only scopes.
 
 ## Full database inventory (supersedes the six-example explorer)
 
@@ -64,3 +68,15 @@ Career-level, data-product/dataset, store and search filters update the full inv
 Canonical supporting data lives under outputs/, grouped by task: us-employer-inventory, employer-page-review, and site-reference. The active task has raw/ (local.parquet, azure.parquet; ignored and never published), curated/ (structured posting tables and summary snapshots), manifests/ (small JSON provenance and SHA-256 records), reports/, and web/ (generated JS and Markdown). Parquet uses Zstandard compression. Legacy heterogeneous reference documents retain exact original types in a compressed document column where needed; the main raw and posting tables have ordinary typed columns, including timestamp columns in raw snapshots.
 
 The browser consumes the generated JS bundle. Download links expose curated Parquet only. Source-reported posting dates and database-created proxies remain separate. Raw-name counts include non-US/unrelated roles and overlapping records; all-employer-records.parquet retains sanitized metadata for every raw row.
+
+## Acceptance gates
+
+Task checklists and verification evidence are in [docs/gates](docs/gates/README.md). Run their checks from the repository root.
+
+## Calculated website statistics
+
+`quarto render` regenerates the saved statistics before rendering and checks their consistency afterward. `scripts/site_metrics.py` recalculates inventory, employer, qualification and date counts from the curated records. It derives BLS industry growth and CAGR from the saved employment endpoints; published occupational forecasts and wages remain source inputs.
+
+The shared snapshot is `outputs/site-reference/data/site-metrics.parquet`. It stores display values, unrounded industry calculations, the calculation method and a hash of the evidence inputs. Generated `_variables.yml` supplies static Quarto content; `dashboard-data.js` carries the same snapshot alongside the records used by interactive filters. Do not edit generated numbers in HTML, `_variables.yml`, or the browser bundle. Update the source evidence and rebuild.
+
+`python scripts/test_site_metrics.py` verifies saved snapshot, variables, browser bundle and rendered-page consistency, including changed-input controls. It runs as a Quarto post-render check, so a mismatch fails the render before publication.

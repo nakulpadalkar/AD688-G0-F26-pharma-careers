@@ -1,0 +1,134 @@
+/* Compact job cards; keep each definition paired with its label. */
+.job-card {
+  padding: 22px;
+  gap: 0;
+}
+.job-card h3 {
+  font-size: 1.12rem;
+  margin: 8px 0;
+  line-height: 1.35;
+}
+.job-card .job-meta {
+  margin-bottom: 10px;
+}
+.job-card>.pill {
+  align-self: flex-start;
+  white-space: normal;
+}
+.job-card>p.tiny {
+  margin: 10px 0;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+.job-card .job-facts {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px 20px;
+  margin: 12px 0;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+.job-facts>div {
+  min-width: 0;
+}
+.job-card .job-facts dt {
+  margin: 0 0 4px;
+  font-weight: 650;
+}
+.job-card .job-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.job-card .chips {
+  margin: 8px 0 12px;
+  gap: 5px;
+}
+.job-card .button {
+  padding: 9px 14px;
+  min-height: 44px;
+  font-size: .8rem;
+}
+@media (max-width:480px) {
+  .job-card {
+    padding: 18px;
+  }
+  .job-card .job-facts {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+}
+.job-fact-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+.job-fact-tags li {
+  font-size: .75rem;
+  line-height: 1.45;
+  padding: 5px 9px;
+  border: 1px solid #c6d8ef;
+  background: #edf4ff;
+  color: #183f77;
+  border-radius: 7px;
+  overflow-wrap: anywhere;
+}
+.job-fact-tags .tag-label {
+  font-weight: 650;
+}
+.job-fact-tags li:has(.tag-label):nth-child(3n) {
+  background: #fff1f7;
+  border-color: #efc7db;
+  color: #7d3158;
+}
+/* Job listings: three columns on desktop, two on tablets, one on mobile. */
+.job-grid {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 18px;
+}
+@media (max-width:1000px) {
+  .job-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+}
+@media (max-width:600px) {
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+/* Date provenance is conveyed by text as well as color. */
+.job-pull-date {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: #fff3c4;
+  color: #654900;
+  border: 1px solid #d9ae37;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: .76rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+// Keep all five job controls on one desktop row without intrinsic-width overflow.
+#jobs .filters {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: end;
+  gap: 12px;
+}
+#jobs .filters label {
+  min-width: 0;
+}
+@media (max-width: 950px) {
+  #jobs .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  #jobs .filters { grid-template-columns: 1fr; }
+}

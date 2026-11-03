@@ -1,14 +1,115 @@
 ---
 title: ""
 pagetitle: "Skills & tasks"
+execute:
+  echo: false
 ---
 
-```{=html}
-<div class="career-app focused-page">
-<section id="skills" class="section-block"><p class="eyebrow">THE SKILL SIGNAL</p><h2>Tools matter. Judgment connects them.</h2><div class="skills-page-layout"><div class="panel"><h3>Skills in direct employer postings</h3><p class="tiny">Pharmaceutical analysis combines technical tools with knowledge of the underlying data. These counts show which tools, vendors and datasets appear in the US posting collection across commercial, clinical, scientific and operational work.</p><label>Evidence scope<select id="skill-scope"><option value="us">All eligible US postings</option><option value="data">Postings mentioning tracked data products / datasets</option></select></label><p id="skill-summary" class="tiny" role="status" aria-live="polite"></p><p id="skill-hint" class="skill-hint">Bubble area represents the number of postings mentioning each skill.</p><p id="skill-status" class="skill-status" role="status" aria-live="polite" aria-atomic="true"></p><div class="skill-explorer"><div id="skill-bars" class="skill-bubbles" role="group" aria-label="Skills by posting count"></div><div id="skill-detail" class="skill-detail" role="region" aria-label="Selected skill evidence"></div></div><p class="tiny">Each skill counts once per posting. Categories overlap, and mentions include both required and preferred skills. Percentages describe this collection.</p><a href="outputs/us-employer-inventory/curated/employer-analysis.parquet" download>Download skill counts and source annotations &#8595;</a></div><div class="panel task-panel"><span class="pill">O*NET 15-2051.01</span><h3>Business intelligence in practice</h3><ul><li>Repository queries connect business questions to available evidence.</li><li>Recurring reports and dashboards make performance visible.</li><li>Documented requirements and clear explanations support decisions.</li></ul><p>In pharma, these tasks depend on understanding the coverage and limits of claims, prescription, payer and patient-support data.</p><a href="https://www.onetonline.org/link/summary/15-2051.01" target="_blank" rel="noopener">Explore O*NET tasks &#8599;</a><p class="tiny">Business intelligence sits within SOC 15-2051. Wage estimates for that parent occupation cover a broader set of roles.</p></div></div></section>
-</div>
+::: {.career-app .focused-page .native-analytics}
+::: {#skills .section-block}
+[THE SKILL SIGNAL]{.eyebrow}
+
+## Tools matter. Judgment connects them.
+
+::: {.section-intro}
+Pharmaceutical analysis combines technical tools with knowledge of the underlying data. Explore the tools, vendors and datasets mentioned in US postings across commercial, clinical, scientific and operational work.
+:::
+
+```{ojs}
+//| output: false
+skillData = FileAttachment("outputs/us-employer-inventory/web/skills-data.json").json()
+scope = skillData.scopes[scopeKey]
+skillRows = scope.skills.map(d => ({...d, share: d.denominator ? 100 * d.records / d.denominator : 0})).filter(d => d.name.toLowerCase().includes(skillSearch.trim().toLowerCase())).sort((a, b) => b[skillMetric] - a[skillMetric] || a.name.localeCompare(b.name))
+selectedSkill = skillRows.find(d => d.name === skillName)
+evidenceRows = selectedSkill ? selectedSkill.sources.filter(d => evidenceEmployer === "All employers" || d.company === evidenceEmployer) : []
 ```
 
-{{< include _includes/footer.html >}}
+::: {.panel .analytics-controls}
+### Explore the evidence
 
-{{< include _includes/explorer-scripts.html >}}
+```{ojs}
+viewof scopeKey = Inputs.select(new Map([["All US postings", "us"], ["Analytics-relevant US postings", "analytics"], ["Postings mentioning tracked data products / datasets", "data"]]), {label: "Evidence scope", value: "us"})
+viewof skillSearch = Inputs.text({label: "Find a skill", placeholder: "SQL, Python, claims…", value: ""})
+viewof skillMetric = Inputs.select(new Map([["Posting mentions", "records"], ["Share of scope (%)", "share"], ["Employers", "companies"]]), {label: "Compare", value: "records"})
+```
+
+```{ojs}
+html`<p class="context-note" role="status">${scope.records.toLocaleString("en-US")} US postings across ${scope.companies} employers in this scope. Showing ${skillRows.length} matching skills. Shares use all ${scope.records.toLocaleString("en-US")} postings in the selected scope, including those without tracked skill mentions.</p>`
+```
+:::
+
+::: {#skills-chart .panel .analytics-chart .ojs-track-layout}
+### Skills in employer postings
+
+```{ojs}
+skillRows.length ? Plot.plot({
+  width: Math.max(560, layoutWidth["skills-chart"] - 50),
+  height: 80 + skillRows.length * 34,
+  marginLeft: 180, marginRight: 55,
+  style: {fontFamily: "inherit", fontSize: "12px", background: "transparent", color: "#15335b"},
+  x: {label: skillMetric === "share" ? "Share of selected scope (%)" : skillMetric === "companies" ? "Employers" : "Posting mentions", grid: true, zero: true},
+  y: {label: null, domain: skillRows.map(d => d.name)},
+  marks: [
+    Plot.barX(skillRows, {x: skillMetric, y: "name", fill: d => d.name === skillName ? "#923364" : "#235eb5", title: d => `${d.name}: ${d.records} postings · ${d.share.toFixed(1)}% · ${d.companies} employers`}),
+    Plot.text(skillRows, {x: skillMetric, y: "name", text: d => skillMetric === "share" ? d.share.toFixed(1) + "%" : d[skillMetric].toLocaleString("en-US"), dx: 7, textAnchor: "start"}),
+    Plot.ruleX([0])
+  ]
+}) : html`<p role="status">No skills match this search. Clear the search or try another term.</p>`
+```
+
+::: {.tiny}
+Bars are ranked by the selected measure. The highlighted skill is selected in the evidence panel below. Each skill counts once per posting; categories overlap and include required and preferred mentions. These percentages describe the collection, not the wider job market. On small screens, swipe across the chart or tables to see more.
+:::
+:::
+
+::: {.panel .analytics-table}
+### Skill comparison table
+
+Click a column heading to sort. Scope and search apply to both the chart and table.
+
+```{ojs}
+Inputs.table(skillRows, {select: false, rows: 12, maxHeight: 440, layout: "auto", columns: ["name", "records", "share", "companies"], header: {name: "Skill / data signal", records: "Postings", share: "Share of scope", companies: "Employers"}, format: {share: d => d.toFixed(1) + "%"}})
+```
+:::
+
+::: {.panel .analytics-evidence .analytics-table}
+### Inspect the source evidence
+
+```{ojs}
+viewof skillName = Inputs.select(skillRows.map(d => d.name), {label: "Skill", disabled: !skillRows.length})
+viewof evidenceEmployer = Inputs.select(["All employers", ...new Set(selectedSkill ? selectedSkill.sources.map(d => d.company).sort() : [])], {label: "Source employer", value: "All employers", disabled: !selectedSkill})
+```
+
+```{ojs}
+selectedSkill ? html`<p role="status"><strong>${selectedSkill.name}</strong> appears in <strong>${selectedSkill.records.toLocaleString("en-US")}</strong> postings (${selectedSkill.share.toFixed(1)}% of this scope) across <strong>${selectedSkill.companies}</strong> employers. Showing ${evidenceRows.length.toLocaleString("en-US")} source records.</p>` : html`<p role="status">No skill selected. Clear the search to inspect evidence.</p>`
+Inputs.table(evidenceRows, {select: false, rows: 8, maxHeight: 360, layout: "auto", columns: ["company", "id", "url", "evidence"], header: {company: "Employer", id: "Posting identity", url: "Source", evidence: "Evidence annotation"}, format: {url: d => /^https?:\/\//i.test(d || "") ? html`<a href=${d} target="_blank" rel="noopener">Employer posting ↗</a>` : "No source URL"}})
+```
+
+::: {.tiny}
+Detected in stored role text; required/preferred status is not classified. These historical advertisements have not been verified as current openings, and source links may no longer be active.
+:::
+
+[Download skill counts and source annotations ↓](outputs/us-employer-inventory/curated/employer-analysis.parquet)
+:::
+
+::: {.panel .task-panel}
+[O*NET 15-2051.01]{.pill}
+
+### Business intelligence in practice
+
+- Repository queries connect business questions to available evidence.
+- Recurring reports and dashboards make performance visible.
+- Documented requirements and clear explanations support decisions.
+
+In pharma, these tasks depend on understanding the coverage and limits of claims, prescription, payer and patient-support data.
+
+[Explore O*NET tasks ↗](https://www.onetonline.org/link/summary/15-2051.01)
+
+::: {.tiny}
+Business intelligence sits within SOC 15-2051. Wage estimates for that parent occupation cover a broader set of roles.
+:::
+:::
+:::
+:::
+
+{{< include _includes/footer.html >}}

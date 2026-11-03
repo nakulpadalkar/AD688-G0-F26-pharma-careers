@@ -35,7 +35,7 @@ assert b['industry']['employment_2035']>b['industry']['employment_2025']
 for s in d['skills']:assert 0<=s['records']<=s['denominator']==n
 bundle=(TASK/'web/dashboard-data.js').read_text(encoding='utf-8')
 payload=json.loads(bundle.removeprefix('window.PHARMA_DATA = ').strip().removesuffix(';').replace('<\\/','</'))
-for key,name in [('meteor','meteor.json'),('current','current-jobs.json'),('historical','reviewed-examples.json'),('benchmarks','benchmarks.json'),('employer_analysis','employer-analysis.json'),('jobs','database-jobs.json'),('inventory','inventory-summary.json')]:assert payload[key]==read(name),f'Stale bundle: {key}'
+for key,name in [('meteor','meteor.json'),('current','current-jobs.json'),('historical','reviewed-examples.json'),('benchmarks','benchmarks.json'),('employer_analysis','employer-analysis.json'),('jobs','database-jobs.json'),('inventory','inventory-summary.json'),('metrics','site-metrics')]:assert payload[key]==read(name),f'Stale bundle: {key}'
 assert payload['map']==map_svg(read('usa_110m.json'))
 assert len(re.findall('data-state=',payload['map']))==51
 assert not re.search(r'NaN|Infinity',payload['map'])
@@ -58,9 +58,21 @@ for page in ['index.html','geography.html','outlook.html','jobs.html','skills.ht
         if u.fragment and target.suffix=='.html':
             q=Links();q.feed(target.read_text(encoding='utf-8'));assert unquote(u.fragment) in q.ids,f'Broken anchor {link}'
         checked+=1
-resources=['outputs/us-employer-inventory/web/dashboard-data.js','scripts/dashboard.js','styles.css']+[artifact_path(name).relative_to(ROOT).as_posix() for name in ['meteor','current-jobs','benchmarks','employer-analysis','us-jobs','database-jobs','inventory-summary','all-employer-records']]
+resources=['outputs/us-employer-inventory/web/dashboard-data.js','scripts/dashboard.js']+[artifact_path(name).relative_to(ROOT).as_posix() for name in ['meteor','current-jobs','benchmarks','employer-analysis','us-jobs','database-jobs','inventory-summary','all-employer-records','site-metrics']]
 for rel in resources:
     assert (ROOT/rel).read_bytes()==(site/rel).read_bytes(),f'Stale published resource: {rel}'
+# Every page must load Quarto's compiled theme, including the custom SCSS rules.
+themes=set()
+for page in ['index','geography','outlook','jobs','skills','work','eda_pharma','about']:
+ html=(site/(page+'.html')).read_text(encoding='utf-8')
+ assert 'href="styles.css"' not in html
+ match=re.search(r'<link href="([^"]+)"[^>]+id="quarto-bootstrap"',html)
+ assert match, f'Missing compiled theme: {page}'
+ themes.add(match.group(1))
+assert len(themes)==1
+compiled=(site/themes.pop()).read_text(encoding='utf-8')
+for selector in ['.source-strip','.job-pull-date','.skill-bubble','.job-grid','prefers-reduced-motion']:
+ assert selector in compiled, f'Missing SCSS component: {selector}'
 assert not (site/'outputs/us-employer-inventory/raw').exists()
 for forbidden in ['candidates.json','audit.json','.env','build_evidence.py','company-coverage-local.json','company-coverage-azure.json','audit_company_coverage.py','inventory-local.json','inventory-azure.json','geography-review.json','fetch_inventory.py']:
     assert not list(site.rglob(forbidden)),f'Unexpected source in site: {forbidden}'

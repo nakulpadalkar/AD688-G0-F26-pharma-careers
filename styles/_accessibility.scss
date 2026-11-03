@@ -1,0 +1,93 @@
+/* Readable spacing and persistent skill selection. */
+.panel {
+  padding: 30px;
+}
+.tiny,.context-note {
+  font-size: .85rem;
+  line-height: 1.65;
+}
+.filters label,.compact {
+  font-size: .82rem;
+}
+.filters input,.filters select,select,input {
+  min-height: 44px;
+}
+.section-intro {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.legend {
+  font-size: .8rem;
+  gap: 18px;
+}
+.skill-explorer {
+  grid-template-columns: minmax(0,1.9fr) minmax(300px,1fr);
+  gap: 32px;
+}
+.skill-bubbles {
+  gap: 20px;
+  padding: 18px 4px;
+}
+.skill-bubble span {
+  font-size: .78rem;
+  line-height: 1.25;
+}
+.skill-bubble[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px #235eb5;
+  background: #dae8ff;
+}
+.skill-bubble:focus-visible {
+  outline: 3px solid #a82d70;
+  outline-offset: 5px;
+}
+.skill-detail {
+  font-size: .9rem;
+  padding: 26px;
+}
+.skill-detail-metrics span {
+  font-size: .8rem;
+}
+.skill-detail summary {
+  padding: 8px 0;
+  min-height: 44px;
+}
+.skill-detail a {
+  line-height: 1.8;
+}
+.skill-hint {
+  font-size: .85rem;
+  margin: 12px 0;
+}
+.skill-status {
+  font-size: .85rem;
+  color: #526780;
+  min-height: 1.6em;
+}
+@media (max-width:850px) {
+  .skill-explorer {
+    grid-template-columns: 1fr;
+  }
+  .skill-detail {
+    position: static;
+  }
+
+}
+@media (max-width:600px) {
+  .panel {
+    padding: 22px;
+  }
+  .skill-bubbles {
+    gap: 16px;
+  }
+  .skill-bubble {
+    width: var(--bubble-size);
+    height: var(--bubble-size);
+  }
+  .skill-bubble span {
+    font-size: .78rem;
+  }
+  .skill-detail {
+    padding: 22px;
+  }
+
+}
