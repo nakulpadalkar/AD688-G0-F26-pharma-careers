@@ -61,3 +61,33 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: Clean temporary render passed; shared render passed after stopping the repository preview and clearing .quarto. Inventory, 282 local links and dashboard checks passed.
 - Why: A Quarto preview targeting jobs.qmd was running while render moved shared HTML files. The subsequent cache error disappeared after removing .quarto. No standing-rule changes proposed.
 - tags: quarto,build,cleanup
+
+## 2026-11-03 -- Keep US inventory inclusion separate from analytics relevance: 9493 US identities are the default, 1127 are optional analytics matches, and 5071 missing posting dates retain yellow database-created-at pull proxies. Assert previous analytics IDs and dates survive broadening.
+- Expected: Show every US job with optional analytics filtering and preserve date provenance.
+- Actual: 9493 default records, 1127 analytics and 8366 other records; all 5071 pull tags verified through pagination; eight pages and 282 local links passed.
+- Why: The previous relevance inclusion gate reduced the visible inventory. Moving relevance to a Boolean classification preserves the population and supports optional filtering. No standing-rule fix proposed.
+- tags: inventory,scope,dates,filters
+
+## 2026-11-03 -- Quarto compiles styles/theme.scss after Cosmo; preserve the partial import order because accessibility and compact-card rules override earlier shared responsive rules. Verify source-rule parity and that all eight HTML pages link the same compiled theme.
+- Expected: Modularize the stylesheet without changing the existing design or interactions.
+- Actual: 14 SCSS partials replace styles.css; exact source cascade parity, eight-page render, compiled component checks, 274 local links and dashboard interactions passed.
+- Why: Later component refinements depended on cascade order. The migration retained that order and documented it in styles/README.md. No standing-rule fix needed; browser appearance was not visually checked.
+- tags: scss,quarto,cascade
+
+## 2026-11-03 -- Generate repeated page statistics from site-metrics.parquet and _variables.yml; test agreement with dashboard-data.js and rendered pages. Recalculate counts from curated records and BLS industry growth from employment endpoints; retain published occupational forecasts as source inputs.
+- Expected: Replace repeated literal statistics with saved calculations shared across all pages.
+- Actual: Eight pages rendered with shared variables; changed-input controls, snapshot and bundle parity, 275 links and existing interaction checks passed. One initial summary write failed; restored from the matching saved bundle before successful rebuilds.
+- Why: Static homepage and methods figures duplicated values already present in evidence files. Central calculation and a Quarto post-render consistency check now detect disagreement. No standing-rule fix proposed.
+- tags: metrics,quarto,consistency
+
+## 2026-11-03 -- For native OJS pages, scope checkbox sizing separately from the global 44px input rule, set Inputs.table maxHeight explicitly when row padding changes, and limit nowrap to table-cell links. Verify reactive empty states by waiting for form.value, since empty Inputs.table renders a placeholder row. Use Playwright request interception for _site assets to exercise modules without starting a local server.
+- Expected: Migrate Growth and Pay and Skills to native Quarto and OJS while preserving branding and evidence definitions.
+- Actual: Both pages migrated; full eight-page render, 329 local links, data reconciliation, existing dashboard checks and Edge desktop/mobile interaction tests pass. Direct-file OJS initialization failed; intercepted local assets worked. Styling conflicts and asynchronous test assertions were corrected.
+- Why: Existing global CSS affected Observable controls and table dimensions. Browser file loading did not initialize the Quarto module runtime, and OJS dependent outputs update asynchronously. No standing rule or skill change needed.
+- tags: quarto,ojs,testing,responsive
+
+## 2026-11-03 -- After an OJS migration, review README build instructions alongside the page sources: retain node scripts/test_ojs.cjs and scripts/test_ojs_browser.py checks, and remove claims that native module pages work fully offline through file URLs.
+- Expected: Preserve every recent frontend and evidence update in a verified release.
+- Actual: Eight pages, 329 links, inventory and metrics controls, dashboard tests and OJS desktop/mobile browser checks passed. Updated stale README instructions and removed temporary migration artifacts.
+- Why: The frontend changed from bundled dashboard scripts to native OJS on two pages, while the README retained the previous direct-file and no-CDN claim. No standing-rule change proposed.
+- tags: release,documentation,ojs
