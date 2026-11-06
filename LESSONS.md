@@ -91,3 +91,27 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: Eight pages, 329 links, inventory and metrics controls, dashboard tests and OJS desktop/mobile browser checks passed. Updated stale README instructions and removed temporary migration artifacts.
 - Why: The frontend changed from bundled dashboard scripts to native OJS on two pages, while the README retained the previous direct-file and no-CDN claim. No standing-rule change proposed.
 - tags: release,documentation,ojs
+
+## 2026-11-06 -- Preserve the existing bubble and card designs when migrating their implementation to OJS. Quarto's html tagged helper does not attach interpolated event callbacks; attach listeners to returned DOM nodes. Update aria-pressed in a separate reactive cell so selecting a bubble does not rebuild it and lose focus.
+- Expected: Restore the earlier pastel bubbles and occupation cards while retaining native Quarto/OJS controls and tables.
+- Actual: Restored both designs; full render, data parity, existing dashboard tests, local links and desktop/mobile browser checks pass. An initial bubble click check caught unattached event handlers; explicit listeners resolved it.
+- Why: The first migration changed the visual design beyond the user's intent. The restored OJS components reuse existing styling, while browser checks verify real event behavior and focus preservation. No standing-rule changes proposed.
+- tags: ojs,design-preservation,events
+
+## 2026-11-06 -- For Boston certificate market sizing, keep MassBio's 2026 mapped life-sciences members (760 Boston/Cambridge; 1437 MA), 2025 statewide workforce, and 2026 major-employer headcounts as distinct populations. The saved 15-name posting inventory covers only 8 of the 20 size-ranked companies; missing coverage is not zero demand. Require explicit MA geography and keep sponsorship scenarios separate from observed postings.
+- Expected: Add employer market scale, company sizes and local employability evidence to the certificate website.
+- Actual: Added a 20-employer table totaling 40521 MA staff; calculated 637 local postings, 112 analytics and 19 commercial-fit identities; nine pages rendered, 357 links and desktop/mobile calculator checks passed.
+- Why: Membership, workforce and posting records have different scopes and dates. The inventory is selected and historical, with unresolved locations and missing posting dates. Mobile tables initially overflowed; page-scoped scrolling resolved it. No standing-rule changes proposed.
+- tags: market-sizing,employers,geography
+
+## 2026-11-06 -- For national pharma firm sizing, read the 2022 SUSB detailed-size download as cp1252 and select STATE=00, NAICS=3254. Exclude overlapping total/subtotal ENTRSIZE codes 01, 33 and 37 from bin sums. Enterprise-size bands use whole-enterprise employment while EMPL counts industry establishments; do not substitute establishments for firms or combine these counts with broader biopharma estimates.
+- Expected: Extend Boston employer analytics nationally with firm sizes and US posting evidence.
+- Actual: Added reconciled 2305 firms and six size bands, 15 employer tables, state evidence, sponsorship calculator and downloads. Ten pages, 366 links, data controls and desktop/mobile checks pass.
+- Why: Census size tables contain overlapping subtotal rows and a different population from broader industry estimates. Initial UTF-8 decoding failed; cp1252 read the source correctly. No standing-rule changes proposed.
+- tags: market-sizing,census,aggregation
+
+## 2026-11-06 -- Broad local pharma scans require explicit QA after the first aggregate: pharmacy data-entry roles can pass generic data-title rules, and Hyderabad Ts, Indiana can require a recruiting-URL conflict override. Keep all original rows and separate strict analytics-title candidates from broader domain matches. Pin pending enrichment by IDs and extract hash; offline screening does not clear production statuses.
+- Expected: Broaden employer coverage and identify early-career training prospects from local PostgreSQL.
+- Actual: Scanned 10,654,778 rows, processed 357,230 candidates, reconciled 124,101 US candidate identities and 5,822 analytics-title matches across 1,254 labels. QA corrected role and geography false positives. Eleven pages rendered and 485 links passed. Prepared and plan-tested a runner for 279,358 exact pending IDs; no database writes or production execution.
+- Why: Company counts, industry keyword matches, valid geography, career eligibility and completed enrichment are different populations. Preserve distinctions and inspect example evidence before presenting totals. Existing script-only execution rule retained; no standing-rule fix proposed.
+- tags: local-pg,scope,early-career,geography,enrichment
