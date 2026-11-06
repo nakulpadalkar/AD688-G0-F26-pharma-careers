@@ -36,6 +36,10 @@ These examples describe different responsibilities and entry conditions, rather 
 
 ## Evidence for the pathway
 
+The [US employer market](us-market.html) extends the employer view nationwide with Census firm-size bands, US posting evidence and national sponsorship scenarios.
+
+For employer-sponsored training, the [Boston employer market](boston-market.html) brings together regional company counts, Massachusetts workforce sizes, local posting evidence and explicit sponsorship scenarios. It identifies prospective accounts for validation rather than assuming that all pharma employees are potential enrollments.
+
 Employer postings connect the curriculum to observed duties and qualifications. BLS provides national employment and wage context. The syllabus defines the intended learning outcomes and portfolio work; graduate placement, promotion and salary outcomes have not yet been measured.
 
 [Sources and methods](eda_pharma.html) describe the populations, dates and limits of these measures.

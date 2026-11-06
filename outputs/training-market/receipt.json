@@ -1,0 +1,26 @@
+{
+  "started_at_utc": "2026-11-06T15:50:07.067667+00:00",
+  "completed_at_utc": "2026-11-06T16:01:09.436624+00:00",
+  "transaction_read_only": true,
+  "isolation": "REPEATABLE READ",
+  "source": "local PostgreSQL only",
+  "database_records": 10654778,
+  "database_employer_labels": 739474,
+  "database_undated_records": 1411884,
+  "database_posted_range": [
+    "1986-01-01 00:00:00+00",
+    "2028-07-16 00:00:00+00"
+  ],
+  "candidate_records": 357230,
+  "candidate_enrichment_status": {
+    "pending": 279358,
+    "official_reference_enriched": 74603,
+    "rule_enriched": 3269
+  },
+  "query": "SELECT j.id,j.source,j.external_id,j.title,j.normalized_title,j.company_name,j.location_text,j.city,j.state,j.state_code,j.countryiso,j.country_name,j.remote_status,j.employment_type,j.description,j.html_description_text,j.apply_url,j.company_url,j.posted_at,j.created_at,j.is_active,j.is_duplicate,j.duplicate_of_id,j.naics_code,j.naics_name,j.soc_code,j.onet_code,j.enrichment_status,j.classification_confidence,j.requirements_summary,j.responsibilities_summary,j.technical_tools_summary,j.company_description,j.jobhive_company_id,j.is_staffing_agency,j.alive,j.alive_checked_at,j.alive_valid_until,j.url_observed_status,j.html_fetched_at, h.naics_code AS company_naics_code, h.industry_status AS company_industry_status FROM met_career_match_jobposting j LEFT JOIN met_career_match_jobhivecompany h ON h.id=j.jobhive_company_id WHERE j.naics_code LIKE '3254%%' OR j.naics_code LIKE '541714%%' OR h.naics_code LIKE '3254%%' OR h.naics_code LIKE '541714%%' OR j.company_name ~* %(domain)s OR j.company_description ~* %(domain)s OR j.title ~* %(domain)s OR j.description ~* %(domain)s OR j.html_description_text ~* %(domain)s",
+  "parameters": {
+    "domain": "pharma|biotech|biopharm|life[- ]scien|clinical research|contract research organi"
+  },
+  "scope": "All available records and dates, including null posting dates; broad row-level pharma/biotech/life-science/clinical-research signals or NAICS 3254/541714. No employer whitelist or row limit. Keyword and enriched-code matches are screening evidence, not verified industry membership.",
+  "raw_sha256": "9dc05ed7d218294b0d34fb5994a81d3a096d76be7b26f688c0883fbf07e2fec7"
+}

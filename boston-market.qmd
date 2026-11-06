@@ -1,0 +1,72 @@
+---
+title: "Boston employer market"
+description: "Company scale, local demand evidence and employer-sponsored certificate scenarios."
+---
+
+```{=html}
+<style>
+.boston-market { min-width: 0; }
+.boston-market table { display: block; max-width: 100%; overflow-x: auto; }
+.boston-market th, .boston-market td { min-width: 90px; }
+.boston-market th:first-child, .boston-market td:first-child { min-width: 170px; }
+.boston-market input { max-width: 100%; }
+</style>
+```
+
+::: {.boston-market}
+
+The proposed non-degree **Pharmaceutical Commercial Data Certificate** gives employers a way to develop staff who can connect pharmaceutical data sources to business decisions. The clearest initial use is upskilling commercial analytics, market access, business intelligence and data operations teams. Program approval, admission requirements, delivery format and pricing remain to be confirmed.
+
+## The employer proposition
+
+For national outreach, see the [US employer market](us-market.html), including firm counts, enterprise-size bands and nationwide posting evidence.
+
+> Develop analysts who can explain where commercial pharma data comes from, reconcile sources, assess analytical results and defend a business recommendation. The proposed four-course pathway connects those capabilities through applied portfolio work and a capstone using synthetic or authorized data.
+
+For commercial leaders, the proposed value is better source interpretation and more defensible decisions. For learning and development teams, the value is a structured sequence with assessable work. For employees, it is a focused credential and portfolio. These are proposed benefits to validate in a pilot; productivity gains, placement and salary outcomes have not been measured.
+
+{{< include outputs/boston-market/web/evidence.qmd >}}
+
+## Turn prospects into a testable enrollment plan
+
+The broad company universe establishes prospecting scale. The 20-employer shortlist establishes a starting account list with known workforce sizes. A serviceable training market still requires confirmation of relevant teams, academic preparation, time availability, budget and interest. **The number of qualified buyers and eligible employees is currently unknown.**
+
+Start with employers showing commercial-fit posting evidence. Approach a commercial analytics or market-access leader alongside the learning and development budget owner. For each account, record the team, business problem, eligible staff, tuition support, release time, procurement timeline and named sponsor. Use those responses to qualify the account before counting potential seats.
+
+The scenarios below use the 20-company shortlist. They are planning assumptions, not forecasts or observed conversion rates. A seat means one sponsored learner starting the certificate, not four course registrations.
+
+| Planning case | Accounts approached | Assumed sponsor conversion | Sponsors | Seats per sponsor | Certificate starters |
+|---|---:|---:|---:|---:|---:|
+| Small pilot | 20 | 10% | 2 | 5 | 10 |
+| Working case | 20 | 20% | 4 | 8 | 32 |
+| Capacity test | 20 | 30% | 6 | 10 | 60 |
+
+::: {.panel}
+### Adjust the sponsorship assumptions
+
+```{=html}
+<div id="sponsor-model">
+<p><label for="sponsor-accounts">Accounts approached (within the shortlist)</label><br><input id="sponsor-accounts" type="number" min="0" max="20" step="1" value="20"></p>
+<p><label for="sponsor-rate">Assumed sponsor conversion (%)</label><br><input id="sponsor-rate" type="number" min="0" max="100" step="1" value="20"></p>
+<p><label for="sponsor-seats">Seats per sponsoring employer</label><br><input id="sponsor-seats" type="number" min="0" max="100" step="1" value="8"></p>
+<p><label for="sponsor-fee">Illustrative net tuition per certificate learner ($; 0 means unspecified)</label><br><input id="sponsor-fee" type="number" min="0" max="1000000" step="100" value="0"></p>
+<p id="sponsor-result" role="status" aria-live="polite">Working case: 4 sponsoring employers × 8 seats = 32 certificate starters. Tuition is unspecified.</p>
+</div>
+<script src="scripts/boston-market.js"></script>
+```
+
+Expected sponsors = accounts × conversion rate. Expected starters = sponsors × seats. Fractional results represent expected values, not enrollable people. Tuition receipts = starters × assumed net certificate tuition. Receipts exclude attrition, payment timing and refunds; they are not profit or NPV. Costs for development, teaching, advising, marketing and delivery still need a BU-approved model.
+:::
+
+## What would establish real demand?
+
+1. Validate the highest-fit accounts through employer interviews and review relevant postings individually. Ask which tasks employees struggle with and how the proposed assessed work addresses them.
+2. Confirm the non-degree certificate's approved format, prerequisites, schedule and total learner cost. Do not assume that non-degree means noncredit or open admission.
+3. Seek named learners and written sponsorship commitments. Count committed seats separately from expressions of interest; do not multiply the entire regional workforce by an assumed participation rate.
+4. Pilot within confirmed teaching capacity. Measure starts, completion, assessed skill improvement and employer evaluation of the capstone before expanding.
+
+The membership universe includes early research businesses with little commercial infrastructure. They may be less suitable than established commercial teams, even when their science is promising. Service providers and consultancies can also be prospects, but require separate account and workforce validation.
+
+[Explore the curriculum](about.html) · [Inspect the saved jobs](jobs.html) · [Read the broader evidence methods](eda_pharma.html)
+
+:::

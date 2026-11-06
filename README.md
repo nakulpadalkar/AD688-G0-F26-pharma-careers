@@ -13,10 +13,18 @@ node scripts/test_dashboard.cjs
 node scripts/test_ojs.cjs
 python scripts/test_inventory.py
 python scripts/test_site_metrics.py
+python scripts/test_boston_market.py
+python scripts/test_us_market.py
+python scripts/test_training_market.py
+python scripts/test_pharma_runner.py
 uv run --with playwright python -X utf8 scripts/test_ojs_browser.py
+uv run --with playwright python -X utf8 scripts/test_boston_browser.py
+uv run --with playwright python -X utf8 scripts/test_us_browser.py
 ```
 
 The build uses saved evidence and requires no database connection or API keys. Growth & Pay and Skills use native Quarto/OJS modules; use the published website for these interactive pages. Direct-file loading does not initialize their module runtime reliably, and Observable libraries may require network access. The browser check above intercepts local asset requests without starting a server. Pushes to main trigger the existing GitHub Pages publication workflow.
+
+The full checks use saved local evidence. Inventory and training-market reconciliation need the ignored local source extracts; ordinary Quarto builds use the committed public snapshots. The enrichment-runner test uses mocks and never invokes database processing.
 
 ## Refresh evidence intentionally
 
@@ -49,6 +57,8 @@ The four-course pathway follows the Pharma Certificate project's August 30, 2026
 
 ## Website pages
 
+`boston-market.qmd` adds an employer-facing market view: MassBio company counts and MA workforce sizes, a 20-account shortlist joined to saved METEOR posting evidence, coverage limits, and adjustable sponsorship scenarios. `scripts/build_boston_market.py` refreshes its generated tables during Quarto pre-render; `python scripts/test_boston_market.py` verifies geography, reconciliation and changed-input behavior. See `outputs/boston-market/README.md` for source provenance and scope.
+
 Home (`index.qmd`) is a compact introduction and page directory. `geography.qmd`, `outlook.qmd`, `jobs.qmd`, `skills.qmd`, and `work.qmd` each own one explorer. `about.qmd` describes the certificate; `eda_pharma.qmd` holds sources and methods. Shared footer and script includes live under `_includes/`. The navbar groups market pages and skills/work pages. Dashboard modules initialize only when their page elements exist.
 
 Jobs and skills now use the direct employer sample. `build_site_data.py` derives `outputs/us-employer-inventory/curated/employer-analysis.parquet` from posting-level annotations. METEOR remains historical geography evidence; BLS remains market context. The database coverage audit is separate from the offline build; `scripts/audit_company_coverage.py --env-file <private-env-path> --alias local` (or `azure`) runs a bounded read-only audit and writes only aggregate operational receipts under `docs/`. Never publish environment files or connection details. See `outputs/employer-page-review/reports/direct-employer-review.md`.
@@ -79,4 +89,20 @@ Task checklists and verification evidence are in [docs/gates](docs/gates/README.
 
 The shared snapshot is `outputs/site-reference/data/site-metrics.parquet`. It stores display values, unrounded industry calculations, the calculation method and a hash of the evidence inputs. Generated `_variables.yml` supplies static Quarto content; `dashboard-data.js` carries the same snapshot alongside the records used by interactive filters. Do not edit generated numbers in HTML, `_variables.yml`, or the browser bundle. Update the source evidence and rebuild.
 
-`python scripts/test_site_metrics.py` verifies saved snapshot, variables, browser bundle and rendered-page consistency, including changed-input controls. It runs as a Quarto post-render check, so a mismatch fails the render before publication.
+`python scripts/test_site_metrics.py
+python scripts/test_boston_market.py
+python scripts/test_us_market.py
+python scripts/test_training_market.py
+python scripts/test_pharma_runner.py` verifies saved snapshot, variables, browser bundle and rendered-page consistency, including changed-input controls. It runs as a Quarto post-render check, so a mismatch fails the render before publication.
+
+### Native OJS visual components
+
+`skills.qmd` renders the pastel skill bubbles and adjacent evidence summary from OJS cells; `outlook.qmd` renders the occupation cards and comparison tracks. Both retain reactive filters and sortable tables. Bubble area follows the selected measure and uses the full scope as its scale, so text searches do not resize matching bubbles. Attach event listeners to nodes returned by the Quarto `html` helper; keep selection updates separate from bubble construction to preserve keyboard focus. Browser regression coverage is in `scripts/test_ojs_browser.py`, using intercepted `_site` assets without a local server.
+
+## National employer market
+
+`us-market.qmd` combines Census 2022 SUSB manufacturing firm-size bands, broader biopharma context and the complete saved US posting inventory. Quarto runs `scripts/build_us_market.py`; verify with `python scripts/test_us_market.py` and `uv run --with playwright python scripts/test_us_browser.py`. See `outputs/us-market/README.md` for definitions and provenance.
+
+## Employer training prospects
+
+The training-market page uses a saved broad local extraction, separate from the original selected-employer inventory. See outputs/training-market/README.md for refresh commands and scope, and outputs/training-market/ENRICHMENT.md for the prepared enrichment runner. Normal site builds do not run extraction or production enrichment.

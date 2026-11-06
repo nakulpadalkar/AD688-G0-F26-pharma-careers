@@ -1,0 +1,23 @@
+---
+title: "Employer training prospects"
+description: "Broad local PostgreSQL evidence for pharmaceutical analytics training, early-career pathways and employer outreach."
+---
+
+::: {.training-market}
+
+This analysis broadens the original selected-employer inventory using the local PostgreSQL collection. It identifies advertisements and employer labels that warrant review for pharmaceutical analytics training. It separates student pathways, early-career hiring signals and experienced roles so that company-sponsored employee development can be assessed alongside graduate recruitment.
+
+**A prospect is not a committed buyer.** Job advertisements reveal tasks and qualification signals; they do not measure the number of current employees eligible for training, the employer's budget or its willingness to sponsor a cohort.
+
+{{< include outputs/training-market/web/evidence.qmd >}}
+
+## Use the evidence for company training
+
+1. Review the source advertisements behind a company's early-career commercial-data count. Confirm that the work fits the proposed curriculum, including data integration, SQL, business intelligence, source quality and communication.
+2. Separate graduate recruiting and student internships from existing employee development. Verify degree alternatives, actual work experience and required domain expertise in the complete source text.
+3. Ask the analytics manager and learning-and-development sponsor about the team, recurring skill gaps, suitable employees, release time and budget. Record those answers separately from posting counts.
+4. Prioritize a pilot only after the employer identifies staff and a sponsor. Measure assessed work and employer feedback; this dataset cannot establish training uptake or certificate outcomes.
+
+The existing [job explorer](jobs.qmd) remains the original selected-employer comparison. These broader local-only results are a separate saved extraction and should not be added to that inventory without reconciling overlap.
+
+:::

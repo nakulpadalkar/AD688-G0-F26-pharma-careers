@@ -48,7 +48,7 @@ class Links(HTMLParser):
         for k in ['src','href']:
             if k in a:self.links.append(a[k])
 site=ROOT/'_site'; checked=0
-for page in ['index.html','geography.html','outlook.html','jobs.html','skills.html','work.html','eda_pharma.html','about.html']:
+for page in ['index.html','geography.html','outlook.html','jobs.html','skills.html','work.html','eda_pharma.html','about.html','boston-market.html','training-market.html','us-market.html']:
     file=site/page;p=Links();p.feed(file.read_text(encoding='utf-8'));assert len(p.ids)==len(set(p.ids)),f'Duplicate id: {page}'
     for link in p.links:
         u=urlsplit(link)
@@ -59,11 +59,12 @@ for page in ['index.html','geography.html','outlook.html','jobs.html','skills.ht
             q=Links();q.feed(target.read_text(encoding='utf-8'));assert unquote(u.fragment) in q.ids,f'Broken anchor {link}'
         checked+=1
 resources=['outputs/us-employer-inventory/web/dashboard-data.js','scripts/dashboard.js']+[artifact_path(name).relative_to(ROOT).as_posix() for name in ['meteor','current-jobs','benchmarks','employer-analysis','us-jobs','database-jobs','inventory-summary','all-employer-records','site-metrics']]
+resources += ['outputs/training-market/web/'+name for name in ['summary.json','employer-prospects.csv','analytics-postings.csv']]
 for rel in resources:
     assert (ROOT/rel).read_bytes()==(site/rel).read_bytes(),f'Stale published resource: {rel}'
 # Every page must load Quarto's compiled theme, including the custom SCSS rules.
 themes=set()
-for page in ['index','geography','outlook','jobs','skills','work','eda_pharma','about']:
+for page in ['index','geography','outlook','jobs','skills','work','eda_pharma','about','boston-market','training-market','us-market']:
  html=(site/(page+'.html')).read_text(encoding='utf-8')
  assert 'href="styles.css"' not in html
  match=re.search(r'<link href="([^"]+)"[^>]+id="quarto-bootstrap"',html)
@@ -74,6 +75,8 @@ compiled=(site/themes.pop()).read_text(encoding='utf-8')
 for selector in ['.source-strip','.job-pull-date','.skill-bubble','.job-grid','prefers-reduced-motion']:
  assert selector in compiled, f'Missing SCSS component: {selector}'
 assert not (site/'outputs/us-employer-inventory/raw').exists()
+assert not (site/'outputs/training-market/raw').exists()
+assert not (site/'outputs/training-market/processed').exists()
 for forbidden in ['candidates.json','audit.json','.env','build_evidence.py','company-coverage-local.json','company-coverage-azure.json','audit_company_coverage.py','inventory-local.json','inventory-azure.json','geography-review.json','fetch_inventory.py']:
     assert not list(site.rglob(forbidden)),f'Unexpected source in site: {forbidden}'
 assert 'Tools mentioned in METEOR' not in (site/'skills.html').read_text(encoding='utf-8')

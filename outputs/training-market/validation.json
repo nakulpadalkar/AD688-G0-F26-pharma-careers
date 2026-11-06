@@ -1,0 +1,36 @@
+{
+  "database_writes": 0,
+  "production_enrichment_executed": false,
+  "web_published": false,
+  "local_render_pages": 11,
+  "local_links_checked": 485,
+  "counts": {
+    "scanned_records": 10654778,
+    "candidate_records": 357230,
+    "us_candidate_identities": 124101,
+    "us_analytics_candidates": 5822,
+    "employer_labels": 1254,
+    "early_career_review": 589,
+    "student_pathways": 100
+  },
+  "checks": [
+    "TRAINING_MARKET_OK",
+    "SCOPED_RUNNER_OK",
+    "EXISTING_STAGE_PLAN_OK",
+    "EVIDENCE_OK",
+    "METRICS_OK"
+  ],
+  "snapshot_sha256": "123b21ec50cafb2d6b4c1598599e60c984fc6cd41ef9fad71e67bd8124134d64",
+  "source_sha256": {
+    "scripts\\build_training_market.py": "183092bc2b16f14538debd3f2e5571e6749bad3771c9654eaf2a20673041efbb",
+    "scripts\\fetch_training_market.py": "853b3221b71e4708d7cdb1d6e10751687b3ff2ebcaeecc3020d143355c7259cc",
+    "scripts\\run_pharma_enrichment.py": "12078f0203ac6dbb7756d2f5847df8a5f82ff97a6202c23dc521b5f806d5b144"
+  },
+  "limitations": [
+    "Historical broad industry signals; employer labels are not verified unique firms.",
+    "Rules-based career candidates require qualification and industry review.",
+    "No live job recheck or browser visual verification.",
+    "Production statuses remain pending; runner prepared under script-only rule.",
+    "Quarto-generated navbar HTML has trailing whitespace; source changes pass whitespace check."
+  ]
+}

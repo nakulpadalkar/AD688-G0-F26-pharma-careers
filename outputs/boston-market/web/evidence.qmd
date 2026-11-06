@@ -1,0 +1,99 @@
+### Market scale
+
+| Evidence | Count | Meaning |
+|---|---:|---|
+| Boston + Cambridge life-sciences members | 760 | 331 Boston + 429 Cambridge; 2026 membership map |
+| Massachusetts life-sciences members | 1,437 | Broad statewide prospect universe; includes the core above |
+| Massachusetts biopharma workforce | 113,503 | All functions, 2025; down 3.1% year over year |
+| Major-employer shortlist | 20 | Selected by the source's largest-employer chart, not buyer qualification |
+| Combined shortlist workforce | 40,521 | Reported Massachusetts employees, 2026; not training seats |
+
+Sources: [MassBio 2026 Industry Snapshot](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf), pp. 6, 11 and 37. Company sizes are from the member survey; Moderna uses the Boston Business Journal Book of Lists. Reviewed 2026-11-06. Workforce and shortlist dates differ, so no market-share percentage is calculated.
+
+### Company size and our demand evidence
+
+Local means Boston/Cambridge plus the explicitly listed outreach suburbs below. All posting counts are historical saved identities. A dash means the employer is outside the current inventory; zero means covered but no matching local posting was found.
+
+| Employer | MA employees (2026) | Local postings | Analytics | Commercial fit |
+|---|---:|---:|---:|---:|
+| [Takeda](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 5,628 | 5 | 1 | 0 |
+| [Sanofi](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 4,872 | 93 | 16 | 2 |
+| [Vertex Pharmaceuticals](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 4,500 | 222 | 49 | 7 |
+| [Moderna](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 3,042 | — | — | — |
+| [Pfizer](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 2,565 | 32 | 8 | 0 |
+| [Bristol Myers Squibb](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 2,310 | — | — | — |
+| [Novartis](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 2,300 | 0 | 0 | 0 |
+| [Alnylam](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 2,096 | — | — | — |
+| [AbbVie](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 2,079 | 134 | 7 | 0 |
+| [AstraZeneca / Alexion](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 2,000 | 115 | 22 | 4 |
+| [Biogen](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 1,702 | — | — | — |
+| [Eli Lilly](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 1,423 | — | — | — |
+| [EMD Serono](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 1,200 | — | — | — |
+| [GSK](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 949 | — | — | — |
+| [Merck](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 899 | — | — | — |
+| [Foundation Medicine](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 821 | — | — | — |
+| [Alkermes](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 714 | — | — | — |
+| [Amgen](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 531 | 18 | 0 | 0 |
+| [Lantheus](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 470 | — | — | — |
+| [Sarepta](https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf#page=11) | 420 | — | — | — |
+
+AstraZeneca/Alexion workforce is combined in MassBio; our posting match covers AstraZeneca only. These are Massachusetts headcounts, not Boston office counts or worldwide employee totals.
+
+| MA workforce band | Shortlisted companies | Combined employees | Suggested sales approach |
+|---|---:|---:|---|
+| 2,000+ | 10 | 31,392 | Team cohort; commercial analytics leader plus learning and development |
+| 500–1,999 | 8 | 8,239 | Cross-functional cohort or shared employer cohort |
+| Under 500 | 2 | 890 | Individual sponsorship or consortium seats |
+
+Size bands describe only this selected shortlist. They do not estimate the size distribution of all 760 core companies. Buying capacity and curriculum fit require employer conversations.
+
+### What the employability data supports
+
+Saved inventory audit: 2026-11-03T01:44:32.546340+00:00. Recomputed from the existing sanitized local/Azure inventory; no new database extraction or live vacancy check was performed.
+
+| Geography | All postings | Employers | Analytics | Commercial fit | Missing posting date |
+|---|---:|---:|---:|---:|---:|
+| Selected US employer inventory | 9,493 | 15 | 1127 | 253 | 5071 |
+| Massachusetts, explicit state | 784 | 9 | 130 | 21 | 447 |
+| Boston / Cambridge, explicit state | 497 | 9 | 89 | 13 | 379 |
+| Core + outreach suburbs | 637 | 9 | 112 | 19 | 444 |
+
+**First employers to validate:** Vertex Pharmaceuticals (7), IQVIA (6), AstraZeneca (4), Sanofi (2). Parentheses show local commercial-fit posting identities, not prospective enrollments. This ranking measures observed relevance in a selected dataset; collection coverage differs across employers.
+
+Only 8 of the 20 shortlisted employer names are represented in the US inventory. Missing companies remain prospect-research opportunities, not evidence of no demand.
+
+Local source-reported posting dates range from 2026-04-30 to 2026-10-23; 444 local records lack a source posting date. Database-created dates remain collection proxies. All dates, including old records, are included; these counts cannot measure current openings or annual hiring.
+
+#### Skills and qualifications in the local commercial-fit subset
+
+| Skill term | Posting identities |
+|---|---:|
+| Excel | 12 |
+| Claims data | 9 |
+| IQVIA | 8 |
+| SQL | 7 |
+| Power BI | 6 |
+| Tableau | 4 |
+| Python | 4 |
+| Patient-level data | 3 |
+| R | 2 |
+| SAS | 1 |
+| MMIT | 1 |
+
+Denominator: 19 local commercial-fit identities. Skill terms overlap and do not distinguish mandatory requirements from preferences. Commercial-fit rules partly use data terms, so this is not an independent estimate of market-wide skill prevalence.
+
+Degree terms: Bachelor (16), Master (9), Doctorate (5).
+
+No degree term detected: 1; equivalent-experience wording: 8. Terms overlap; neither finding proves that a degree is optional. A non-degree certificate does not replace employer education or experience requirements.
+
+Career-level labels inferred from titles: Leadership (12), Analyst / specialist (6), Manager (1).
+
+#### Geography and screening rules
+
+Outreach area: Boston, Cambridge, Watertown, Waltham, Lexington, Burlington, Billerica, Bedford, Woburn, Somerville, Newton, Needham, Medford, Framingham, Natick, Marlborough, Andover. This is a declared sales territory, not the official Boston metropolitan statistical area. Worcester and other Massachusetts locations appear only in the statewide row.
+
+State evidence uses the existing conservative parser: explicit Massachusetts or a comma-delimited MA abbreviation. City-only Cambridge, state-prefix strings such as “Ma Cambridge”, remote-only locations and conflicting multi-state locations stay outside local counts. Therefore these are conservative observed counts, not complete local hiring coverage.
+
+Commercial fit is the subset of analytics-relevant records with commercial analytics titles, commercial-data duties, data products in business roles, or data products/datasets in analytical roles. It reuses the saved relevance reasons, without treating all clinical, scientific or operations analytics roles as certificate matches. Review individual duties before outreach.
+
+[Download employer table](outputs/boston-market/web/employer-prospects.csv) · [Download calculated evidence and source hashes](outputs/boston-market/web/market-summary.json)

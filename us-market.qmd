@@ -1,0 +1,68 @@
+---
+title: "US employer market"
+description: "National company counts, enterprise sizes and evidence for employer-sponsored training."
+---
+
+```{=html}
+<style>
+.us-market { min-width: 0; }
+.us-market table { display: block; max-width: 100%; overflow-x: auto; }
+.us-market th, .us-market td { min-width: 90px; }
+.us-market th:first-child, .us-market td:first-child { min-width: 170px; }
+.us-market input { max-width: 100%; }
+</style>
+```
+
+::: {.us-market}
+
+The proposed **Pharmaceutical Commercial Data Certificate** can be positioned nationally as employer-sponsored development for commercial analytics, market access, business intelligence and data operations teams. A national offer would require an approved delivery format and schedule that working professionals across time zones can use. Program approval, admissions and pricing remain pending.
+
+[Compare the Boston employer market](boston-market.html) · [Explore the certificate](about.html)
+
+{{< include outputs/us-market/web/evidence.qmd >}}
+
+## A national sales approach
+
+Prioritize established commercial organizations with evidence of claims, prescription, payer, forecasting and reporting work. Start with the employers ranked above and validate the relevant teams and budget owners. Use the larger-enterprise Census bands to guide expansion beyond the 15 employers in our database. The Census table supplies counts, not a named prospect directory.
+
+| Segment | Proposed offer | Evidence needed before counting demand |
+|---|---|---|
+| Large enterprises | Sponsored team cohorts with a commercial-data capstone | Named sponsor, eligible team, approved budget and release time |
+| Mid-sized enterprises | Cross-functional cohort or shared cohort with other employers | Repeated data problems, enough prepared staff and a workable schedule |
+| Smaller firms | Individual sponsorship or consortium seats | Relevant commercial work, sufficient preparation and willingness to pay |
+| Data vendors, CROs and consultancies | Client-facing pharma data and decision skills | Role-level fit and independently verified workforce; outside the manufacturing count |
+
+Use a concrete employer proposition: staff learn to evaluate commercial data sources, reconcile records, test analytical conclusions and communicate a defensible recommendation. Assess that work through the proposed course sequence and capstone. Do not promise measured productivity, promotion or placement effects before a pilot establishes them.
+
+## Planning scenarios, not enrollment forecasts
+
+A broad company count is the potential prospect universe. The serviceable market is the subset with relevant teams, eligible staff, budget, time and interest; that count remains unknown. The obtainable pilot consists of named learners backed by sponsorship commitments.
+
+| Outreach scenario | Qualified accounts approached | Assumed conversion | Sponsors | Seats per sponsor | Certificate starters |
+|---|---:|---:|---:|---:|---:|
+| Focused national pilot | 25 | 8% | 2 | 5 | 10 |
+| Multi-employer cohort | 50 | 10% | 5 | 8 | 40 |
+| Capacity test | 100 | 15% | 15 | 10 | 150 |
+
+These account lists are targets to assemble, not already qualified prospects. The capacity test is not a launch recommendation. Confirm instructional and advising capacity before accepting commitments. Count learners once across courses and locations; do not add Boston enrollments to national enrollments if the same learners appear in both.
+
+::: {.panel}
+### Adjust the national assumptions
+
+```{=html}
+<div id="sponsor-model">
+<p><label for="sponsor-accounts">Qualified accounts approached (planning range: 0–100)</label><br><input id="sponsor-accounts" type="number" min="0" max="100" step="1" value="50"></p>
+<p><label for="sponsor-rate">Assumed sponsor conversion (%)</label><br><input id="sponsor-rate" type="number" min="0" max="100" step="1" value="10"></p>
+<p><label for="sponsor-seats">Seats per sponsor</label><br><input id="sponsor-seats" type="number" min="0" max="100" step="1" value="8"></p>
+<p><label for="sponsor-fee">Illustrative net certificate tuition ($; 0 means unspecified)</label><br><input id="sponsor-fee" type="number" min="0" max="1000000" step="100" value="0"></p>
+<p id="sponsor-result" role="status" aria-live="polite">5 sponsors × 8 seats = 40 certificate starters. Tuition is unspecified.</p>
+</div>
+<script src="scripts/boston-market.js"></script>
+```
+
+Expected starters = accounts × conversion × seats. Tuition receipts = starters × assumed net certificate tuition. Fractional outputs are expected values, not enrollable people. Receipts exclude costs, attrition, payment timing and refunds; they are not profit or NPV. No percentage of the national workforce is assumed to enroll.
+:::
+
+[Inspect the jobs](jobs.html) · [National occupation context](outlook.html) · [Sources and methods](eda_pharma.html)
+
+:::

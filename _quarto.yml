@@ -2,12 +2,17 @@ project:
   type: website
   pre-render:
     - python scripts/build_site_data.py
+    - python scripts/build_boston_market.py
+    - python scripts/build_us_market.py
   post-render:
     - python scripts/test_site_metrics.py
   render:
     - index.qmd
     - geography.qmd
     - outlook.qmd
+    - boston-market.qmd
+    - training-market.qmd
+    - us-market.qmd
     - jobs.qmd
     - skills.qmd
     - work.qmd
@@ -19,6 +24,10 @@ project:
     - /outputs/site-reference/data/**
     - /outputs/employer-page-review/data/**
     - /scripts/dashboard.js
+    - /scripts/boston-market.js
+    - /outputs/boston-market/web/**
+    - /outputs/training-market/web/**
+    - /outputs/us-market/web/**
 
 website:
   title: "PHARMA / CAREERS"
@@ -37,6 +46,12 @@ website:
             text: US opportunity map
           - href: outlook.qmd
             text: Growth & pay
+          - href: boston-market.qmd
+            text: Boston employer market
+          - href: training-market.qmd
+            text: Employer training prospects
+          - href: us-market.qmd
+            text: US employer market
       - href: jobs.qmd
         text: Jobs
       - text: Skills & work

@@ -225,3 +225,11 @@ __marimo__/
 docs/private/
 
 outputs/us-employer-inventory/raw/
+outputs/boston-market/sources/
+outputs/boston-market/qa/
+outputs/us-market/data/census-source.txt
+outputs/us-market/qa/
+
+outputs/training-market/raw/
+outputs/training-market/processed/
+outputs/training-market/enrichment/

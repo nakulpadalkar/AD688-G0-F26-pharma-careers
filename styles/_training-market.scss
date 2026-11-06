@@ -1,0 +1,18 @@
+.training-market {
+  min-width: 0;
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  th, td {
+    min-width: 100px;
+    vertical-align: top;
+  }
+
+  th:first-child, td:first-child {
+    min-width: 200px;
+  }
+}
