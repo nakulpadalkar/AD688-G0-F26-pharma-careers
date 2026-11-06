@@ -1,0 +1,291 @@
+Snapshot extracted **2026-11-06 UTC** from local PostgreSQL. All available dates were scanned, including missing posting dates.
+
+| Processing stage | Records |
+|---|---:|
+| Entire local posting table, all industries | 10,654,778 |
+| Broad pharma / biotech / life-sciences candidate records | 357,230 |
+| Combined candidate posting identities | 288,681 |
+| US-evidenced identities | 124,101 |
+| Non-US, unresolved or conflicting country | 164,580 |
+| US analytics-rule matches | 5,822 |
+| Employer labels with US analytics matches | 1,254 |
+| US commercial-data rule matches | 1,005 |
+| Commercial-data matches with early-career review signals | 45 |
+
+These counts cover matching records across employers, not a census of pharmaceutical companies. A posting can mention a pharmaceutical client while its employer belongs to another industry. Employer-text and industry-code signals are screening evidence, not independent industry verification.
+
+Of the US analytics matches, **2,203** have source posting dates within 120 days of extraction; **1,509** have no posting date and remain included. **0** have dates later than extraction and are excluded from the recent-date measure. Dates do not verify that a role is still open.
+
+## Career-stage evidence
+
+| Analytics posting bucket | Identities |
+|---|---:|
+| Experience unclear | 1,170 |
+| Senior / supervisory title | 3,167 |
+| 4+ years experience signal | 444 |
+| Mixed experience alternatives; review required | 352 |
+| 0–3-year experience signal; review required | 558 |
+| Internship / student pathway | 100 |
+| Explicit early-career title | 31 |
+
+The 0–3-year bucket identifies advertisements for review; it does not establish eligibility. Degree alternatives, specialist requirements and postgraduate study can change suitability. Internships are separate from employee-upskilling prospects. Missing experience evidence stays unknown. Age requirements such as “18 years or older” are excluded.
+
+## Employer outreach shortlist
+
+Ranked first by early-career commercial-data candidates with posting dates in the last 120 days, then other recent early-career signals and historical evidence. Commercial fit uses the existing commercial title/duty/data-product rules; other analytics roles can require a different curriculum. This table prioritizes named employer references and employer-text signals. Stored staffing flags are shown in the download for review; they are not verified exclusions. Other candidates remain in the download for review. Counts are historical demand signals, not training seats or verified vacancies.
+
+| Employer | US analytics | Early-career review | Commercial early-career | Student pathways | Unclear experience | Skills in early-career candidates |
+|---|---:|---:|---:|---:|---:|---|
+| Abbvie | 341 | 12 | 0 | 6 | 19 | SQL (6); Python (6); R (2); SAS (1) |
+| H1 | 11 | 2 | 0 | 0 | 0 | SQL (2); Python (2) |
+| Astrazeneca | 23 | 1 | 0 | 0 | 2 | SQL (1); Python (1) |
+| Legend Biotech US | 7 | 1 | 0 | 0 | 0 |  |
+| Pharmaessentiausa | 6 | 1 | 0 | 0 | 0 | R (1); Python (1) |
+| IQVIA | 54 | 6 | 4 | 0 | 7 | Excel (4); Claims data (4); SQL (3); IQVIA (2); R (1); Power BI (1); Tableau (1); Python (1) |
+| GSK | 21 | 3 | 2 | 0 | 0 | SQL (2); Excel (2); Tableau (1); Python (1); Power BI (1) |
+| Bristolmyerssquibb | 107 | 5 | 0 | 0 | 4 | Excel (5); SQL (1); Python (1) |
+| Novartis | 21 | 3 | 0 | 0 | 1 | Python (1); Excel (1) |
+| Pfizer | 15 | 2 | 0 | 0 | 0 | Python (2) |
+| PCI Pharma Services | 5 | 2 | 0 | 0 | 0 |  |
+| Amgen | 76 | 1 | 0 | 7 | 0 | R (1); Python (1) |
+| Pfizer (Internaljobs) | 22 | 1 | 0 | 0 | 2 | Excel (1); SQL (1); SAS (1) |
+| Regeneron | 20 | 1 | 0 | 0 | 1 | SQL (1); Python (1) |
+| Sanofi | 15 | 1 | 0 | 3 | 2 |  |
+| BioMarin Pharmaceutical Inc. | 10 | 1 | 0 | 0 | 2 |  |
+| Forge Biologics | 2 | 1 | 0 | 0 | 1 | R (1); SAS (1); Python (1) |
+| West Pharmaceutical Services | 2 | 1 | 0 | 0 | 0 | Excel (1) |
+| Immunebiopharma | 1 | 1 | 0 | 0 | 0 |  |
+
+## Inspect candidate advertisements
+
+Examples below have a named employer reference or employer-text signal and an early-career review classification. Source URLs are stored evidence; this analysis did not recheck employer websites.
+
+| Employer / role | Career evidence | Degree mentions | Date basis | Source |
+|---|---|---|---|---|
+| AbbVie: Analyst, Business Systems | al and business team members. - Bachelor’s Degree with 2 years’ experience or master’s degree in business information systems, or a discipline closely related to  | Bachelor, Master | Posted 2026-06-04 | [Source](https://jobs.smartrecruiters.com/AbbVie/3743990013462936-analyst-business-systems) |
+| Amgen: Data Scientist | . Basic Qualifications Ph.D. degree OR Master’s degree 2 years of related experience Preferred Qualifications MS or PhD in Statistics/Biostatistics, Mathematics,  | Master, Doctorate | <span class="job-pull-date">Pulled 2026-09-08</span> | [Source](https://amgen.wd1.myworkdayjobs.com/careers/job/United-States---Remote/Data-Scientist_R-246583) |
+| AstraZeneca: Digital Eng, Robotics &amp; Automation, Process Sciences, Analytics and Technology, CGT | ifications ## Education and Experience · BS or BA with 3+ years of relevant experience in Computer Science, Software Engineering, Data Engineering, Computer Engine; related discipline · M.S. in a related discipline with 1+ years of relevant experience. · Equivalent combinations of education and directly relevant technical expe | Bachelor, Master | Posted 2026-10-08 | [Source](https://astrazeneca.eightfold.ai/careers/job/563877691651180) |
+| BioMarin Pharmaceutical Inc.: Research Associate 1, Process Analytics and Services (Analytical Sciences) | istry, Biology, Analytical Chemistry, or related field 1–2 years of relevant experience in a pharmaceutical or biotechnology environment Master’s degree is a plus b | Bachelor, Master | Posted 2026-06-12 | [Source](https://jobs.jobvite.com/biomarin/job/o80lAfwN/apply) |
+| Bristolmyerssquibb: Analyst, Compensation | nomics, or related field preferred. Typically requires 1–3 years of experience in Compensation, Total Rewards, HR Analytics, Finance, or related analytical function | Bachelor | <span class="job-pull-date">Pulled 2026-07-24</span> | [Source](https://bristolmyerssquibb.wd5.myworkdayjobs.com/bms/job/Tampa---FL---US/Analyst--Compensation_R1602505) |
+| Gsk: Chargeback Analyst | Qualifications: Bachelor’s degree 2+ years of experience in chargebacks and purchase based contracts (i.e., GPO, Federal, PHS, Physician Buyin | Bachelor, Master | <span class="job-pull-date">Pulled 2026-07-23</span> | [Source](https://gsk.wd5.myworkdayjobs.com/gskcareers/job/USA---Pennsylvania---Philadelphia/Chargeback-Analyst_442961) |
+| Immunebiopharma: Business Analyst | n Information Technology, Business, or a related field 2 to 3 years of related experience Excellent communication and customer service skills Experienced management sk | Bachelor | <span class="job-pull-date">Pulled 2026-09-08</span> | [Source](https://immunebiopharma.applytojob.com/apply/jobs/details/VeBlxdNYEw) |
+| Iqvia: Data Acquisition Representative |  United States. Experience / Qualifications Minimum of 2 years of professional experience with direct client relationship responsibilities Healthcare claims domai | Bachelor | <span class="job-pull-date">Pulled 2026-07-23</span> | [Source](https://iqvia.wd1.myworkdayjobs.com/iqvia/job/Burlington-MA-United-States-of-America/Data-Acquisition-Representative_R1559191-1) |
+| Legend Biotech US: Associate CMC Process Data Analyst | ld (Foreign equivalent accepted). Experience Required: 1 year of experience as Process Data Analyst or related occupation, and proficiency in MES, SAP, LIMS syst | Bachelor | Posted 2026-08-27 | [Source](https://job-boards.greenhouse.io/legendcareers/jobs/4728086005) |
+| Novartis: Data Scientist, AI for Biomedical Imaging | g, data science, or a related quantitative field, with 3+ years of applied experience in AI for bioimaging and computer vision. Demonstrated experience developing  | Doctorate | <span class="job-pull-date">Pulled 2026-07-23</span> | [Source](https://novartis.wd3.myworkdayjobs.com/novartis_careers/job/Cambridge-USA/Data-Scientist--AI-for-Biomedical-Imaging_REQ-10082558-1) |
+| PCI Pharma Services: RFD_Validation Analyst 1 | nctions. Required: - High School Diploma or GED and/or 1-3 years related experience and/or training. - Basic Mathematical Skills - Basic Computer Skills: Ability to | Master, High school | <span class="job-pull-date">Pulled 2026-09-08</span> | [Source](https://pciservices.wd1.myworkdayjobs.com/external/job/Rockford-IL-USA/RFD-Validation-Analyst-1_JR118816) |
+| Pfizer: AI/ML Engineer - Vaccines Modeling and Antigen Discovery | ineering, AI, or a related discipline and a minimum of 2 years of applied AI/ML experience in a Vaccines R&amp;D, Life Sciences or other related discovery focused env | Master, Doctorate | <span class="job-pull-date">Pulled 2026-07-23</span> | [Source](https://pfizer.wd1.myworkdayjobs.com/pfizercareers/job/United-States---New-York---Pearl-River/AI-ML-Engineer---Vaccine-Research_4954072-1) |
+
+## Geography and collection dates
+
+| State evidence | US analytics identities |
+|---|---:|
+| US state unresolved | 1,235 |
+| CA | 828 |
+| MA | 572 |
+| NY | 440 |
+| NJ | 399 |
+| IL | 317 |
+| PA | 261 |
+| NC | 227 |
+| TX | 149 |
+| DC | 127 |
+| VA | 118 |
+| MD | 106 |
+| FL | 97 |
+| IN | 96 |
+| WA | 87 |
+| OH | 82 |
+| MN | 77 |
+| MI | 63 |
+| GA | 57 |
+| TN | 48 |
+| MO | 44 |
+| AZ | 44 |
+| CO | 38 |
+| WI | 36 |
+| SC | 30 |
+| CT | 27 |
+| KY | 24 |
+| UT | 23 |
+| IA | 21 |
+| KS | 20 |
+| DE | 16 |
+| AR | 13 |
+| AL | 12 |
+| NE | 11 |
+| LA | 11 |
+| OR | 11 |
+| OK | 10 |
+| ID | 8 |
+| RI | 7 |
+| NV | 7 |
+| NM | 5 |
+| NH | 3 |
+| VT | 2 |
+| MS | 2 |
+| WV | 2 |
+| ND | 2 |
+| HI | 2 |
+| ME | 2 |
+| MT | 1 |
+| SD | 1 |
+| WY | 1 |
+
+<details>
+<summary>Expand monthly posting and pull-date evidence</summary>
+
+### Source-reported posting months
+
+This series measures records in the collection, not hiring growth. Missing posting dates are never substituted into this series.
+
+| Month | Analytics identities |
+|---|---:|
+| 2014-07 | 1 |
+| 2014-08 | 1 |
+| 2014-09 | 1 |
+| 2015-02 | 3 |
+| 2015-03 | 18 |
+| 2015-04 | 17 |
+| 2015-05 | 16 |
+| 2015-06 | 7 |
+| 2015-07 | 10 |
+| 2015-08 | 11 |
+| 2015-09 | 9 |
+| 2015-10 | 7 |
+| 2015-11 | 5 |
+| 2015-12 | 13 |
+| 2016-01 | 6 |
+| 2016-02 | 6 |
+| 2016-03 | 13 |
+| 2016-04 | 20 |
+| 2016-05 | 14 |
+| 2016-06 | 15 |
+| 2016-07 | 11 |
+| 2016-08 | 11 |
+| 2016-09 | 7 |
+| 2016-10 | 3 |
+| 2016-11 | 4 |
+| 2016-12 | 4 |
+| 2017-01 | 9 |
+| 2017-02 | 6 |
+| 2017-03 | 5 |
+| 2017-04 | 9 |
+| 2017-05 | 4 |
+| 2017-06 | 6 |
+| 2017-07 | 6 |
+| 2017-08 | 13 |
+| 2017-09 | 3 |
+| 2017-12 | 1 |
+| 2018-02 | 2 |
+| 2018-06 | 3 |
+| 2018-09 | 2 |
+| 2018-12 | 4 |
+| 2019-01 | 6 |
+| 2019-02 | 3 |
+| 2019-04 | 2 |
+| 2019-07 | 24 |
+| 2019-08 | 4 |
+| 2019-10 | 1 |
+| 2020-01 | 2 |
+| 2020-03 | 2 |
+| 2020-05 | 1 |
+| 2020-06 | 4 |
+| 2020-07 | 3 |
+| 2020-08 | 6 |
+| 2021-02 | 4 |
+| 2021-03 | 2 |
+| 2021-04 | 4 |
+| 2021-05 | 1 |
+| 2021-08 | 3 |
+| 2021-11 | 7 |
+| 2021-12 | 3 |
+| 2022-01 | 3 |
+| 2022-02 | 2 |
+| 2022-03 | 1 |
+| 2022-04 | 10 |
+| 2022-05 | 2 |
+| 2022-07 | 4 |
+| 2022-12 | 5 |
+| 2023-01 | 2 |
+| 2023-02 | 1 |
+| 2023-04 | 5 |
+| 2023-05 | 2 |
+| 2023-08 | 5 |
+| 2023-09 | 1 |
+| 2023-10 | 1 |
+| 2023-12 | 5 |
+| 2024-02 | 1 |
+| 2024-04 | 4 |
+| 2024-05 | 1 |
+| 2024-06 | 1 |
+| 2024-07 | 3 |
+| 2024-08 | 2 |
+| 2024-09 | 23 |
+| 2024-10 | 3 |
+| 2024-11 | 46 |
+| 2024-12 | 1 |
+| 2025-01 | 3 |
+| 2025-02 | 5 |
+| 2025-03 | 1 |
+| 2025-04 | 21 |
+| 2025-05 | 6 |
+| 2025-06 | 14 |
+| 2025-07 | 10 |
+| 2025-08 | 16 |
+| 2025-09 | 42 |
+| 2025-10 | 18 |
+| 2025-11 | 8 |
+| 2025-12 | 18 |
+| 2026-01 | 28 |
+| 2026-02 | 42 |
+| 2026-03 | 83 |
+| 2026-04 | 122 |
+| 2026-05 | 301 |
+| 2026-06 | 761 |
+| 2026-07 | 464 |
+| 2026-08 | 466 |
+| 2026-09 | 795 |
+| 2026-10 | 567 |
+
+### Pull months for records without posting dates
+
+| Database-created month (proxy) | Analytics identities |
+|---|---:|
+| 2026-06 | 1 |
+| 2026-07 | 505 |
+| 2026-08 | 5 |
+| 2026-09 | 998 |
+
+</details>
+
+## Availability evidence
+
+| Stored status at extraction | US candidate identities |
+|---|---:|
+| Availability unknown | 124,100 |
+| Last check reported unavailable | 1 |
+
+## Screening and reconciliation
+
+| Domain signal | All combined candidates |
+|---|---:|
+| Posting-text signal only | 253,265 |
+| Named employer reference | 16,402 |
+| Employer-text signal | 11,663 |
+| Industry-code signal (unvalidated) | 7,351 |
+
+### Raw candidate enrichment coverage
+
+| Stored enrichment status | Source records |
+|---|---:|
+| pending | 279,358 |
+| official_reference_enriched | 74,603 |
+| rule_enriched | 3,269 |
+
+Enrichment status describes pipeline processing, not independently verified correctness.
+
+Combined 357,230 source rows into 288,681 posting identities using source IDs, normalized requisition URLs and same-employer database duplicate links. This prospect screen requires an analytical title; duty-only matches, pharmacy data-entry and non-analytical support titles are withheld for manual review; explicit foreign recruiting-country codes override contradictory US evidence. Named employer references use the existing reviewed inventory and MassBio shortlist. Employer names are whitespace/case normalized only; subsidiaries, spelling variants and unnamed employers may remain separate. A shared title alone does not join advertisements. Conflicting US/non-US evidence is withheld from the US subset.
+
+Industry-code enrichments are unvalidated and do not establish company membership. Original descriptions drive analytics and skill screening; enriched qualification summaries are used only when original text is absent. This is a reproducible rules-based screen; individual matches require review before outreach or eligibility decisions.
+
+[Download all employer prospects](outputs/training-market/web/employer-prospects.csv) · [Download US analytics posting evidence](outputs/training-market/web/analytics-postings.csv) · [Saved calculations and extraction receipt](outputs/training-market/web/summary.json)
