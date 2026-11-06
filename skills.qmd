@@ -38,27 +38,62 @@ html`<p class="context-note" role="status">${scope.records.toLocaleString("en-US
 ```
 :::
 
-::: {#skills-chart .panel .analytics-chart .ojs-track-layout}
+::: {#skills-chart .panel .native-bubbles}
 ### Skills in employer postings
 
+::: {.skill-explorer}
+::: {}
 ```{ojs}
-skillRows.length ? Plot.plot({
-  width: Math.max(560, layoutWidth["skills-chart"] - 50),
-  height: 80 + skillRows.length * 34,
-  marginLeft: 180, marginRight: 55,
-  style: {fontFamily: "inherit", fontSize: "12px", background: "transparent", color: "#15335b"},
-  x: {label: skillMetric === "share" ? "Share of selected scope (%)" : skillMetric === "companies" ? "Employers" : "Posting mentions", grid: true, zero: true},
-  y: {label: null, domain: skillRows.map(d => d.name)},
-  marks: [
-    Plot.barX(skillRows, {x: skillMetric, y: "name", fill: d => d.name === skillName ? "#923364" : "#235eb5", title: d => `${d.name}: ${d.records} postings · ${d.share.toFixed(1)}% · ${d.companies} employers`}),
-    Plot.text(skillRows, {x: skillMetric, y: "name", text: d => skillMetric === "share" ? d.share.toFixed(1) + "%" : d[skillMetric].toLocaleString("en-US"), dx: 7, textAnchor: "start"}),
-    Plot.ruleX([0])
-  ]
-}) : html`<p role="status">No skills match this search. Clear the search or try another term.</p>`
+bubbleView = {
+  if (!skillRows.length) return html`<p role="status">No skills match this search. Clear the search or try another term.</p>`;
+  const control = viewof skillName;
+  const peak = Math.max(1, ...scope.skills.map(d => skillMetric === "share" ? 100 * d.records / d.denominator : d[skillMetric]));
+  const choose = name => {
+    if (control.value === name) return;
+    control.value = name;
+    control.dispatchEvent(new Event("input", {bubbles: true}));
+  };
+  return html`<div class="skill-bubbles" role="group" aria-label="Skills by selected measure">${skillRows.map(d => {
+    const diameter = 188 * Math.sqrt(d[skillMetric] / peak);
+    const value = skillMetric === "share" ? d.share.toFixed(1) + "%" : d[skillMetric].toLocaleString("en-US");
+    const button = html`<button type="button" class="ojs-bubble" data-skill=${d.name} style=${`--bubble-size:${diameter}px;--bubble-slot:${Math.max(100,diameter)}px`} aria-pressed="false" aria-controls="selected-skill-summary" aria-label=${`${d.name}: ${d.records} postings, ${d.companies} employers, ${d.share.toFixed(1)} percent. Show evidence.`}>
+      <span class="bubble-disc" aria-hidden="true">${diameter >= 75 ? html`<strong>${value}</strong>` : ""}</span>
+      <span class="bubble-caption">${d.name}${diameter < 75 ? html`<strong>${value}</strong>` : ""}</span>
+    </button>`;
+    button.addEventListener("click", () => choose(d.name));
+    button.addEventListener("focus", () => choose(d.name));
+    button.addEventListener("mouseenter", () => {
+      if (!document.activeElement?.closest(".analytics-evidence, .skill-detail")) choose(d.name);
+    });
+    return button;
+  })}</div>`;
+}
+```
+
+```{ojs}
+//| output: false
+bubbleSelection = {
+  for (const button of bubbleView.querySelectorAll("[data-skill]")) button.setAttribute("aria-pressed", String(button.dataset.skill === skillName));
+}
+```
+:::
+
+::: {#selected-skill-summary .skill-detail role="region" aria-label="Selected skill evidence"}
+```{ojs}
+selectedSkill ? html`<div role="status"><p class="eyebrow">SELECTED SKILL</p><h3>${selectedSkill.name}</h3>
+<div class="skill-detail-metrics"><div><strong>${selectedSkill.records.toLocaleString("en-US")}</strong><span>postings</span></div><div><strong>${selectedSkill.companies}</strong><span>employers</span></div></div>
+<p>${selectedSkill.share.toFixed(1)}% of the selected scope. Mentions include required and preferred skills.</p>
+<a href="#source-evidence">Inspect employer source records ↓</a></div>` : html`<p role="status">Choose a skill to inspect its evidence.</p>`
+```
+:::
+:::
+
+```{ojs}
+html`<p class="tiny">Bubble area represents ${skillMetric === "share" ? "share of postings in the selected scope" : skillMetric === "companies" ? "the number of employers" : "the number of postings"}. Hover, tap or focus a bubble to inspect its evidence. Sizes use the full scope, so searching does not rescale bubbles.</p>`
 ```
 
 ::: {.tiny}
-Bars are ranked by the selected measure. The highlighted skill is selected in the evidence panel below. Each skill counts once per posting; categories overlap and include required and preferred mentions. These percentages describe the collection, not the wider job market. On small screens, swipe across the chart or tables to see more.
+Each skill counts once per posting; categories overlap and include required and preferred mentions. These percentages describe the collection, not the wider job market. Small bubbles have their values below the circle to keep labels readable.
 :::
 :::
 
@@ -72,7 +107,7 @@ Inputs.table(skillRows, {select: false, rows: 12, maxHeight: 440, layout: "auto"
 ```
 :::
 
-::: {.panel .analytics-evidence .analytics-table}
+::: {#source-evidence .panel .analytics-evidence .analytics-table}
 ### Inspect the source evidence
 
 ```{ojs}

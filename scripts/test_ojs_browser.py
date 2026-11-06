@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / '_site'
-OUT = ROOT / 'artifacts/ojs-migration'
+OUT = ROOT / 'artifacts/ojs-restored-visuals'
 OUT.mkdir(parents=True, exist_ok=True)
 scopes = json.loads((SITE/'outputs/us-employer-inventory/web/skills-data.json').read_text(encoding='utf-8'))['scopes']
 benchmarks = json.loads((SITE/'outputs/us-employer-inventory/web/outlook-data.json').read_text(encoding='utf-8'))
@@ -33,7 +33,7 @@ with sync_playwright() as p:
         assert page.locator('.observablehq--error').count() == 0
     def load(name):
         page.goto('https://pharma.test/'+name+'.html')
-        expect(page.locator('.analytics-chart svg')).to_have_count(1, timeout=30000)
+        expect(page.locator('.benchmark-card' if name == 'outlook' else '.ojs-bubble').first).to_be_visible(timeout=30000)
         clean()
     def mobile(name):
         page.set_viewport_size({'width':390,'height':844})
@@ -41,7 +41,7 @@ with sync_playwright() as p:
         page.wait_for_timeout(300)
         page.screenshot(path=str(OUT/(name+'-mobile.png')), full_page=True)
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), (name, page.evaluate("[...document.querySelectorAll('select, input, form, .panel')].filter(e => e.getBoundingClientRect().right > innerWidth).map(e => [e.tagName,e.className,e.getBoundingClientRect().right])"))
-        assert page.locator('.analytics-chart').evaluate('(el) => el.scrollWidth > el.clientWidth'), 'Chart must be pannable on mobile'
+        expect(page.locator('.benchmark-card' if name == 'outlook' else '.ojs-bubble').first).to_be_visible()
         page.screenshot(path=str(OUT/(name+'-mobile.png')), full_page=True)
         clean()
         page.set_viewport_size({'width':1280,'height':1000})
@@ -50,7 +50,7 @@ with sync_playwright() as p:
     expect(table.locator('tbody tr')).to_have_count(len(benchmarks['occupations']))
     for label, key in [('Median annual wage ($)','median'),('Annual projected openings','openings'),('Projected growth (%)','growth')]:
         page.get_by_label('Compare', exact=True).select_option(label=label)
-        expect(page.locator('#growth-chart svg')).to_contain_text(label)
+        expect(page.locator('.benchmark-card').first).to_contain_text(max(benchmarks['occupations'], key=lambda d:d[key])['name'])
         best=max(benchmarks['occupations'],key=lambda d:d[key])
         expect(table.locator('tbody tr').first).to_contain_text(best['name'])
     # Native table heading sorting changes visible row order.
@@ -102,18 +102,41 @@ with sync_playwright() as p:
     scope_control.select_option(label='All US postings')
     for label, axis in [('Share of scope (%)','Share of selected scope (%)'),('Employers','Employers'),('Posting mentions','Posting mentions')]:
         metric.select_option(label=label)
-        expect(page.locator('#skills-chart svg')).to_contain_text(axis)
+        expect(page.locator('.ojs-bubble')).to_have_count(len(scopes['us']['skills']))
+    # Hover/click/keyboard selection updates the existing input without rebuilding bubbles.
+    python_bubble=page.locator('.ojs-bubble[data-skill=Python]')
+    python_bubble.click()
+    expect(evidence).to_contain_text('Python appears')
+    expect(python_bubble).to_have_attribute('aria-pressed','true')
+    sql_bubble=page.locator('.ojs-bubble[data-skill=SQL]')
+    sql_bubble.focus()
+    sql_bubble.press('Enter')
+    expect(evidence).to_contain_text('SQL appears')
+    expect(sql_bubble).to_be_focused()
+    # Areas, not diameters, encode counts; searching retains the scope scale.
+    circles=page.locator('.ojs-bubble').evaluate_all("els => els.map(e => ({name:e.dataset.skill, diameter:parseFloat(e.style.getPropertyValue('--bubble-size'))}))")
+    sizes={d['name']:d['diameter'] for d in circles}
+    values={d['name']:d['records'] for d in scopes['us']['skills']}
+    assert abs((sizes['SQL']/sizes['Python'])**2 - values['SQL']/values['Python']) < 1e-8
+    search.fill('SQL')
+    expect(page.locator('.ojs-bubble')).to_have_count(1)
+    assert abs(page.locator('.bubble-disc').evaluate('(el) => el.getBoundingClientRect().width') - sizes['SQL']) < .1
+    search.fill('')
+    expect(page.locator('.ojs-bubble')).to_have_count(len(scopes['us']['skills']))
     skill_control.select_option(label='SQL')
     expect(evidence).to_contain_text('SQL appears')
     # Selection is persistent while focusing a source link; no hover DOM rebuild.
     link=evidence.get_by_role('link',name='Employer posting').first
     link.focus()
-    page.locator('#skills-chart svg').hover()
+    page.locator('.ojs-bubble[data-skill=Python]').hover()
     expect(link).to_be_focused()
     skill_table.get_by_text('Skill / data signal',exact=True).click()
     expect(skill_table.locator('tbody tr').first).to_contain_text(sorted(s['name'] for s in scopes['us']['skills'])[0])
+    page.evaluate('window.scrollTo(0, 0)')
+    page.wait_for_timeout(300)
     page.screenshot(path=str(OUT/'skills-desktop.png'),full_page=True)
+    page.locator('#skills-chart').screenshot(path=str(OUT/'skills-bubbles.png'))
     mobile('skills')
     clean()
     browser.close()
-print('OJS_BROWSER_OK: 2 pages; 3 measures each; 3 skill scopes; sorting, source parity, empty/recovery states, focus, desktop and 390px mobile; no runtime errors; no server')
+print('OJS_BROWSER_OK: 2 pages; restored cards and area-proportional bubbles; click/keyboard/focus; 3 measures each; 3 skill scopes; sorting, source parity, empty/recovery states, focus, desktop and 390px mobile; no runtime errors; no server')

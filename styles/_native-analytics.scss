@@ -28,3 +28,32 @@
     .industry-growth { border-left: 0; padding-left: 0; }
   }
 }
+
+// Restore the original pastel bubble/card language through reactive OJS output.
+.native-analytics {
+  .native-cards { margin-top: 28px; }
+  .native-cards .benchmark-growth { font-size: clamp(1.9rem, 3vw, 2.5rem); }
+  .native-cards .benchmark-facts { flex-wrap: wrap; gap: 12px; }
+  .native-bubbles .skill-bubbles { gap: 20px; }
+  .ojs-bubble {
+    width: var(--bubble-slot); min-height: 70px; flex: none;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    border: 0; background: transparent; color: var(--ink); padding: 4px 0;
+    cursor: pointer; border-radius: 8px;
+  }
+  .bubble-disc {
+    width: var(--bubble-size); height: var(--bubble-size); border-radius: 50%;
+    background: #e7f0ff; box-shadow: inset 0 0 0 1px #9bbce9, 0 4px 16px #204b7a0c;
+    display: flex; align-items: center; justify-content: center;
+    color: #173e78; transition: background .15s, box-shadow .15s;
+    strong { font-size: 1.25rem; }
+  }
+  .ojs-bubble:nth-child(3n + 2) .bubble-disc { background: #fff0f7; color: #85305b; box-shadow: inset 0 0 0 1px #edbad3; }
+  .ojs-bubble:nth-child(3n) .bubble-disc { background: #d4e5ff; }
+  .ojs-bubble[aria-pressed="true"] .bubble-disc { background: #ffe1ef; box-shadow: 0 0 0 3px #923364; }
+  .ojs-bubble:hover .bubble-disc { box-shadow: 0 0 0 3px #cf4f91; }
+  .bubble-caption { font-size: .85rem; font-weight: 650; line-height: 1.35; text-align: center; overflow-wrap: anywhere; }
+  .bubble-caption strong { display: block; margin-top: 4px; }
+  .native-bubbles .skill-detail { position: static; }
+  @media (prefers-reduced-motion: reduce) { .bubble-disc { transition: none; } }
+}

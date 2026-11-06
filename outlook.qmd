@@ -35,27 +35,27 @@ viewof metric = Inputs.select(metricLabels, {label: "Compare", value: "growth"})
 ```
 :::
 
-::: {#growth-chart .panel .analytics-chart .ojs-track-layout}
+::: {#growth-chart .native-cards}
 ### Occupation comparison
 
 ```{ojs}
-comparison.length ? Plot.plot({
-  width: Math.max(560, layoutWidth["growth-chart"] - 50),
-  height: 130 + comparison.length * 65,
-  marginLeft: 220, marginRight: 65,
-  style: {fontFamily: "inherit", fontSize: "12px", background: "transparent", color: "#15335b"},
-  x: {label: [...metricLabels].find(d => d[1] === metric)[0], grid: true, zero: true},
-  y: {label: null, domain: comparison.map(d => d.name)},
-  marks: [
-    Plot.barX(comparison, {x: metric, y: "name", fill: "#235eb5", insetTop: 12, insetBottom: 12, title: d => `${d.name}\n${formatMetric(d[metric], metric)}\nSOC ${d.soc}`}),
-    Plot.text(comparison, {x: metric, y: "name", text: d => formatMetric(d[metric], metric), dx: 7, textAnchor: "start", fill: "#15335b"}),
-    Plot.ruleX([0])
-  ]
-}) : html`<p role="status">Select at least one occupation to compare.</p>`
+comparison.length ? html`<div class="outlook-grid">${comparison.map(d => html`<article class="benchmark-card">
+  <span class="tiny">SOC ${d.soc} · NATIONAL PROXY</span>
+  <h3>${d.name}</h3>
+  <strong class="benchmark-growth">${metric === "growth" && d.growth > 0 ? "+" : ""}${formatMetric(d[metric], metric)}</strong>
+  <p class="tiny">${metric === "growth" ? `projected growth, ${benchmarks.projection_period}` : metric === "median" ? `May ${benchmarks.wage_year} median annual wage` : `average annual projected openings, ${benchmarks.projection_period}`}</p>
+  <div class="growth-track" aria-hidden="true"><span style=${`width:${100 * d[metric] / Math.max(1, ...occupations.map(o => o[metric]))}%`}></span></div>
+  <div class="benchmark-facts">
+    <div><strong>${formatMetric(d.median, "median")}</strong><small>Median annual wage</small></div>
+    <div><strong>${formatMetric(d.openings, "openings")}</strong><small>Annual projected openings</small></div>
+  </div>
+  <p class="tiny">${d.growth}% projected growth · ${benchmarks.projection_period}. Openings include replacement needs, not currently advertised jobs.</p>
+  <a href=${d.url} target="_blank" rel="noopener">BLS source ↗</a> · <a href=${d.onet} target="_blank" rel="noopener">O*NET occupation ↗</a>
+</article>`)}</div>` : html`<p role="status">Select at least one occupation to compare.</p>`
 ```
 
 ::: {.tiny}
-Change the measure to compare growth, wages or openings. Bars are ranked by the selected measure; hover for occupation details. Exact values and source links appear below. On small screens, swipe across the chart or table to see more.
+Change the measure to update the highlighted figures and comparison tracks. Cards and the table follow your occupation selection. Tracks use the highest value across all benchmark occupations, so filtering does not change their scale.
 :::
 :::
 
