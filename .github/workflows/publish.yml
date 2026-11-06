@@ -5,6 +5,11 @@ on:
 
 name: Quarto Publish
 
+# Serialize updates to the shared publication branch.
+concurrency:
+  group: quarto-gh-pages
+  cancel-in-progress: false
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest

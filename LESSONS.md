@@ -115,3 +115,9 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: Scanned 10,654,778 rows, processed 357,230 candidates, reconciled 124,101 US candidate identities and 5,822 analytics-title matches across 1,254 labels. QA corrected role and geography false positives. Eleven pages rendered and 485 links passed. Prepared and plan-tested a runner for 279,358 exact pending IDs; no database writes or production execution.
 - Why: Company counts, industry keyword matches, valid geography, career eligibility and completed enrichment are different populations. Preserve distinctions and inspect example evidence before presenting totals. Existing script-only execution rule retained; no standing-rule fix proposed.
 - tags: local-pg,scope,early-career,geography,enrichment
+
+## 2026-11-06 -- Serialize Quarto Publish runs with the fixed quarto-gh-pages concurrency group and cancel-in-progress false. Successive main pushes otherwise race on the shared gh-pages ref even when both renders pass.
+- Expected: Both consecutive release pushes publish successfully.
+- Actual: The first publisher succeeded; the receipt-commit publisher failed because gh-pages advanced from 92e4dc7 to 6f3d53c. Added workflow concurrency and validated the YAML.
+- Why: The publish workflow allowed concurrent writers to the same gh-pages branch. The final receipt push overlapped the preceding release publish.
+- tags: github-actions,quarto,concurrency,fix-applied
