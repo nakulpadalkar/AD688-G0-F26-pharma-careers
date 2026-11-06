@@ -69,8 +69,8 @@
       "Bachelor": 141,
       "Master": 111,
       "Doctorate": 62,
-      "Associate": 14,
-      "High school": 14
+      "High school": 14,
+      "Associate": 14
     },
     "commercial_levels": {
       "Leadership": 136,
@@ -128,8 +128,8 @@
       "posted_min": "2026-05-02",
       "posted_max": "2026-06-05",
       "commercial_skills": {
-        "Python": 6,
         "Claims data": 6,
+        "Python": 6,
         "SQL": 6,
         "Tableau": 5,
         "LAAD / APLD / Xponent": 4,
@@ -137,17 +137,17 @@
         "Excel": 3,
         "SAS": 2,
         "Patient-level data": 2,
+        "Symphony": 2,
         "IQVIA": 2,
         "MMIT": 2,
-        "Symphony": 2,
         "Power BI": 1
       },
       "commercial_degrees": {
         "Master": 24,
         "Bachelor": 23,
         "Doctorate": 22,
-        "Associate": 14,
-        "High school": 14
+        "High school": 14,
+        "Associate": 14
       },
       "commercial_levels": {
         "Manager": 13,
@@ -204,16 +204,16 @@
         "Tableau": 8,
         "IQVIA": 7,
         "Claims data": 5,
-        "LAAD / APLD / Xponent": 3,
         "SQL": 3,
+        "LAAD / APLD / Xponent": 3,
         "Python": 3,
         "Patient-level data": 3,
         "Symphony": 2,
         "MMIT": 1
       },
       "commercial_degrees": {
-        "Bachelor": 20,
         "Master": 20,
+        "Bachelor": 20,
         "Doctorate": 18
       },
       "commercial_levels": {
@@ -234,14 +234,14 @@
       "posted_min": "2026-05-15",
       "posted_max": "2026-06-05",
       "commercial_skills": {
-        "Symphony": 3,
         "IQVIA": 3,
+        "Symphony": 3,
         "MMIT": 2,
-        "SQL": 1,
-        "Python": 1,
         "Claims data": 1,
-        "Excel": 1,
-        "Patient-level data": 1
+        "Python": 1,
+        "SQL": 1,
+        "Patient-level data": 1,
+        "Excel": 1
       },
       "commercial_degrees": {
         "Bachelor": 11,
@@ -266,16 +266,16 @@
       "commercial_skills": {
         "Excel": 5,
         "Claims data": 4,
-        "Symphony": 2,
         "IQVIA": 2,
+        "Symphony": 2,
         "Power BI": 2,
         "Tableau": 2,
         "SQL": 2,
+        "SAS": 1,
         "R": 1,
         "LAAD / APLD / Xponent": 1,
-        "SAS": 1,
-        "MMIT": 1,
         "Python": 1,
+        "MMIT": 1,
         "Patient-level data": 1
       },
       "commercial_degrees": {
@@ -300,13 +300,13 @@
       "posted_min": "2026-05-04",
       "posted_max": "2026-06-05",
       "commercial_skills": {
-        "Excel": 4,
         "Claims data": 4,
+        "Excel": 4,
         "Power BI": 4,
-        "SAS": 2,
         "Patient-level data": 2,
-        "IQVIA": 2,
+        "SAS": 2,
         "SQL": 2,
+        "IQVIA": 2,
         "Python": 2,
         "Tableau": 2,
         "R": 1,
@@ -337,8 +337,8 @@
       "commercial_skills": {
         "SQL": 7,
         "Python": 7,
-        "R": 5,
         "Tableau": 5,
+        "R": 5,
         "IQVIA": 4,
         "SAS": 3,
         "Symphony": 2,
@@ -347,8 +347,8 @@
         "Patient-level data": 2
       },
       "commercial_degrees": {
-        "Bachelor": 6,
         "Master": 6,
+        "Bachelor": 6,
         "Doctorate": 1
       },
       "commercial_levels": {
@@ -369,15 +369,15 @@
       "posted_min": "2026-06-05",
       "posted_max": "2026-06-05",
       "commercial_skills": {
-        "R": 4,
         "SQL": 4,
+        "R": 4,
         "Python": 4,
-        "Excel": 3,
         "Power BI": 3,
         "Tableau": 3,
         "Claims data": 3,
-        "IQVIA": 2,
+        "Excel": 3,
         "Symphony": 2,
+        "IQVIA": 2,
         "SAS": 2,
         "LAAD / APLD / Xponent": 1,
         "Patient-level data": 1
@@ -406,19 +406,19 @@
       "commercial_skills": {
         "SAS": 2,
         "Claims data": 2,
-        "Excel": 1,
         "Power BI": 1,
         "Tableau": 1,
+        "SQL": 1,
+        "Excel": 1,
         "LAAD / APLD / Xponent": 1,
         "IQVIA": 1,
+        "Python": 1,
         "MMIT": 1,
-        "SQL": 1,
-        "Patient-level data": 1,
-        "Python": 1
+        "Patient-level data": 1
       },
       "commercial_degrees": {
-        "Bachelor": 1,
-        "Master": 1
+        "Master": 1,
+        "Bachelor": 1
       },
       "commercial_levels": {
         "Leadership": 3,
@@ -440,8 +440,8 @@
         "SQL": 2,
         "Python": 2,
         "Claims data": 2,
-        "Excel": 1,
         "R": 1,
+        "Excel": 1,
         "IQVIA": 1,
         "Patient-level data": 1
       },
@@ -469,14 +469,14 @@
       "commercial_skills": {
         "Excel": 3,
         "Patient-level data": 3,
-        "IQVIA": 2,
         "Symphony": 2,
+        "IQVIA": 2,
         "Power BI": 1,
         "Tableau": 1,
-        "Claims data": 1,
-        "MMIT": 1,
         "SQL": 1,
-        "Python": 1
+        "Claims data": 1,
+        "Python": 1,
+        "MMIT": 1
       },
       "commercial_degrees": {
         "Master": 4,
@@ -604,8 +604,8 @@
         "Bachelor": 43,
         "Master": 36,
         "Doctorate": 17,
-        "Associate": 8,
-        "High school": 8
+        "High school": 8,
+        "Associate": 8
       },
       "commercial_levels": {
         "Leadership": 35,
@@ -634,8 +634,8 @@
         "Python": 9,
         "LAAD / APLD / Xponent": 7,
         "Symphony": 6,
-        "SAS": 4,
         "R": 4,
+        "SAS": 4,
         "Patient-level data": 4,
         "MMIT": 3,
         "Power BI": 3
@@ -644,8 +644,8 @@
         "Bachelor": 33,
         "Master": 31,
         "Doctorate": 27,
-        "Associate": 6,
-        "High school": 6
+        "High school": 6,
+        "Associate": 6
       },
       "commercial_levels": {
         "Leadership": 28,
@@ -705,8 +705,8 @@
         "IQVIA": 9,
         "SQL": 8,
         "LAAD / APLD / Xponent": 8,
-        "Python": 6,
         "Claims data": 6,
+        "Python": 6,
         "Power BI": 5,
         "Symphony": 5,
         "R": 4,
@@ -740,20 +740,20 @@
       "posted_min": "2026-05-04",
       "posted_max": "2026-10-21",
       "commercial_skills": {
-        "Symphony": 2,
         "IQVIA": 2,
-        "R": 1,
+        "Symphony": 2,
         "Power BI": 1,
         "Tableau": 1,
-        "LAAD / APLD / Xponent": 1,
         "SAS": 1,
-        "MMIT": 1,
         "SQL": 1,
-        "Python": 1
+        "R": 1,
+        "LAAD / APLD / Xponent": 1,
+        "Python": 1,
+        "MMIT": 1
       },
       "commercial_degrees": {
-        "Bachelor": 4,
         "Master": 4,
+        "Bachelor": 4,
         "Doctorate": 1
       },
       "commercial_levels": {
@@ -774,18 +774,18 @@
       "posted_min": "2026-05-01",
       "posted_max": "2026-10-21",
       "commercial_skills": {
+        "SQL": 2,
         "LAAD / APLD / Xponent": 2,
         "IQVIA": 2,
-        "SQL": 2,
         "Python": 2,
         "Tableau": 1,
-        "MMIT": 1,
         "Symphony": 1,
+        "MMIT": 1,
         "Excel": 1
       },
       "commercial_degrees": {
-        "Bachelor": 4,
         "Master": 4,
+        "Bachelor": 4,
         "Doctorate": 3
       },
       "commercial_levels": {
@@ -808,8 +808,8 @@
       "commercial_skills": {
         "IQVIA": 2,
         "Power BI": 1,
-        "SQL": 1,
-        "Tableau": 1
+        "Tableau": 1,
+        "SQL": 1
       },
       "commercial_degrees": {
         "Bachelor": 2
@@ -860,8 +860,8 @@
       "posted_min": "2026-05-23",
       "posted_max": "2026-10-23",
       "commercial_skills": {
-        "Excel": 2,
-        "Claims data": 2
+        "Claims data": 2,
+        "Excel": 2
       },
       "commercial_degrees": {
         "Bachelor": 2
@@ -883,12 +883,12 @@
       "posted_min": "2026-06-02",
       "posted_max": "2026-10-23",
       "commercial_skills": {
-        "Excel": 1,
-        "R": 1,
         "Power BI": 1,
         "Tableau": 1,
-        "Claims data": 1,
         "SQL": 1,
+        "R": 1,
+        "Claims data": 1,
+        "Excel": 1,
         "Python": 1
       },
       "commercial_degrees": {
