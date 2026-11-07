@@ -1,6 +1,6 @@
 # US employer market evidence
 
-`data/census-3254.json` retains the original 26 national NAICS 3254 rows from the Census 2022 SUSB detailed enterprise-size dataset, its URL, encoding and whole-download SHA-256. Read the downloaded text as Windows-1252. The broad source file is ignored; the selected public rows are versioned.
+`data/census-3254.parquet` retains the original 26 national NAICS 3254 rows from the Census 2022 SUSB detailed enterprise-size dataset, its URL, encoding and whole-download SHA-256. Read the downloaded text as Windows-1252. The broad source file is ignored; the selected public rows are versioned.
 
 `scripts/build_us_market.py` aggregates disjoint enterprise-size bins; total and overlapping subtotal codes 01, 33 and 37 are not added as bins. Firms, establishments and industry employment remain separate. Counts exclude nonemployers. Enterprise employment determines size while the employment column counts the selected industry's establishments. Do not sum firm counts across industries/states or treat the manufacturing population as all biopharma buyers.
 

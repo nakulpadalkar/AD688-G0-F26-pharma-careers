@@ -2,8 +2,10 @@ project:
   type: website
   pre-render:
     - python scripts/build_site_data.py
+    - python scripts/build_training_overview.py
     - python scripts/build_boston_market.py
     - python scripts/build_us_market.py
+    - python scripts/build_market_visuals.py
   post-render:
     - python scripts/test_site_metrics.py
   render:
@@ -28,6 +30,8 @@ project:
     - /outputs/boston-market/web/**
     - /outputs/training-market/web/**
     - /outputs/us-market/web/**
+    - /outputs/market-visuals/web/**
+    - /scripts/market-visuals.js
 
 website:
   title: "PHARMA / CAREERS"

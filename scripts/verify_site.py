@@ -5,6 +5,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 from build_evidence import locate
 from artifact_io import read_data,artifact_path,TASK
+from snapshot_io import read_snapshot
 from build_site_data import map_svg, employer_analysis
 ROOT=Path(__file__).resolve().parents[1]
 def read(name):return read_data(name)
@@ -52,6 +53,7 @@ for page in ['index.html','geography.html','outlook.html','jobs.html','skills.ht
     file=site/page;p=Links();p.feed(file.read_text(encoding='utf-8'));assert len(p.ids)==len(set(p.ids)),f'Duplicate id: {page}'
     for link in p.links:
         u=urlsplit(link)
+        assert Path(u.path).suffix.lower() not in {'.csv','.xlsx','.xls'}, f'Non-Parquet download: {page}: {link}'
         if u.scheme or link.startswith('//'):continue
         target=(file.parent/unquote(u.path)).resolve() if u.path else file
         assert target.exists(),f'Broken local link: {page}: {link}'
@@ -59,7 +61,9 @@ for page in ['index.html','geography.html','outlook.html','jobs.html','skills.ht
             q=Links();q.feed(target.read_text(encoding='utf-8'));assert unquote(u.fragment) in q.ids,f'Broken anchor {link}'
         checked+=1
 resources=['outputs/us-employer-inventory/web/dashboard-data.js','scripts/dashboard.js']+[artifact_path(name).relative_to(ROOT).as_posix() for name in ['meteor','current-jobs','benchmarks','employer-analysis','us-jobs','database-jobs','inventory-summary','all-employer-records','site-metrics']]
-resources += ['outputs/training-market/web/'+name for name in ['summary.json','employer-prospects.csv','analytics-postings.csv']]
+resources += ['outputs/training-market/web/'+name for name in ['summary.parquet','employer-prospects.parquet','analytics-postings.parquet']]
+for market in ['boston-market','us-market','market-visuals']:
+    resources += [p.relative_to(ROOT).as_posix() for p in (ROOT/'outputs'/market/'web').glob('*.parquet')]
 for rel in resources:
     assert (ROOT/rel).read_bytes()==(site/rel).read_bytes(),f'Stale published resource: {rel}'
 # Every page must load Quarto's compiled theme, including the custom SCSS rules.
@@ -87,3 +91,12 @@ for rel in ['scripts/dashboard.js','jobs.qmd','skills.qmd']:
 assert read('us-jobs.json')==read('database-jobs.json')
 assert 'job-country' not in (site/'jobs.html').read_text(encoding='utf-8')
 print(f'EVIDENCE_OK: 11 geography controls, count reconciliation, 51 map states, fresh bundles, {checked} local links and anchors')
+
+assert not [p for p in site.rglob('*') if p.suffix.lower() in {'.csv','.xlsx','.xls'}]
+summary=read_snapshot(ROOT/'outputs/training-market/web/summary.parquet')
+career=summary['us']['career']
+early=career.get('Explicit early-career title',0)+career.get('0–3-year experience signal; review required',0)
+index=(site/'index.html').read_text(encoding='utf-8')
+for count in [summary['us']['analytics'],summary['analytics_employer_labels'],early]:
+    assert f'<strong>{count:,}</strong>' in index, f'Missing homepage count: {count}'
+print('PARQUET_SITE_OK: download formats, snapshot parity and calculated homepage counts')

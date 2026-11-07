@@ -1,5 +1,5 @@
+from snapshot_io import read_snapshot, write_snapshot
 """US market evidence: Census enterprise sizes plus saved posting identities."""
-import csv
 import hashlib
 import json
 from collections import defaultdict
@@ -38,20 +38,19 @@ def compute(jobs, census):
             'commercial_employers': sum(r['commercial'] > 0 for r in employers)}
 
 def build():
-    census = json.loads((OUT/'data/census-3254.json').read_text(encoding='utf-8'))
+    census = read_snapshot((OUT/'data/census-3254.parquet'))
     jobs = read_data('database-jobs.json')
     d = compute(jobs, census)
     d['census_source'] = {k: v for k,v in census.items() if k != 'rows'}
-    d['inventory_checked_at'] = read_data('inventory-summary.json')['checked_at_utc']
+    d['inventory_checked_at'] = read_data('inventory-summary.parquet')['checked_at_utc']
     d['input_sha256'] = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                         for p in [OUT/'data/census-3254.json', artifact_path('database-jobs.json')]}
+                         for p in [OUT/'data/census-3254.parquet', artifact_path('database-jobs.json')]}
     web = OUT/'web'; web.mkdir(parents=True, exist_ok=True)
-    (web/'summary.json').write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding='utf-8')
+    write_snapshot(web/'summary.parquet',d)
     for name, rows, keys in [('employers',d['employers'],['company','postings','analytics','commercial','missing_posted_date']),
                              ('states',d['states'],['state','name','postings','employers','analytics','commercial','missing_posted_date']),
                              ('company-sizes',d['bands'],['band','FIRM','ESTB','EMPL'])]:
-        with (web/(name+'.csv')).open('w',newline='',encoding='utf-8-sig') as f:
-            w=csv.DictWriter(f,fieldnames=keys,extrasaction='ignore');w.writeheader();w.writerows(rows)
+        write_snapshot(web/(name+'.parquet'),[{k:r[k] for k in keys} for r in rows])
     n=d['inventory']; total=d['census_total']
     lines=['## How many companies, and how large?', '',
            f"**{total['FIRM']:,} employer firms** operated **{total['ESTB']:,} pharmaceutical and medicine manufacturing establishments**, employing **{total['EMPL']:,} people** in those establishments in 2022. This is the Census SUSB NAICS 3254 population, not the full biopharma ecosystem or a list of qualified certificate buyers.", '',
@@ -84,7 +83,7 @@ def build():
               f"{n['commercial_no_degree_detected']} have no detected degree term; {n['commercial_equivalent_experience']} contain equivalent-experience wording. Neither implies open eligibility. Non-degree describes the credential; employer degree and experience requirements still apply.", '',
               'Career-level labels from titles: '+', '.join(f'{k} ({v})' for k,v in n['commercial_levels'].items())+'.', '',
               'Commercial fit reuses four saved relevance reasons: commercial analytics title, commercial-data duties, data product in a business role, or dataset/product in an analytical role. The broader analytics screen also includes clinical, scientific and operations specialties beyond this curriculum. Review duties individually before making a sales claim.', '',
-              '[Employer CSV](outputs/us-market/web/employers.csv) · [All states CSV](outputs/us-market/web/states.csv) · [Company-size CSV](outputs/us-market/web/company-sizes.csv) · [Calculated evidence and hashes](outputs/us-market/web/summary.json)']
+              '[Employer Parquet](outputs/us-market/web/employers.parquet) · [All states Parquet](outputs/us-market/web/states.parquet) · [Company-size Parquet](outputs/us-market/web/company-sizes.parquet) · [Calculated evidence and hashes](outputs/us-market/web/summary.parquet)']
     (web/'evidence.qmd').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print('US_MARKET_BUILT',total,'commercial',n['commercial'],'employers',d['commercial_employers'])
 

@@ -1,3 +1,4 @@
+from snapshot_io import read_snapshot, write_snapshot
 """Geography controls, population reconciliation and changed-input checks."""
 import hashlib
 import json
@@ -17,8 +18,8 @@ assert region({'location': 'Boston, MA', 'country': 'CA'}) == 'outside_or_unreso
 assert commercial({'analytics_relevant': True, 'relevance_basis': 'commercial_analytics_title'})
 assert not commercial({'analytics_relevant': True, 'relevance_basis': 'pharma_data_science_or_informatics_title'})
 jobs = read_data('database-jobs.json')
-employers = json.loads((OUT/'data/employers.json').read_text(encoding='utf-8'))
-saved = json.loads((OUT/'web/market-summary.json').read_text(encoding='utf-8'))
+employers = read_snapshot((OUT/'data/employers.parquet'))
+saved = read_snapshot((OUT/'web/market-summary.parquet'))
 fresh = compute(jobs, employers)
 assert all(saved[k] == v for k, v in fresh.items())
 assert len({r['id'] for r in jobs}) == len(jobs)

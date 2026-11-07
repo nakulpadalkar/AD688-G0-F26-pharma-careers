@@ -1,7 +1,7 @@
+from snapshot_io import read_snapshot, write_snapshot
 """Offline, auditable training-prospect screen over the broad local extract."""
 from collections import Counter, defaultdict
 from datetime import datetime, timezone, timedelta
-import csv
 import hashlib
 import html
 import json
@@ -72,7 +72,7 @@ def domain_basis(row):
 
 def refine_candidates(rows):
     """Apply review controls to saved evidence; never upgrade unknown geography."""
-    references=json.loads((ROOT/'outputs/boston-market/data/employers.json').read_text(encoding='utf-8'))
+    references=read_snapshot((ROOT/'outputs/boston-market/data/employers.parquet'))
     normalize=lambda name: re.sub(r'[^a-z0-9]','',name.lower())
     names={normalize(e['company']) for e in references}
     names.update(normalize(e.get('inventory_company') or '') for e in references)
@@ -103,13 +103,8 @@ def summarize(rows):
             'freshness':dict(Counter(r['freshness'] for r in rows))}
 
 
-def write_csv(path, rows, fields):
-    with path.open('w',newline='',encoding='utf-8-sig') as stream:
-        writer=csv.DictWriter(stream,fieldnames=fields,extrasaction='ignore');writer.writeheader()
-        for row in rows:
-            # Spreadsheet formula injection protection for public CSV downloads.
-            writer.writerow({k: ("'"+str(v) if isinstance(v,str) and v.startswith(('=','+','-','@')) else v)
-                             for k,v in row.items() if k in fields})
+def write_table_snapshot(path, rows, fields):
+    write_snapshot(path, [{k:r.get(k) for k in fields} for r in rows])
 
 
 def build():
@@ -230,17 +225,16 @@ def publish(combined,receipt,raw_geo,raw_status):
             'posted_months':dict(sorted(Counter(r['posted_on'][:7] for r in analytics if r['posted_on']).items())),
             'pull_months_undated':dict(sorted(Counter(r['pulled_on'][:7] or 'Unknown' for r in analytics if not r['posted_on']).items()))}
     web=OUT/'web';web.mkdir(parents=True,exist_ok=True)
-    (web/'summary.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
+    write_snapshot(web/'summary.parquet',result)
     (OUT/'processed').mkdir(exist_ok=True)
-    # Sanitized posting evidence is reproducible locally; only focused CSVs are published.
-    (OUT/'processed/postings.json').write_text(json.dumps(combined,ensure_ascii=False),encoding='utf-8')
-    write_csv(web/'employer-prospects.csv',employer_rows,list(employer_rows[0]) if employer_rows else ['company'])
+    # Sanitized posting evidence is reproducible locally; only focused Parquet datasets are published.
+    write_snapshot(OUT/'processed/postings.parquet',combined)
+    write_table_snapshot(web/'employer-prospects.parquet',employer_rows,list(employer_rows[0]) if employer_rows else ['company'])
     example_fields=['id','company','title','location','state','domain_basis','commercial_fit','career','experience_mentions','degrees','skills','posted_on','posted_last_120_days','posting_date_future','pulled_on','freshness','url','raw_records']
     export=[]
     for r in analytics:
-        export.append({**r,'experience_mentions':'; '.join(f"{e['minimum']}-{e['maximum_mentioned']}"+('+' if e['open_ended'] else '') for e in r['experience_evidence']),
-                       'degrees':'; '.join(r['degrees']),'skills':'; '.join(r['skills'])})
-    write_csv(web/'analytics-postings.csv',export,example_fields)
+        export.append({**r,'experience_mentions':r['experience_evidence']})
+    write_table_snapshot(web/'analytics-postings.parquet',export,example_fields)
     def esc(value):return html.escape(str(value)).replace('|','&#124;').replace('\n',' ')
     lines=[f"Snapshot extracted **{receipt['completed_at_utc'][:10]} UTC** from local PostgreSQL. All available dates were scanned, including missing posting dates.", '',
            '| Processing stage | Records |','|---|---:|',
@@ -285,7 +279,7 @@ def publish(combined,receipt,raw_geo,raw_status):
     lines += [f'| {esc(k)} | {v:,} |' for k,v in result['raw_enrichment_status'].items()]
     lines += ['', 'Enrichment status describes pipeline processing, not independently verified correctness.', '', f"Combined {raw_count:,} source rows into {len(combined):,} posting identities using source IDs, normalized requisition URLs and same-employer database duplicate links. This prospect screen requires an analytical title; duty-only matches, pharmacy data-entry and non-analytical support titles are withheld for manual review; explicit foreign recruiting-country codes override contradictory US evidence. Named employer references use the existing reviewed inventory and MassBio shortlist. Employer names are whitespace/case normalized only; subsidiaries, spelling variants and unnamed employers may remain separate. A shared title alone does not join advertisements. Conflicting US/non-US evidence is withheld from the US subset.", '',
               'Industry-code enrichments are unvalidated and do not establish company membership. Original descriptions drive analytics and skill screening; enriched qualification summaries are used only when original text is absent. This is a reproducible rules-based screen; individual matches require review before outreach or eligibility decisions.', '',
-              '[Download all employer prospects](outputs/training-market/web/employer-prospects.csv) · [Download US analytics posting evidence](outputs/training-market/web/analytics-postings.csv) · [Saved calculations and extraction receipt](outputs/training-market/web/summary.json)']
+              '[Download all employer prospects](outputs/training-market/web/employer-prospects.parquet) · [Download US analytics posting evidence](outputs/training-market/web/analytics-postings.parquet) · [Saved calculations and extraction receipt](outputs/training-market/web/summary.parquet)']
     (web/'evidence.qmd').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print(json.dumps({'TRAINING_BUILD_OK':True,'raw':raw_count,'combined':len(combined),'us':len(us),'analytics':len(analytics),'analytics_employer_labels':len(employer_rows),'analytics_unknown_employer_postings':sum(r['employer_key'].startswith('unknown:') for r in analytics),'career':result['us']['career']}),flush=True)
 
@@ -293,7 +287,7 @@ def publish(combined,receipt,raw_geo,raw_status):
 if __name__=='__main__':
     import sys
     if '--refresh-derived' in sys.argv:
-        saved=json.loads((OUT/'web/summary.json').read_text(encoding='utf-8'))
-        combined=json.loads((OUT/'processed/postings.json').read_text(encoding='utf-8'))
+        saved=read_snapshot((OUT/'web/summary.parquet'))
+        combined=read_snapshot((OUT/'processed/postings.parquet'))
         publish(combined,saved['receipt'],saved['raw_geography'],saved['raw_enrichment_status'])
     else:build()

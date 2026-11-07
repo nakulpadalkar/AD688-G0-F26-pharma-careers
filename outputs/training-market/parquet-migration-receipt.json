@@ -1,0 +1,26 @@
+{
+  "removed_replaced_dataset_files": [
+    "outputs/training-market/web/analytics-postings.csv",
+    "outputs/training-market/web/employer-prospects.csv",
+    "outputs/training-market/web/summary.json",
+    "outputs/training-market/processed/postings.json",
+    "outputs/boston-market/data/employers.json",
+    "outputs/boston-market/data/market-context.json",
+    "outputs/boston-market/web/employer-prospects.csv",
+    "outputs/boston-market/web/market-summary.json",
+    "outputs/us-market/data/census-3254.json",
+    "outputs/us-market/web/company-sizes.csv",
+    "outputs/us-market/web/employers.csv",
+    "outputs/us-market/web/states.csv",
+    "outputs/us-market/web/summary.json",
+    "outputs/market-visuals/data/county-boundaries.json",
+    "outputs/market-visuals/data/urban-counties.json",
+    "outputs/market-visuals/web/county-employment.csv",
+    "outputs/market-visuals/web/provenance.json"
+  ],
+  "canonical_data_format": "Parquet",
+  "operational_receipts": "JSON",
+  "browser_delivery": "Generated JavaScript derived from Parquet",
+  "source_input_and_processed_roundtrip": "exact",
+  "download_row_counts": "preserved"
+}

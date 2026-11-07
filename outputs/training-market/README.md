@@ -4,10 +4,10 @@ The extraction scans the entire local posting table in a read-only, repeatable-r
 
 - `receipt.json`: exact query, scope, snapshot counts and raw SHA-256.
 - `raw/local-candidates.parquet`: private source evidence, ignored by Git and excluded from website resources.
-- `processed/postings.json`: locally retained sanitized identity and classification evidence, excluded from publication.
-- `web/summary.json`: calculated public aggregates and provenance.
-- `web/employer-prospects.csv`: employer-label counts, early-career review signals, skills and source example.
-- `web/analytics-postings.csv`: US analytics matches with career signals, date provenance and stored URLs.
+- `processed/postings.parquet`: locally retained sanitized identity and classification evidence, excluded from publication.
+- `web/summary.parquet`: calculated public aggregates and provenance.
+- `web/employer-prospects.parquet`: employer-label counts, early-career review signals, skills and source example.
+- `web/analytics-postings.parquet`: US analytics matches with career signals, date provenance and stored URLs.
 - `web/evidence.qmd`: generated website content; never edit counts by hand.
 
 Refresh explicitly, from the repository root:

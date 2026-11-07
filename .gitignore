@@ -233,3 +233,5 @@ outputs/us-market/qa/
 outputs/training-market/raw/
 outputs/training-market/processed/
 outputs/training-market/enrichment/
+
+outputs/market-visuals/qa/

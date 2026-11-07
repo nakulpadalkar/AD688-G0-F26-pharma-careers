@@ -1,50 +1,34 @@
 ---
 title: "US employer market"
-description: "National company counts, enterprise sizes and evidence for employer-sponsored training."
+description: "Explore the employer opportunity through maps, workforce comparisons and commercial-data evidence."
+format:
+  html:
+    css: styles/market-visuals.css
 ---
 
+Explore the national employer landscape, locate observed pharma data work, and examine county workforce context. The proposed non-degree certificate targets commercial analytics, market access, BI and data operations teams.
+
+[Boston employer market](boston-market.html) · [Proposed curriculum](about.html)
+
 ```{=html}
-<style>
-.us-market { min-width: 0; }
-.us-market table { display: block; max-width: 100%; overflow-x: auto; }
-.us-market th, .us-market td { min-width: 90px; }
-.us-market th:first-child, .us-market td:first-child { min-width: 170px; }
-.us-market input { max-width: 100%; }
-</style>
+<script>document.body.dataset.market = "us";</script>
 ```
 
-::: {.us-market}
+{{< include _includes/market-visuals.html >}}
 
-The proposed **Pharmaceutical Commercial Data Certificate** can be positioned nationally as employer-sponsored development for commercial analytics, market access, business intelligence and data operations teams. A national offer would require an approved delivery format and schedule that working professionals across time zones can use. Program approval, admissions and pricing remain pending.
+## From employer conversations to sponsored learners
 
-[Compare the Boston employer market](boston-market.html) · [Explore the certificate](about.html)
+Start with relevant commercial teams and a learning-and-development budget owner. Validate the business problem, staff preparation, time availability and funding before counting a company as a buyer. The size and posting signals above guide prospect research; they do not establish demand.
 
-{{< include outputs/us-market/web/evidence.qmd >}}
+```{=html}
+<div class="market-plans">
+<article class="market-plan"><span>Focused pilot</span><strong>10 starters</strong><p>25 accounts × 8% × 5 seats</p></article>
+<article class="market-plan"><span>Working case</span><strong>40 starters</strong><p>50 accounts × 10% × 8 seats</p></article>
+<article class="market-plan"><span>Capacity test</span><strong>150 starters</strong><p>100 accounts × 15% × 10 seats</p></article>
+</div>
+```
 
-## A national sales approach
-
-Prioritize established commercial organizations with evidence of claims, prescription, payer, forecasting and reporting work. Start with the employers ranked above and validate the relevant teams and budget owners. Use the larger-enterprise Census bands to guide expansion beyond the 15 employers in our database. The Census table supplies counts, not a named prospect directory.
-
-| Segment | Proposed offer | Evidence needed before counting demand |
-|---|---|---|
-| Large enterprises | Sponsored team cohorts with a commercial-data capstone | Named sponsor, eligible team, approved budget and release time |
-| Mid-sized enterprises | Cross-functional cohort or shared cohort with other employers | Repeated data problems, enough prepared staff and a workable schedule |
-| Smaller firms | Individual sponsorship or consortium seats | Relevant commercial work, sufficient preparation and willingness to pay |
-| Data vendors, CROs and consultancies | Client-facing pharma data and decision skills | Role-level fit and independently verified workforce; outside the manufacturing count |
-
-Use a concrete employer proposition: staff learn to evaluate commercial data sources, reconcile records, test analytical conclusions and communicate a defensible recommendation. Assess that work through the proposed course sequence and capstone. Do not promise measured productivity, promotion or placement effects before a pilot establishes them.
-
-## Planning scenarios, not enrollment forecasts
-
-A broad company count is the potential prospect universe. The serviceable market is the subset with relevant teams, eligible staff, budget, time and interest; that count remains unknown. The obtainable pilot consists of named learners backed by sponsorship commitments.
-
-| Outreach scenario | Qualified accounts approached | Assumed conversion | Sponsors | Seats per sponsor | Certificate starters |
-|---|---:|---:|---:|---:|---:|
-| Focused national pilot | 25 | 8% | 2 | 5 | 10 |
-| Multi-employer cohort | 50 | 10% | 5 | 8 | 40 |
-| Capacity test | 100 | 15% | 15 | 10 | 150 |
-
-These account lists are targets to assemble, not already qualified prospects. The capacity test is not a launch recommendation. Confirm instructional and advising capacity before accepting commitments. Count learners once across courses and locations; do not add Boston enrollments to national enrollments if the same learners appear in both.
+These are illustrative planning cases, not forecasts or commitments. A starter is one learner beginning the certificate, not four course registrations. Program approval, admissions, delivery format and pricing remain pending; the capacity test requires separate staffing validation.
 
 ::: {.panel}
 ### Adjust the national assumptions
@@ -63,6 +47,15 @@ These account lists are targets to assemble, not already qualified prospects. Th
 Expected starters = accounts × conversion × seats. Tuition receipts = starters × assumed net certificate tuition. Fractional outputs are expected values, not enrollable people. Receipts exclude costs, attrition, payment timing and refunds; they are not profit or NPV. No percentage of the national workforce is assumed to enroll.
 :::
 
-[Inspect the jobs](jobs.html) · [National occupation context](outlook.html) · [Sources and methods](eda_pharma.html)
+## Evidence you can inspect
 
-:::
+<details class="market-evidence">
+<summary>Open the full market tables, definitions and sources</summary>
+
+{{< include outputs/market-visuals/web/us-evidence.qmd >}}
+
+</details>
+
+The county map is an additional population-context layer. It neither allocates pharma postings to counties nor estimates the number of eligible learners. Historical county codes without a matching 2025 boundary are excluded rather than reassigned.
+
+[Inspect saved jobs](jobs.html) · [Sources and methods](eda_pharma.html)

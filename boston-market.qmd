@@ -1,45 +1,34 @@
 ---
 title: "Boston employer market"
-description: "Company scale, local demand evidence and employer-sponsored certificate scenarios."
+description: "Explore the employer opportunity through maps, workforce comparisons and commercial-data evidence."
+format:
+  html:
+    css: styles/market-visuals.css
 ---
 
+Start with the Boston-area employer opportunity, compare the Massachusetts workforce of major firms, and explore the surrounding county context. The proposed non-degree certificate connects commercial pharma data to business decisions.
+
+[US employer market](us-market.html) · [Proposed curriculum](about.html)
+
 ```{=html}
-<style>
-.boston-market { min-width: 0; }
-.boston-market table { display: block; max-width: 100%; overflow-x: auto; }
-.boston-market th, .boston-market td { min-width: 90px; }
-.boston-market th:first-child, .boston-market td:first-child { min-width: 170px; }
-.boston-market input { max-width: 100%; }
-</style>
+<script>document.body.dataset.market = "boston";</script>
 ```
 
-::: {.boston-market}
+{{< include _includes/market-visuals.html >}}
 
-The proposed non-degree **Pharmaceutical Commercial Data Certificate** gives employers a way to develop staff who can connect pharmaceutical data sources to business decisions. The clearest initial use is upskilling commercial analytics, market access, business intelligence and data operations teams. Program approval, admission requirements, delivery format and pricing remain to be confirmed.
+## From employer conversations to sponsored learners
 
-## The employer proposition
+Start with relevant commercial teams and a learning-and-development budget owner. Validate the business problem, staff preparation, time availability and funding before counting a company as a buyer. The size and posting signals above guide prospect research; they do not establish demand.
 
-For national outreach, see the [US employer market](us-market.html), including firm counts, enterprise-size bands and nationwide posting evidence.
+```{=html}
+<div class="market-plans">
+<article class="market-plan"><span>Small pilot</span><strong>10 starters</strong><p>20 accounts × 10% × 5 seats</p></article>
+<article class="market-plan"><span>Working case</span><strong>32 starters</strong><p>20 accounts × 20% × 8 seats</p></article>
+<article class="market-plan"><span>Capacity test</span><strong>60 starters</strong><p>20 accounts × 30% × 10 seats</p></article>
+</div>
+```
 
-> Develop analysts who can explain where commercial pharma data comes from, reconcile sources, assess analytical results and defend a business recommendation. The proposed four-course pathway connects those capabilities through applied portfolio work and a capstone using synthetic or authorized data.
-
-For commercial leaders, the proposed value is better source interpretation and more defensible decisions. For learning and development teams, the value is a structured sequence with assessable work. For employees, it is a focused credential and portfolio. These are proposed benefits to validate in a pilot; productivity gains, placement and salary outcomes have not been measured.
-
-{{< include outputs/boston-market/web/evidence.qmd >}}
-
-## Turn prospects into a testable enrollment plan
-
-The broad company universe establishes prospecting scale. The 20-employer shortlist establishes a starting account list with known workforce sizes. A serviceable training market still requires confirmation of relevant teams, academic preparation, time availability, budget and interest. **The number of qualified buyers and eligible employees is currently unknown.**
-
-Start with employers showing commercial-fit posting evidence. Approach a commercial analytics or market-access leader alongside the learning and development budget owner. For each account, record the team, business problem, eligible staff, tuition support, release time, procurement timeline and named sponsor. Use those responses to qualify the account before counting potential seats.
-
-The scenarios below use the 20-company shortlist. They are planning assumptions, not forecasts or observed conversion rates. A seat means one sponsored learner starting the certificate, not four course registrations.
-
-| Planning case | Accounts approached | Assumed sponsor conversion | Sponsors | Seats per sponsor | Certificate starters |
-|---|---:|---:|---:|---:|---:|
-| Small pilot | 20 | 10% | 2 | 5 | 10 |
-| Working case | 20 | 20% | 4 | 8 | 32 |
-| Capacity test | 20 | 30% | 6 | 10 | 60 |
+These are illustrative planning cases, not forecasts or commitments. A starter is one learner beginning the certificate, not four course registrations. Program approval, admissions, delivery format and pricing remain pending; the capacity test requires separate staffing validation.
 
 ::: {.panel}
 ### Adjust the sponsorship assumptions
@@ -58,15 +47,15 @@ The scenarios below use the 20-company shortlist. They are planning assumptions,
 Expected sponsors = accounts × conversion rate. Expected starters = sponsors × seats. Fractional results represent expected values, not enrollable people. Tuition receipts = starters × assumed net certificate tuition. Receipts exclude attrition, payment timing and refunds; they are not profit or NPV. Costs for development, teaching, advising, marketing and delivery still need a BU-approved model.
 :::
 
-## What would establish real demand?
+## Evidence you can inspect
 
-1. Validate the highest-fit accounts through employer interviews and review relevant postings individually. Ask which tasks employees struggle with and how the proposed assessed work addresses them.
-2. Confirm the non-degree certificate's approved format, prerequisites, schedule and total learner cost. Do not assume that non-degree means noncredit or open admission.
-3. Seek named learners and written sponsorship commitments. Count committed seats separately from expressions of interest; do not multiply the entire regional workforce by an assumed participation rate.
-4. Pilot within confirmed teaching capacity. Measure starts, completion, assessed skill improvement and employer evaluation of the capstone before expanding.
+<details class="market-evidence">
+<summary>Open the full market tables, definitions and sources</summary>
 
-The membership universe includes early research businesses with little commercial infrastructure. They may be less suitable than established commercial teams, even when their science is promising. Service providers and consultancies can also be prospects, but require separate account and workforce validation.
+{{< include outputs/market-visuals/web/boston-evidence.qmd >}}
 
-[Explore the curriculum](about.html) · [Inspect the saved jobs](jobs.html) · [Read the broader evidence methods](eda_pharma.html)
+</details>
 
-:::
+The county map is an additional population-context layer. It neither allocates pharma postings to counties nor estimates the number of eligible learners. Historical county codes without a matching 2025 boundary are excluded rather than reassigned.
+
+[Inspect saved jobs](jobs.html) · [Sources and methods](eda_pharma.html)

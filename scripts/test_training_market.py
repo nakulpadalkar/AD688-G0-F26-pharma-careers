@@ -1,5 +1,5 @@
+from snapshot_io import read_snapshot, write_snapshot
 """Negative controls and reconciliation for the local employer prospect screen."""
-import csv
 import json
 from pathlib import Path
 from collections import Counter
@@ -28,9 +28,9 @@ assert refine_candidates([{**base,'url':'https://example.com/job/US-Indianapolis
 assert not refine_candidates([{**base,'title':'Data Entry Pharmacy Technician'}])[0]['analytics']
 
 OUT=Path(__file__).resolve().parents[1]/'outputs/training-market'
-if (OUT/'web/summary.json').exists():
-    summary=json.loads((OUT/'web/summary.json').read_text(encoding='utf-8'))
-    jobs=json.loads((OUT/'processed/postings.json').read_text(encoding='utf-8'))
+if (OUT/'web/summary.parquet').exists():
+    summary=read_snapshot((OUT/'web/summary.parquet'))
+    jobs=read_snapshot((OUT/'processed/postings.parquet'))
     us=[j for j in jobs if j['us']]
     analytics=[j for j in us if j['analytics']]
     assert summarize(jobs)==summary['combined']
@@ -43,8 +43,8 @@ if (OUT/'web/summary.json').exists():
     assert sum(summary['states'].values())==len(analytics)
     assert all(not j['us'] for j in jobs if j['geography_basis']=='Cross-record country conflict')
     assert len({j['id'] for j in jobs})==len(jobs)
-    assert len(list(csv.DictReader((OUT/'web/analytics-postings.csv').open(encoding='utf-8-sig'))))==len(analytics)
-    employers=list(csv.DictReader((OUT/'web/employer-prospects.csv').open(encoding='utf-8-sig')))
+    assert len(read_snapshot(OUT/'web/analytics-postings.parquet'))==len(analytics)
+    employers=read_snapshot(OUT/'web/employer-prospects.parquet')
     assert len(employers)==summary['analytics_employer_labels']
     assert sum(int(r['analytics']) for r in employers)+summary['analytics_unknown_employer_postings']==len(analytics)
     assert summary['receipt']['transaction_read_only'] is True

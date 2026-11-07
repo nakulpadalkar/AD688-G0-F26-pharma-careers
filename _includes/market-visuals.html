@@ -1,0 +1,29 @@
+```{=html}
+<div class="market-visuals">
+  <div id="market-kpis" class="market-kpis" aria-label="Market overview"></div>
+  <section class="market-panel">
+    <div class="market-heading"><div><p class="eyebrow">PLACE THE OPPORTUNITY</p><h2>One map. Two kinds of evidence.</h2></div><span id="map-vintage" class="pill"></span></div>
+    <div class="market-controls">
+      <label>Map layer<select id="market-layer"><option value="state">Pharma postings · states</option><option value="county">Workforce context · counties</option></select></label>
+      <label id="state-measure-label">Posting measure<select id="market-measure"><option value="commercial">Commercial-data fit</option><option value="analytics">All analytics</option><option value="postings">All saved US postings</option></select></label>
+      <label id="county-region-label" hidden>County map region<select id="county-region"><option value="all">United States</option></select></label>
+      <label id="county-pick-label" hidden>Choose a county<select id="county-pick"><option value="">Select a county</option></select></label>
+    </div>
+    <div class="market-map-layout">
+      <div><div id="market-map" class="market-map"></div><div id="market-legend" class="market-legend"></div><p id="market-map-note" class="tiny"></p></div>
+      <div id="market-detail" class="market-detail" role="complementary" aria-live="polite"></div>
+    </div>
+    <p id="market-coverage" class="tiny"></p>
+    <p class="tiny">Select a shape for detail. State shapes also support keyboard selection; the county dropdown provides the same county detail without using the map. Alaska and Hawaii use separately scaled insets. Missing values are gray; lower-quality county estimates are hatched.</p>
+    <p class="tiny">County source: <a href="https://ui-research.github.io/mobility-from-poverty-dictionary/variable_details/share_employed.html">Urban Institute · Mobility from Poverty</a>, ODC-BY 1.0. Adults ages 25–54 employed; these are population estimates, not pharma vacancies or certificate demand. <a href="outputs/market-visuals/web/county-employment.parquet">County data</a> · <a href="outputs/market-visuals/web/provenance.parquet">Provenance & coverage</a></p>
+  </section>
+  <div class="market-chart-grid">
+    <section class="market-panel"><p class="eyebrow">WHO COULD SPONSOR?</p><h2 id="size-heading">The employer landscape</h2><label>Compare size bands<select id="size-measure"><option value="firms">Number of firms</option><option value="workforce">Industry workforce</option></select></label><div id="size-chart" class="market-bars"></div><p id="size-note" class="tiny"></p></section>
+    <section class="market-panel"><p class="eyebrow">HOW CLOSE IS THE FIT?</p><h2>From broad evidence to commercial work</h2><div id="fit-chart" class="market-bars fit-bars"></div><p id="fit-note" class="tiny"></p></section>
+  </div>
+  <section class="market-panel"><div class="market-heading"><div><p class="eyebrow">PRIORITIZE CONVERSATIONS</p><h2>Explore the employer signals</h2></div><label>Rank employers<select id="employer-measure"><option value="commercial">Commercial-data postings</option><option value="analytics">Analytics postings</option><option value="postings">All postings</option></select></label></div><div id="employer-chart" class="market-bars employer-bars"></div><p id="employer-note" class="tiny"></p></section>
+</div>
+<script src="outputs/market-visuals/web/visual-data.js"></script>
+<script src="scripts/market-visuals.js"></script>
+
+```

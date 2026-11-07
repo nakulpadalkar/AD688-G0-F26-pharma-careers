@@ -1,3 +1,4 @@
+from snapshot_io import read_snapshot, write_snapshot
 """Check independent totals, nonoverlapping Census bands and changed-input behavior."""
 import json
 import hashlib
@@ -6,10 +7,10 @@ from build_us_market import OUT, ROOT, BANDS, compute, state
 from artifact_io import read_data
 from build_boston_market import commercial
 
-census=json.loads((OUT/'data/census-3254.json').read_text(encoding='utf-8'))
+census=read_snapshot((OUT/'data/census-3254.parquet'))
 jobs=read_data('database-jobs.json')
 actual=compute(jobs,census)
-saved=json.loads((OUT/'web/summary.json').read_text(encoding='utf-8'))
+saved=read_snapshot((OUT/'web/summary.parquet'))
 assert all(saved[k]==v for k,v in actual.items())
 codes=[c for _,cs in BANDS for c in cs]
 assert len(codes)==len(set(codes)) and not {'01','33','37'}.intersection(codes)

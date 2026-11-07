@@ -1,5 +1,5 @@
+from snapshot_io import read_snapshot, write_snapshot
 """Reproducible employer-market evidence from saved, sanitized posting identities."""
-import csv
 import hashlib
 import json
 import re
@@ -67,21 +67,20 @@ def compute(jobs, employers):
             'local_commercial_company_counts': dict(Counter(r['company'] for r in local if commercial(r)).most_common())}
 
 def build():
-    employers = json.loads((OUT/'data/employers.json').read_text(encoding='utf-8'))
-    context = json.loads((OUT/'data/market-context.json').read_text(encoding='utf-8'))
+    employers = read_snapshot((OUT/'data/employers.parquet'))
+    context = read_snapshot((OUT/'data/market-context.parquet'))
     jobs = read_data('database-jobs.json')
     result = compute(jobs, employers)
     result['context'] = context
-    result['inventory_checked_at'] = read_data('inventory-summary.json')['checked_at_utc']
+    result['inventory_checked_at'] = read_data('inventory-summary.parquet')['checked_at_utc']
     result['towns'] = TOWNS
     result['source_sha256'] = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                               for p in [artifact_path('database-jobs.json'), artifact_path('inventory-summary.json'),
-                                         OUT/'data/employers.json', OUT/'data/market-context.json']}
+                               for p in [artifact_path('database-jobs.json'), artifact_path('inventory-summary.parquet'),
+                                         OUT/'data/employers.parquet', OUT/'data/market-context.parquet']}
     (OUT/'web').mkdir(parents=True, exist_ok=True)
-    (OUT/'web/market-summary.json').write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding='utf-8')
+    write_snapshot(OUT/'web/market-summary.parquet',result)
     table = result['employers']
-    with (OUT/'web/employer-prospects.csv').open('w', newline='', encoding='utf-8-sig') as f:
-        writer = csv.DictWriter(f, fieldnames=list(table[0])); writer.writeheader(); writer.writerows(table)
+    write_snapshot(OUT/'web/employer-prospects.parquet',table)
     rows = ['### Market scale', '', '| Evidence | Count | Meaning |', '|---|---:|---|',
             f"| Boston + Cambridge life-sciences members | {context['boston_member_companies_2026'] + context['cambridge_member_companies_2026']:,} | 331 Boston + 429 Cambridge; 2026 membership map |",
             f"| Massachusetts life-sciences members | {context['ma_member_companies_2026']:,} | Broad statewide prospect universe; includes the core above |",
@@ -123,7 +122,7 @@ def build():
              'Outreach area: ' + ', '.join(TOWNS) + '. This is a declared sales territory, not the official Boston metropolitan statistical area. Worcester and other Massachusetts locations appear only in the statewide row.', '',
              'State evidence uses the existing conservative parser: explicit Massachusetts or a comma-delimited MA abbreviation. City-only Cambridge, state-prefix strings such as “Ma Cambridge”, remote-only locations and conflicting multi-state locations stay outside local counts. Therefore these are conservative observed counts, not complete local hiring coverage.', '',
              'Commercial fit is the subset of analytics-relevant records with commercial analytics titles, commercial-data duties, data products in business roles, or data products/datasets in analytical roles. It reuses the saved relevance reasons, without treating all clinical, scientific or operations analytics roles as certificate matches. Review individual duties before outreach.', '',
-             '[Download employer table](outputs/boston-market/web/employer-prospects.csv) · [Download calculated evidence and source hashes](outputs/boston-market/web/market-summary.json)']
+             '[Download employer table](outputs/boston-market/web/employer-prospects.parquet) · [Download calculated evidence and source hashes](outputs/boston-market/web/market-summary.parquet)']
     (OUT/'web/evidence.qmd').write_text('\n'.join(rows) + '\n', encoding='utf-8')
     print('BOSTON_MARKET_BUILT', json.dumps({k: result[k] for k in ['local', 'shortlist_employees', 'shortlist_covered']}))
 
