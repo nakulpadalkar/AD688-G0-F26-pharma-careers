@@ -121,3 +121,21 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: The first publisher succeeded; the receipt-commit publisher failed because gh-pages advanced from 92e4dc7 to 6f3d53c. Added workflow concurrency and validated the YAML.
 - Why: The publish workflow allowed concurrent writers to the same gh-pages branch. The final receipt push overlapped the preceding release publish.
 - tags: github-actions,quarto,concurrency,fix-applied
+
+## 2026-11-06 -- For visual market pages, keep complementary map detail in a div with role=complementary because Quarto moves literal aside elements into margin columns. Inside raw details disclosures, use bold evidence subheads rather than same-level section headings, which can close the disclosure. Run snapshot-hash checks only after all pre-render builders finish.
+- Expected: Replace table-led employer pages with maps/charts and Azure-backed county context.
+- Actual: US/Boston visual explorers added; Azure read-only export produced 2024 county estimates, exact FIPS joins and quality flags. Eleven pages rendered, 495 links and desktop/mobile map/chart/calculator checks passed; concurrent Parquet migration preserved.
+- Why: Quarto interprets aside and section headings structurally. Early checks also overlapped changing generated inputs and a separate storage migration. Corrected layout, rebuilt against final Parquet paths and reverified. No standing-rule changes proposed.
+- tags: quarto,visuals,county,concurrent-work
+
+## 2026-11-06 -- Quarto resolves nested includes before pre-render builders can create missing files. Bootstrap a newly generated include once before the first render, then retain the generated include alongside its builder. Verify Parquet migration through exact snapshot readback, download links and source-to-site parity.
+- Expected: Move analytical datasets to Parquet and display broad training counts consistently.
+- Actual: Migrated market snapshots and downloads; eleven pages rendered, all market checks and 495 local links passed. First render needed the new overview include generated explicitly.
+- Why: The include did not yet exist when Quarto resolved page inputs. Generated it before rendering and verified homepage counts against the saved Parquet summary. No standing-rule changes proposed.
+- tags: quarto,parquet,build-order
+
+## 2026-11-06 -- When extending README build commands, edit only the fenced build block. A global replacement of python scripts/test_site_metrics.py also expanded its inline prose reference into a malformed multiline code span; inspect every replacement occurrence.
+- Expected: Extend build instructions while preserving explanatory prose.
+- Actual: Found and corrected the malformed metrics paragraph; added the visual-market checks only inside the build code block.
+- Why: The earlier release used a global string replacement for a command present in both a code block and an inline reference. No standing-rule change required.
+- tags: documentation,release,editing
