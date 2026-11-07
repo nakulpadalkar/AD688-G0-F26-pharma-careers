@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Company scale, local demand evidence and employer-sponsored certificate scenarios.">
+<meta name="description" content="Explore the employer opportunity through maps, workforce comparisons and commercial-data evidence.">
 
 <title>Boston employer market – PHARMA / CAREERS</title>
 <style>
@@ -77,6 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="styles/market-visuals.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
@@ -183,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Company scale, local demand evidence and employer-sponsored certificate scenarios.
+    Explore the employer opportunity through maps, workforce comparisons and commercial-data evidence.
   </div>
 </div>
 
@@ -200,24 +201,65 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<style>
-.boston-market { min-width: 0; }
-.boston-market table { display: block; max-width: 100%; overflow-x: auto; }
-.boston-market th, .boston-market td { min-width: 90px; }
-.boston-market th:first-child, .boston-market td:first-child { min-width: 170px; }
-.boston-market input { max-width: 100%; }
-</style>
-<div class="boston-market">
-<p>The proposed non-degree <strong>Pharmaceutical Commercial Data Certificate</strong> gives employers a way to develop staff who can connect pharmaceutical data sources to business decisions. The clearest initial use is upskilling commercial analytics, market access, business intelligence and data operations teams. Program approval, admission requirements, delivery format and pricing remain to be confirmed.</p>
-<section id="the-employer-proposition" class="level2">
-<h2 data-anchor-id="the-employer-proposition">The employer proposition</h2>
-<p>For national outreach, see the <a href="us-market.html">US employer market</a>, including firm counts, enterprise-size bands and nationwide posting evidence.</p>
-<blockquote class="blockquote">
-<p>Develop analysts who can explain where commercial pharma data comes from, reconcile sources, assess analytical results and defend a business recommendation. The proposed four-course pathway connects those capabilities through applied portfolio work and a capstone using synthetic or authorized data.</p>
-</blockquote>
-<p>For commercial leaders, the proposed value is better source interpretation and more defensible decisions. For learning and development teams, the value is a structured sequence with assessable work. For employees, it is a focused credential and portfolio. These are proposed benefits to validate in a pilot; productivity gains, placement and salary outcomes have not been measured.</p>
-<section id="market-scale" class="level3">
-<h3 data-anchor-id="market-scale">Market scale</h3>
+<p>Start with the Boston-area employer opportunity, compare the Massachusetts workforce of major firms, and explore the surrounding county context. The proposed non-degree certificate connects commercial pharma data to business decisions.</p>
+<p><a href="us-market.html">US employer market</a> · <a href="about.html">Proposed curriculum</a></p>
+<script>document.body.dataset.market = "boston";</script>
+<div class="market-visuals">
+  <div id="market-kpis" class="market-kpis" aria-label="Market overview"></div>
+  <section class="market-panel">
+    <div class="market-heading"><div><p class="eyebrow">PLACE THE OPPORTUNITY</p><h2>One map. Two kinds of evidence.</h2></div><span id="map-vintage" class="pill"></span></div>
+    <div class="market-controls">
+      <label>Map layer<select id="market-layer"><option value="state">Pharma postings · states</option><option value="county">Workforce context · counties</option></select></label>
+      <label id="state-measure-label">Posting measure<select id="market-measure"><option value="commercial">Commercial-data fit</option><option value="analytics">All analytics</option><option value="postings">All saved US postings</option></select></label>
+      <label id="county-region-label" hidden="">County map region<select id="county-region"><option value="all">United States</option></select></label>
+      <label id="county-pick-label" hidden="">Choose a county<select id="county-pick"><option value="">Select a county</option></select></label>
+    </div>
+    <div class="market-map-layout">
+      <div><div id="market-map" class="market-map"></div><div id="market-legend" class="market-legend"></div><p id="market-map-note" class="tiny"></p></div>
+      <div id="market-detail" class="market-detail" role="complementary" aria-live="polite"></div>
+    </div>
+    <p id="market-coverage" class="tiny"></p>
+    <p class="tiny">Select a shape for detail. State shapes also support keyboard selection; the county dropdown provides the same county detail without using the map. Alaska and Hawaii use separately scaled insets. Missing values are gray; lower-quality county estimates are hatched.</p>
+    <p class="tiny">County source: <a href="https://ui-research.github.io/mobility-from-poverty-dictionary/variable_details/share_employed.html">Urban Institute · Mobility from Poverty</a>, ODC-BY 1.0. Adults ages 25–54 employed; these are population estimates, not pharma vacancies or certificate demand. <a href="outputs/market-visuals/web/county-employment.parquet">County data</a> · <a href="outputs/market-visuals/web/provenance.parquet">Provenance &amp; coverage</a></p>
+  </section>
+  <div class="market-chart-grid">
+    <section class="market-panel"><p class="eyebrow">WHO COULD SPONSOR?</p><h2 id="size-heading">The employer landscape</h2><label>Compare size bands<select id="size-measure"><option value="firms">Number of firms</option><option value="workforce">Industry workforce</option></select></label><div id="size-chart" class="market-bars"></div><p id="size-note" class="tiny"></p></section>
+    <section class="market-panel"><p class="eyebrow">HOW CLOSE IS THE FIT?</p><h2>From broad evidence to commercial work</h2><div id="fit-chart" class="market-bars fit-bars"></div><p id="fit-note" class="tiny"></p></section>
+  </div>
+  <section class="market-panel"><div class="market-heading"><div><p class="eyebrow">PRIORITIZE CONVERSATIONS</p><h2>Explore the employer signals</h2></div><label>Rank employers<select id="employer-measure"><option value="commercial">Commercial-data postings</option><option value="analytics">Analytics postings</option><option value="postings">All postings</option></select></label></div><div id="employer-chart" class="market-bars employer-bars"></div><p id="employer-note" class="tiny"></p></section>
+</div>
+<script src="outputs/market-visuals/web/visual-data.js"></script>
+<script src="scripts/market-visuals.js"></script>
+
+<section id="from-employer-conversations-to-sponsored-learners" class="level2">
+<h2 data-anchor-id="from-employer-conversations-to-sponsored-learners">From employer conversations to sponsored learners</h2>
+<p>Start with relevant commercial teams and a learning-and-development budget owner. Validate the business problem, staff preparation, time availability and funding before counting a company as a buyer. The size and posting signals above guide prospect research; they do not establish demand.</p>
+<div class="market-plans">
+<article class="market-plan"><span>Small pilot</span><strong>10 starters</strong><p>20 accounts × 10% × 5 seats</p></article>
+<article class="market-plan"><span>Working case</span><strong>32 starters</strong><p>20 accounts × 20% × 8 seats</p></article>
+<article class="market-plan"><span>Capacity test</span><strong>60 starters</strong><p>20 accounts × 30% × 10 seats</p></article>
+</div>
+<p>These are illustrative planning cases, not forecasts or commitments. A starter is one learner beginning the certificate, not four course registrations. Program approval, admissions, delivery format and pricing remain pending; the capacity test requires separate staffing validation.</p>
+<section id="adjust-the-sponsorship-assumptions" class="level3 panel">
+<h3 data-anchor-id="adjust-the-sponsorship-assumptions">Adjust the sponsorship assumptions</h3>
+<div id="sponsor-model">
+<p><label for="sponsor-accounts">Accounts approached (within the shortlist)</label><br><input id="sponsor-accounts" type="number" min="0" max="20" step="1" value="20"></p>
+<p><label for="sponsor-rate">Assumed sponsor conversion (%)</label><br><input id="sponsor-rate" type="number" min="0" max="100" step="1" value="20"></p>
+<p><label for="sponsor-seats">Seats per sponsoring employer</label><br><input id="sponsor-seats" type="number" min="0" max="100" step="1" value="8"></p>
+<p><label for="sponsor-fee">Illustrative net tuition per certificate learner ($; 0 means unspecified)</label><br><input id="sponsor-fee" type="number" min="0" max="1000000" step="100" value="0"></p>
+<p id="sponsor-result" role="status" aria-live="polite">Working case: 4 sponsoring employers × 8 seats = 32 certificate starters. Tuition is unspecified.</p>
+</div>
+<script src="scripts/boston-market.js"></script>
+<p>Expected sponsors = accounts × conversion rate. Expected starters = sponsors × seats. Fractional results represent expected values, not enrollable people. Tuition receipts = starters × assumed net certificate tuition. Receipts exclude attrition, payment timing and refunds; they are not profit or NPV. Costs for development, teaching, advising, marketing and delivery still need a BU-approved model.</p>
+</section>
+</section>
+<section id="evidence-you-can-inspect" class="level2">
+<h2 data-anchor-id="evidence-you-can-inspect">Evidence you can inspect</h2>
+<details class="market-evidence">
+<summary>
+Open the full market tables, definitions and sources
+</summary>
+<p><strong>Market scale</strong></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
@@ -260,9 +302,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Sources: <a href="https://www.massbio.org/wp-content/uploads/2026/08/2026_MassBio_IndustrySnapshot_Final.pdf">MassBio 2026 Industry Snapshot</a>, pp.&nbsp;6, 11 and 37. Company sizes are from the member survey; Moderna uses the Boston Business Journal Book of Lists. Reviewed 2026-11-06. Workforce and shortlist dates differ, so no market-share percentage is calculated.</p>
-</section>
-<section id="company-size-and-our-demand-evidence" class="level3">
-<h3 data-anchor-id="company-size-and-our-demand-evidence">Company size and our demand evidence</h3>
+<p><strong>Company size and our demand evidence</strong></p>
 <p>Local means Boston/Cambridge plus the explicitly listed outreach suburbs below. All posting counts are historical saved identities. A dash means the employer is outside the current inventory; zero means covered but no matching local posting was found.</p>
 <table class="caption-top table">
 <thead>
@@ -455,9 +495,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Size bands describe only this selected shortlist. They do not estimate the size distribution of all 760 core companies. Buying capacity and curriculum fit require employer conversations.</p>
-</section>
-<section id="what-the-employability-data-supports" class="level3">
-<h3 data-anchor-id="what-the-employability-data-supports">What the employability data supports</h3>
+<p><strong>What the employability data supports</strong></p>
 <p>Saved inventory audit: 2026-11-03T01:44:32.546340+00:00. Recomputed from the existing sanitized local/Azure inventory; no new database extraction or live vacancy check was performed.</p>
 <table class="caption-top table">
 <colgroup>
@@ -516,8 +554,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>First employers to validate:</strong> Vertex Pharmaceuticals (7), IQVIA (6), AstraZeneca (4), Sanofi (2). Parentheses show local commercial-fit posting identities, not prospective enrollments. This ranking measures observed relevance in a selected dataset; collection coverage differs across employers.</p>
 <p>Only 8 of the 20 shortlisted employer names are represented in the US inventory. Missing companies remain prospect-research opportunities, not evidence of no demand.</p>
 <p>Local source-reported posting dates range from 2026-04-30 to 2026-10-23; 444 local records lack a source posting date. Database-created dates remain collection proxies. All dates, including old records, are included; these counts cannot measure current openings or annual hiring.</p>
-<section id="skills-and-qualifications-in-the-local-commercial-fit-subset" class="level4">
-<h4 data-anchor-id="skills-and-qualifications-in-the-local-commercial-fit-subset">Skills and qualifications in the local commercial-fit subset</h4>
+<p><strong>Skills and qualifications in the local commercial-fit subset</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -576,94 +613,17 @@ ul.task-list li input[type="checkbox"] {
 <p>Degree terms: Bachelor (16), Master (9), Doctorate (5).</p>
 <p>No degree term detected: 1; equivalent-experience wording: 8. Terms overlap; neither finding proves that a degree is optional. A non-degree certificate does not replace employer education or experience requirements.</p>
 <p>Career-level labels inferred from titles: Leadership (12), Analyst / specialist (6), Manager (1).</p>
-</section>
-<section id="geography-and-screening-rules" class="level4">
-<h4 data-anchor-id="geography-and-screening-rules">Geography and screening rules</h4>
+<p><strong>Geography and screening rules</strong></p>
 <p>Outreach area: Boston, Cambridge, Watertown, Waltham, Lexington, Burlington, Billerica, Bedford, Woburn, Somerville, Newton, Needham, Medford, Framingham, Natick, Marlborough, Andover. This is a declared sales territory, not the official Boston metropolitan statistical area. Worcester and other Massachusetts locations appear only in the statewide row.</p>
 <p>State evidence uses the existing conservative parser: explicit Massachusetts or a comma-delimited MA abbreviation. City-only Cambridge, state-prefix strings such as “Ma Cambridge”, remote-only locations and conflicting multi-state locations stay outside local counts. Therefore these are conservative observed counts, not complete local hiring coverage.</p>
 <p>Commercial fit is the subset of analytics-relevant records with commercial analytics titles, commercial-data duties, data products in business roles, or data products/datasets in analytical roles. It reuses the saved relevance reasons, without treating all clinical, scientific or operations analytics roles as certificate matches. Review individual duties before outreach.</p>
-<p><a href="outputs/boston-market/web/employer-prospects.csv">Download employer table</a> · <a href="outputs/boston-market/web/market-summary.json">Download calculated evidence and source hashes</a></p>
-</section>
-</section>
-</section>
-<section id="turn-prospects-into-a-testable-enrollment-plan" class="level2">
-<h2 data-anchor-id="turn-prospects-into-a-testable-enrollment-plan">Turn prospects into a testable enrollment plan</h2>
-<p>The broad company universe establishes prospecting scale. The 20-employer shortlist establishes a starting account list with known workforce sizes. A serviceable training market still requires confirmation of relevant teams, academic preparation, time availability, budget and interest. <strong>The number of qualified buyers and eligible employees is currently unknown.</strong></p>
-<p>Start with employers showing commercial-fit posting evidence. Approach a commercial analytics or market-access leader alongside the learning and development budget owner. For each account, record the team, business problem, eligible staff, tuition support, release time, procurement timeline and named sponsor. Use those responses to qualify the account before counting potential seats.</p>
-<p>The scenarios below use the 20-company shortlist. They are planning assumptions, not forecasts or observed conversion rates. A seat means one sponsored learner starting the certificate, not four course registrations.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Planning case</th>
-<th style="text-align: right;">Accounts approached</th>
-<th style="text-align: right;">Assumed sponsor conversion</th>
-<th style="text-align: right;">Sponsors</th>
-<th style="text-align: right;">Seats per sponsor</th>
-<th style="text-align: right;">Certificate starters</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Small pilot</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">10%</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="even">
-<td>Working case</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20%</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">32</td>
-</tr>
-<tr class="odd">
-<td>Capacity test</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">30%</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">60</td>
-</tr>
-</tbody>
-</table>
-<section id="adjust-the-sponsorship-assumptions" class="level3 panel">
-<h3 data-anchor-id="adjust-the-sponsorship-assumptions">Adjust the sponsorship assumptions</h3>
-<div id="sponsor-model">
-<p><label for="sponsor-accounts">Accounts approached (within the shortlist)</label><br><input id="sponsor-accounts" type="number" min="0" max="20" step="1" value="20"></p>
-<p><label for="sponsor-rate">Assumed sponsor conversion (%)</label><br><input id="sponsor-rate" type="number" min="0" max="100" step="1" value="20"></p>
-<p><label for="sponsor-seats">Seats per sponsoring employer</label><br><input id="sponsor-seats" type="number" min="0" max="100" step="1" value="8"></p>
-<p><label for="sponsor-fee">Illustrative net tuition per certificate learner ($; 0 means unspecified)</label><br><input id="sponsor-fee" type="number" min="0" max="1000000" step="100" value="0"></p>
-<p id="sponsor-result" role="status" aria-live="polite">Working case: 4 sponsoring employers × 8 seats = 32 certificate starters. Tuition is unspecified.</p>
-</div>
-<script src="scripts/boston-market.js"></script>
-<p>Expected sponsors = accounts × conversion rate. Expected starters = sponsors × seats. Fractional results represent expected values, not enrollable people. Tuition receipts = starters × assumed net certificate tuition. Receipts exclude attrition, payment timing and refunds; they are not profit or NPV. Costs for development, teaching, advising, marketing and delivery still need a BU-approved model.</p>
-</section>
-</section>
-<section id="what-would-establish-real-demand" class="level2">
-<h2 data-anchor-id="what-would-establish-real-demand">What would establish real demand?</h2>
-<ol type="1">
-<li>Validate the highest-fit accounts through employer interviews and review relevant postings individually. Ask which tasks employees struggle with and how the proposed assessed work addresses them.</li>
-<li>Confirm the non-degree certificate’s approved format, prerequisites, schedule and total learner cost. Do not assume that non-degree means noncredit or open admission.</li>
-<li>Seek named learners and written sponsorship commitments. Count committed seats separately from expressions of interest; do not multiply the entire regional workforce by an assumed participation rate.</li>
-<li>Pilot within confirmed teaching capacity. Measure starts, completion, assessed skill improvement and employer evaluation of the capstone before expanding.</li>
-</ol>
-<p>The membership universe includes early research businesses with little commercial infrastructure. They may be less suitable than established commercial teams, even when their science is promising. Service providers and consultancies can also be prospects, but require separate account and workforce validation.</p>
-<p><a href="about.html">Explore the curriculum</a> · <a href="jobs.html">Inspect the saved jobs</a> · <a href="eda_pharma.html">Read the broader evidence methods</a></p>
-</section>
-</div>
+<p><a href="outputs/boston-market/web/employer-prospects.parquet">Download employer table</a> · <a href="outputs/boston-market/web/market-summary.parquet">Download calculated evidence and source hashes</a></p>
+</details>
+<p>The county map is an additional population-context layer. It neither allocates pharma postings to counties nor estimates the number of eligible learners. Historical county codes without a matching 2025 boundary are excluded rather than reassigned.</p>
+<p><a href="jobs.html">Inspect saved jobs</a> · <a href="eda_pharma.html">Sources and methods</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

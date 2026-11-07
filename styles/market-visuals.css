@@ -1,0 +1,48 @@
+.market-visuals { --mv-blue:#235eb5; --mv-pink:#a23e72; margin:24px 0; }
+.market-visuals [hidden] { display:none !important; }
+.market-kpis { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-bottom:28px; }
+.market-kpi { background:#edf4ff; border:1px solid #cfdef2; border-radius:20px; padding:22px; }
+.market-kpi:nth-child(2) { background:#fff0f7; border-color:#f0ccdf; }
+.market-kpi strong { display:block; font-size:clamp(2rem,4vw,3rem); line-height:1.15; color:#15335b; margin:8px 0; }
+.market-kpi span { display:block; font-weight:650; }
+.market-kpi small { display:block; color:#526780; margin-top:8px; }
+.market-panel { border:1px solid #dbe5f3; border-radius:20px; padding:24px; margin-bottom:24px; background:#fff; min-width:0; }
+.market-panel h2 { font-size:1.55rem; margin:4px 0 18px; }
+.market-heading { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+.market-controls { display:flex; flex-wrap:wrap; gap:16px; margin:12px 0 24px; }
+.market-visuals label { display:block; font-size:.85rem; font-weight:650; max-width:100%; }
+.market-visuals select { display:block; max-width:100%; min-height:44px; padding:8px 12px; border:1px solid #a9bfdb; border-radius:10px; background:#f8faff; color:#15335b; margin-top:6px; }
+.market-map-layout { display:grid; grid-template-columns:minmax(0,3fr) minmax(210px,1fr); gap:24px; align-items:start; }
+.market-map svg { width:100%; height:auto; display:block; min-height:280px; }
+.market-map path { stroke:#fff; stroke-width:.3; cursor:pointer; vector-effect:non-scaling-stroke; }
+.market-map path:hover,.market-map path:focus,.market-map path.selected { stroke:#a23e72; stroke-width:2; outline:none; }
+.market-map text { fill:#526780; font-size:9px; }
+.market-detail { background:#f1f6ff; padding:20px; border-radius:16px; min-height:220px; }
+.market-detail h3 { font-size:1.2rem; margin:0 0 12px; }
+.market-detail strong { display:block; font-size:2.4rem; color:#15335b; }
+.market-detail p { font-size:.87rem; }
+.market-legend { display:flex; flex-wrap:wrap; gap:12px; font-size:.75rem; margin:12px 0; }
+.market-legend span { display:flex; align-items:center; gap:5px; }
+.market-legend i { width:17px; height:13px; border:1px solid #bac7d9; display:inline-block; }
+.market-chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.market-bars { margin:24px 0; }
+.market-bar { display:grid; grid-template-columns:minmax(90px,1fr) minmax(0,2fr) 65px; gap:12px; align-items:center; margin:17px 0; font-size:.85rem; }
+.market-bar-track { background:#edf2fa; border-radius:8px; height:20px; overflow:hidden; }
+.market-bar-fill { height:100%; background:#235eb5; border-radius:8px; min-width:0; }
+.market-bar:nth-child(even) .market-bar-fill { background:#a23e72; }
+.market-bar b { text-align:right; font-variant-numeric:tabular-nums; }
+.market-bar small { color:#526780; }
+.fit-bars .market-bar { grid-template-columns:1fr; gap:6px; margin:22px 0; }
+.fit-bars b { text-align:left; font-size:1.45rem; }
+.employer-bars { display:grid; grid-template-columns:1fr 1fr; gap:0 30px; }
+.market-evidence { border:1px solid #dbe5f3; border-radius:14px; padding:18px; margin:24px 0; }
+.market-evidence summary { cursor:pointer; font-weight:700; }
+.market-evidence table { display:block; overflow:auto; max-width:100%; }
+.market-evidence th,.market-evidence td { min-width:95px; }
+.market-evidence th:first-child,.market-evidence td:first-child { min-width:170px; }
+.market-plans { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:24px 0; }
+.market-plan { padding:20px; background:#f1f6ff; border-radius:16px; }
+.market-plan strong { display:block; font-size:2rem; }
+.market-plan p { font-size:.85rem; }
+@media(max-width:760px) { .market-map-layout,.market-chart-grid,.employer-bars { grid-template-columns:1fr; } .market-kpis,.market-plans { gap:10px; } .market-kpi { padding:14px; } .market-panel { padding:16px; } .market-kpi small { font-size:.7rem; } .market-kpi span { font-size:.8rem; } .market-controls label { flex:1 1 180px; } }
+@media(max-width:450px) { .market-kpis,.market-plans { grid-template-columns:1fr; } .market-kpi { display:grid; grid-template-columns:100px 1fr; align-items:center; gap:0 12px; } .market-kpi strong { grid-row:1/3; font-size:2rem; } .market-kpi small { margin-top:3px; } .market-map svg { min-height:180px; } .market-bar { grid-template-columns:100px minmax(0,1fr) 55px; gap:8px; } }

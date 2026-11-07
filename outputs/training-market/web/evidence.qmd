@@ -36,23 +36,23 @@ Ranked first by early-career commercial-data candidates with posting dates in th
 
 | Employer | US analytics | Early-career review | Commercial early-career | Student pathways | Unclear experience | Skills in early-career candidates |
 |---|---:|---:|---:|---:|---:|---|
-| Abbvie | 341 | 12 | 0 | 6 | 19 | SQL (6); Python (6); R (2); SAS (1) |
-| H1 | 11 | 2 | 0 | 0 | 0 | SQL (2); Python (2) |
-| Astrazeneca | 23 | 1 | 0 | 0 | 2 | SQL (1); Python (1) |
+| Abbvie | 341 | 12 | 0 | 6 | 19 | Python (6); SQL (6); R (2); SAS (1) |
+| H1 | 11 | 2 | 0 | 0 | 0 | Python (2); SQL (2) |
+| Astrazeneca | 23 | 1 | 0 | 0 | 2 | Python (1); SQL (1) |
 | Legend Biotech US | 7 | 1 | 0 | 0 | 0 |  |
 | Pharmaessentiausa | 6 | 1 | 0 | 0 | 0 | R (1); Python (1) |
-| IQVIA | 54 | 6 | 4 | 0 | 7 | Excel (4); Claims data (4); SQL (3); IQVIA (2); R (1); Power BI (1); Tableau (1); Python (1) |
+| IQVIA | 54 | 6 | 4 | 0 | 7 | Excel (4); Claims data (4); SQL (3); IQVIA (2); Tableau (1); Python (1); Power BI (1); R (1) |
 | GSK | 21 | 3 | 2 | 0 | 0 | SQL (2); Excel (2); Tableau (1); Python (1); Power BI (1) |
-| Bristolmyerssquibb | 107 | 5 | 0 | 0 | 4 | Excel (5); SQL (1); Python (1) |
+| Bristolmyerssquibb | 107 | 5 | 0 | 0 | 4 | Excel (5); Python (1); SQL (1) |
 | Novartis | 21 | 3 | 0 | 0 | 1 | Python (1); Excel (1) |
 | Pfizer | 15 | 2 | 0 | 0 | 0 | Python (2) |
 | PCI Pharma Services | 5 | 2 | 0 | 0 | 0 |  |
 | Amgen | 76 | 1 | 0 | 7 | 0 | R (1); Python (1) |
-| Pfizer (Internaljobs) | 22 | 1 | 0 | 0 | 2 | Excel (1); SQL (1); SAS (1) |
-| Regeneron | 20 | 1 | 0 | 0 | 1 | SQL (1); Python (1) |
+| Pfizer (Internaljobs) | 22 | 1 | 0 | 0 | 2 | Excel (1); SAS (1); SQL (1) |
+| Regeneron | 20 | 1 | 0 | 0 | 1 | Python (1); SQL (1) |
 | Sanofi | 15 | 1 | 0 | 3 | 2 |  |
 | BioMarin Pharmaceutical Inc. | 10 | 1 | 0 | 0 | 2 |  |
-| Forge Biologics | 2 | 1 | 0 | 0 | 1 | R (1); SAS (1); Python (1) |
+| Forge Biologics | 2 | 1 | 0 | 0 | 1 | R (1); Python (1); SAS (1) |
 | West Pharmaceutical Services | 2 | 1 | 0 | 0 | 0 | Excel (1) |
 | Immunebiopharma | 1 | 1 | 0 | 0 | 0 |  |
 
@@ -278,8 +278,8 @@ This series measures records in the collection, not hiring growth. Missing posti
 
 | Stored enrichment status | Source records |
 |---|---:|
-| pending | 279,358 |
 | official_reference_enriched | 74,603 |
+| pending | 279,358 |
 | rule_enriched | 3,269 |
 
 Enrichment status describes pipeline processing, not independently verified correctness.
@@ -288,4 +288,4 @@ Combined 357,230 source rows into 288,681 posting identities using source IDs, n
 
 Industry-code enrichments are unvalidated and do not establish company membership. Original descriptions drive analytics and skill screening; enriched qualification summaries are used only when original text is absent. This is a reproducible rules-based screen; individual matches require review before outreach or eligibility decisions.
 
-[Download all employer prospects](outputs/training-market/web/employer-prospects.csv) · [Download US analytics posting evidence](outputs/training-market/web/analytics-postings.csv) · [Saved calculations and extraction receipt](outputs/training-market/web/summary.json)
+[Download all employer prospects](outputs/training-market/web/employer-prospects.parquet) · [Download US analytics posting evidence](outputs/training-market/web/analytics-postings.parquet) · [Saved calculations and extraction receipt](outputs/training-market/web/summary.parquet)
