@@ -1,0 +1,99 @@
+**How many companies, and how large?**
+
+**2,305 employer firms** operated **2,882 pharmaceutical and medicine manufacturing establishments**, employing **314,242 people** in those establishments in 2022. This is the Census SUSB NAICS 3254 population, not the full biopharma ecosystem or a list of qualified certificate buyers.
+
+| Enterprise employment band | Firms | Establishments | Industry employment |
+|---|---:|---:|---:|
+| Under 20 | 1,364 | 1,373 | 6,947 |
+| 20–99 | 442 | 461 | 19,147 |
+| 100–499 | 287 | 367 | 53,088 |
+| 500–999 | 76 | 131 | 32,153 |
+| 1,000–4,999 | 80 | 202 | 62,149 |
+| 5,000+ | 56 | 348 | 140,758 |
+
+A practical account-research starting point is the **212 firms in enterprises with 500+ employees**, followed by **287 in the 100–499 band**. This prioritization is a sales hypothesis, not a finding that those firms have training budgets or commercial-data teams.
+
+Source: [Census 2022 SUSB detailed enterprise sizes](https://www2.census.gov/programs-surveys/susb/tables/2022/us_state_naics_detailedsizes_2022.txt) ([release and definitions](https://www.census.gov/data/tables/2022/econ/susb/2022-susb-annual.html)), retrieved 2026-11-06. Census lists 2022 as its latest SUSB release at review. Counts refer to firms with paid employees; nonemployers are excluded. Enterprise size uses employment across the enterprise, while industry employment counts only establishments classified in NAICS 3254. A firm can operate multiple establishments and span industries. Do not add firm totals across industries or states. Published employment values use Census disclosure protection; the retained source rows preserve its flags.
+
+**Broader biopharma context**
+
+PhRMA’s summary of the newer TEConomy report describes **nearly 1.1 million direct biopharma jobs** in 2024 across the states, DC and Puerto Rico. California, Massachusetts, New Jersey, New York, North Carolina, Pennsylvania and Texas each exceed 50,000 direct jobs. This broader industry definition includes more than manufacturing; it is not comparable to the narrower Census count, and the figures must not be added. [PhRMA / TEConomy summary](https://phrma.org/blog/the-1-74-trillion-sector-powering-america-s-economy).
+
+R&D-only biotechs, analytics vendors, CROs and consultancies may also buy training. The manufacturing firm count does not enumerate them. A deduplicated national count of commercially relevant buyers and eligible employees is not yet established.
+
+**What our US employability data says**
+
+The saved audit dated 2026-11-03T01:44:32.546340+00:00 contains **9,493 US posting identities across 15 selected employers**. **1,127** pass the broad analytics screen; **253** pass the narrower commercial-fit screen across **12 employers**. These are historical stored records, not current vacancies, annual hiring or graduate outcomes. This analysis reuses the saved local/Azure inventory; no fresh database pull was made.
+
+| Employer | All US postings | Analytics | Commercial fit | Missing posting date |
+|---|---:|---:|---:|---:|
+| AbbVie | 4,079 | 549 | 124 | 0 |
+| Amgen | 880 | 98 | 25 | 850 |
+| IQVIA | 596 | 68 | 23 | 585 |
+| Gilead Sciences | 601 | 106 | 21 | 588 |
+| Novartis | 289 | 64 | 13 | 280 |
+| AstraZeneca | 544 | 51 | 13 | 411 |
+| Vertex Pharmaceuticals | 292 | 54 | 9 | 276 |
+| Takeda | 1,228 | 12 | 7 | 1,196 |
+| Pfizer | 423 | 58 | 5 | 419 |
+| Regeneron | 262 | 33 | 5 | 210 |
+| Sanofi | 194 | 20 | 4 | 188 |
+| Neurocrine Biosciences | 70 | 12 | 4 | 68 |
+| Iovance Biotherapeutics | 30 | 2 | 0 | 0 |
+| Otsuka | 4 | 0 | 0 | 0 |
+| Teva | 1 | 0 | 0 | 0 |
+
+The table ranks observed commercial-fit evidence. It does not rank national hiring share: employers were selected in advance and collection coverage varies. Named-company US headcounts are not available in this inventory; posting volume is not a company-size measure. Use the Census size distribution for market segmentation and verify each prospect’s team size directly.
+
+**5,071 records lack a source posting date.** Database-created dates remain collection proxies. Source-reported dates span 2026-03-03 to 2026-10-25; old and undated records remain included. Distinct saved identities can still represent repeated advertisements.
+
+**Where to focus outreach**
+
+The following states have the most commercial-fit records in this selected inventory. Location is the advertised work location, not necessarily headquarters or the training budget owner. Compare with the broader industry hubs above; a weak signal here can reflect poor coverage.
+
+| State | All postings | Analytics | Commercial fit | Employers |
+|---|---:|---:|---:|---:|
+| Illinois | 1,824 | 351 | 94 | 8 |
+| California | 1,289 | 213 | 44 | 13 |
+| Massachusetts | 784 | 130 | 21 | 9 |
+| New Jersey | 368 | 65 | 17 | 9 |
+| Maryland | 175 | 18 | 6 | 9 |
+| North Carolina | 322 | 47 | 4 | 8 |
+| Pennsylvania | 146 | 9 | 3 | 9 |
+| Texas | 364 | 7 | 3 | 9 |
+| Delaware | 30 | 2 | 2 | 3 |
+| Connecticut | 68 | 11 | 1 | 6 |
+| District of Columbia | 40 | 1 | 1 | 5 |
+| New York | 191 | 9 | 0 | 8 |
+
+**State unallocated: 2,738 postings, including 57 commercial-fit records.** These remain in US totals but are not assigned to a state. The existing parser requires explicit state evidence; city-only, remote, ambiguous and multi-state locations may remain unallocated. State employer counts overlap and must not be summed to get national companies.
+
+**Curriculum fit and entry requirements**
+
+| Skill or dataset term | Commercial-fit postings |
+|---|---:|
+| SQL | 96 |
+| IQVIA | 81 |
+| Python | 74 |
+| Excel | 73 |
+| Power BI | 62 |
+| Claims data | 55 |
+| Tableau | 47 |
+| Patient-level data | 37 |
+| Symphony | 37 |
+| R | 36 |
+| LAAD / APLD / Xponent | 32 |
+| SAS | 23 |
+| MMIT | 16 |
+
+Denominator: 253 commercial-fit identities. Terms overlap and mix requirements, preferences and duties. Commercial-fit screening partly uses data terms; these frequencies are not independent estimates of national skill prevalence.
+
+Degree mentions: Bachelor (141), Master (111), Doctorate (62), High school (14), Associate (14).
+
+102 have no detected degree term; 22 contain equivalent-experience wording. Neither implies open eligibility. Non-degree describes the credential; employer degree and experience requirements still apply.
+
+Career-level labels from titles: Leadership (136), Manager (81), Analyst / specialist (36).
+
+Commercial fit reuses four saved relevance reasons: commercial analytics title, commercial-data duties, data product in a business role, or dataset/product in an analytical role. The broader analytics screen also includes clinical, scientific and operations specialties beyond this curriculum. Review duties individually before making a sales claim.
+
+[Employer Parquet](outputs/us-market/web/employers.parquet) · [All states Parquet](outputs/us-market/web/states.parquet) · [Company-size Parquet](outputs/us-market/web/company-sizes.parquet) · [Calculated evidence and hashes](outputs/us-market/web/summary.parquet)
