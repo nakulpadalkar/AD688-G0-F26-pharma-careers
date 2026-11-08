@@ -1,0 +1,590 @@
+{
+  "pages": [
+    {
+      "name": "index",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/index.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "Pharmaceuticaldata analytics careers",
+          "Broader employer training prospects",
+          "US opportunity map ↗",
+          "Market outlook ↗",
+          "Job explorer ↗",
+          "Skills & tasks ↗",
+          "Work in practice ↗",
+          "The certificate ↗"
+        ],
+        "parquetLinks": []
+      },
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": []
+      }
+    },
+    {
+      "name": "jobs",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/jobs.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "US pharmaceutical jobs"
+        ],
+        "parquetLinks": []
+      },
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": [
+          {
+            "tag": "TABLE",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "CAPTION",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "THEAD",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 58.234375
+          },
+          {
+            "tag": "TBODY",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 58.234375
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 58.234375
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 409.875
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 58.234375
+          }
+        ]
+      }
+    },
+    {
+      "name": "skills",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/skills.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "Skills in pharmaceutical job postings"
+        ],
+        "parquetLinks": []
+      },
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": []
+      }
+    },
+    {
+      "name": "geography",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/geography.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "Explore the US evidence."
+        ],
+        "parquetLinks": []
+      },
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": [
+          {
+            "tag": "TABLE",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "CAPTION",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "THEAD",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 119.8125
+          },
+          {
+            "tag": "TBODY",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 119.8125
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 119.8125
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "",
+            "width": 393.890625
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 119.8125
+          }
+        ]
+      }
+    },
+    {
+      "name": "us-market",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/us-market.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "US employer market",
+          "One map. Two kinds of evidence.",
+          "The employer landscape",
+          "From broad evidence to commercial work",
+          "Explore the employer signals",
+          "From employer conversations to sponsored learners",
+          "Evidence you can inspect"
+        ],
+        "parquetLinks": []
+      },
+      "countyOptions": 15,
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": [
+          {
+            "tag": "COLGROUP",
+            "id": "",
+            "class": "",
+            "width": 475.578125
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 112.5
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 98.078125
+          },
+          {
+            "tag": "THEAD",
+            "id": "",
+            "class": "",
+            "width": 475.578125
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "header",
+            "width": 475.578125
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 112.5
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 98.078125
+          },
+          {
+            "tag": "TBODY",
+            "id": "",
+            "class": "",
+            "width": 475.578125
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "odd",
+            "width": 475.578125
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 112.5
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 98.078125
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "even",
+            "width": 475.578125
+          }
+        ]
+      }
+    },
+    {
+      "name": "boston-market",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/boston-market.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "Boston employer market",
+          "One map. Two kinds of evidence.",
+          "20 employers, by MA workforce",
+          "From broad evidence to commercial work",
+          "Explore the employer signals",
+          "From employer conversations to sponsored learners",
+          "Evidence you can inspect"
+        ],
+        "parquetLinks": []
+      },
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": [
+          {
+            "tag": "COLGROUP",
+            "id": "",
+            "class": "",
+            "width": 369.140625
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 104.140625
+          },
+          {
+            "tag": "THEAD",
+            "id": "",
+            "class": "",
+            "width": 369.140625
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "header",
+            "width": 369.140625
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 104.140625
+          },
+          {
+            "tag": "TBODY",
+            "id": "",
+            "class": "",
+            "width": 369.140625
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "odd",
+            "width": 369.140625
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 104.140625
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "even",
+            "width": 369.140625
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 104.140625
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "odd",
+            "width": 369.140625
+          },
+          {
+            "tag": "TD",
+            "id": "",
+            "class": "",
+            "width": 104.140625
+          }
+        ]
+      }
+    },
+    {
+      "name": "training-market",
+      "status": 200,
+      "url": "file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/training-market.html",
+      "desktop": {
+        "viewport": 1440,
+        "scroll": 1440,
+        "headings": [
+          "Employer training prospects",
+          "Career-stage evidence",
+          "Employer outreach shortlist",
+          "Inspect candidate advertisements",
+          "Geography and collection dates",
+          "Availability evidence",
+          "Screening and reconciliation",
+          "Use the evidence for company training"
+        ],
+        "parquetLinks": []
+      },
+      "mobile": {
+        "viewport": 390,
+        "scroll": 390,
+        "overflow": [
+          {
+            "tag": "COLGROUP",
+            "id": "",
+            "class": "",
+            "width": 800
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "COL",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "THEAD",
+            "id": "",
+            "class": "",
+            "width": 800
+          },
+          {
+            "tag": "TR",
+            "id": "",
+            "class": "header",
+            "width": 800
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 100
+          },
+          {
+            "tag": "TH",
+            "id": "",
+            "class": "",
+            "width": 100
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "type": "jobs default",
+      "text": "9493 matching postings for all employers. Historical database evidence; not live-rechecked.",
+      "cards": 12
+    },
+    {
+      "type": "jobs analytics",
+      "text": "1127 matching postings for all employers. Historical database evidence; not live-rechecked."
+    },
+    {
+      "type": "jobs empty",
+      "text": "No eligible postings match this employer and these filters. A zero reflects stored evidence and screening, not an absence of employment opportunities."
+    },
+    {
+      "type": "jobs next",
+      "text": "Page 2 of 792"
+    },
+    {
+      "type": "geography keyboard",
+      "text": "Massachusetts",
+      "count": "8.1%"
+    },
+    {
+      "type": "county selection",
+      "text": "COUNTY WORKFORCE CONTEXT\n\nBarnstable County\nMassachusetts\n84.6%\n\nAdults ages 25–54 employed · 2024\n\nSource interval: 80.8–88.4%\nQuality: Strong\nStatus: available\nCounty FIPS: 25001\n\nThis measures the resident population, not pharma employment or learner eligibility."
+    }
+  ],
+  "errors": [
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-ojs/quarto-ojs-runtime.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+    "TypeError: Cannot read properties of undefined (reading 'paths')",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/quarto.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'file:///D:/Repositories/AD688-G0-F26-pharma-careers/_site/site_libs/quarto-html/tabsets/tabsets.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_NAME_NOT_RESOLVED"
+  ]
+}

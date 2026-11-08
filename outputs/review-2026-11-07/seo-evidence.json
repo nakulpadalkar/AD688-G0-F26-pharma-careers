@@ -1,0 +1,178 @@
+{
+  "pages": [
+    {
+      "page": "index",
+      "status": 200,
+      "title": "Pharma Career Intelligence \u2013 PHARMA / CAREERS",
+      "description": "Pharmaceutical analytics careers grounded in Career Compass, METEOR, O*NET and NAICS.",
+      "robots": null,
+      "canonical": [],
+      "h1": [
+        "Better data.",
+        "Meaningful",
+        "careers.",
+        ""
+      ],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 30964,
+      "parquet_links": false
+    },
+    {
+      "page": "jobs",
+      "status": 200,
+      "title": "Job explorer \u2013 PHARMA / CAREERS",
+      "description": null,
+      "robots": null,
+      "canonical": [],
+      "h1": [],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 29469,
+      "parquet_links": false
+    },
+    {
+      "page": "skills",
+      "status": 200,
+      "title": "Skills & tasks \u2013 PHARMA / CAREERS",
+      "description": null,
+      "robots": null,
+      "canonical": [],
+      "h1": [],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 72904,
+      "parquet_links": false
+    },
+    {
+      "page": "geography",
+      "status": 200,
+      "title": "US opportunity map \u2013 PHARMA / CAREERS",
+      "description": null,
+      "robots": null,
+      "canonical": [],
+      "h1": [],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 28390,
+      "parquet_links": false
+    },
+    {
+      "page": "outlook",
+      "status": 200,
+      "title": "Growth & Pay \u2013 PHARMA / CAREERS",
+      "description": null,
+      "robots": null,
+      "canonical": [],
+      "h1": [],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 51574,
+      "parquet_links": false
+    },
+    {
+      "page": "boston-market",
+      "status": 200,
+      "title": "Boston employer market \u2013 PHARMA / CAREERS",
+      "description": "Explore the employer opportunity through maps, workforce comparisons and commercial-data evidence.",
+      "robots": null,
+      "canonical": [],
+      "h1": [
+        "Boston employer market"
+      ],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 49128,
+      "parquet_links": false
+    },
+    {
+      "page": "training-market",
+      "status": 200,
+      "title": "Employer training prospects \u2013 PHARMA / CAREERS",
+      "description": "Broad local PostgreSQL evidence for pharmaceutical analytics training, early-career pathways and employer outreach.",
+      "robots": null,
+      "canonical": [],
+      "h1": [
+        "Employer training prospects"
+      ],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 61580,
+      "parquet_links": false
+    },
+    {
+      "page": "us-market",
+      "status": 200,
+      "title": "US employer market \u2013 PHARMA / CAREERS",
+      "description": "Explore the employer opportunity through maps, workforce comparisons and commercial-data evidence.",
+      "robots": null,
+      "canonical": [],
+      "h1": [
+        "US employer market"
+      ],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 47741,
+      "parquet_links": false
+    },
+    {
+      "page": "work",
+      "status": 200,
+      "title": "Work in practice \u2013 PHARMA / CAREERS",
+      "description": null,
+      "robots": null,
+      "canonical": [],
+      "h1": [],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 27407,
+      "parquet_links": false
+    },
+    {
+      "page": "about",
+      "status": 200,
+      "title": "The proposed certificate \u2013 PHARMA / CAREERS",
+      "description": "A pharmaceutical commercial data pathway with explicit learning outcomes and portfolio evidence.",
+      "robots": null,
+      "canonical": [],
+      "h1": [
+        "The proposed certificate"
+      ],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 32961,
+      "parquet_links": false
+    },
+    {
+      "page": "eda_pharma",
+      "status": 200,
+      "title": "Evidence & methods \u2013 PHARMA / CAREERS",
+      "description": "Sources, geographic coverage and comparability limits for pharmaceutical analytics career evidence.",
+      "robots": null,
+      "canonical": [],
+      "h1": [
+        "Evidence & methods"
+      ],
+      "schema_count": 0,
+      "og": [],
+      "bytes": 64577,
+      "parquet_links": false
+    }
+  ],
+  "discovery": [
+    {
+      "url": "https://nakulpadalkar.github.io/robots.txt",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/sitemap.xml",
+      "status": 200,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/about.html</loc>\n    <lastmod>2026-11-08T02:41:54.270Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/work.html</loc>\n    <lastmod>2026-11-08T02:41:54.337Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/jobs.html</loc>\n    <lastmod>2026-11-08T02:41:54.271Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/training-market.html</loc>\n    <lastmod>2026-11-08T02:41:54.337Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/outlook.html</loc>\n    <lastmod>2026-11-08T02:41:54.271Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/index.html</loc>\n    <lastmod>2026-11-08T02:41:54.271Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/geography.html</loc>\n    <lastmod>2026-11-08T02:41:54.271Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/boston-market.html</loc>\n    <lastmod>2026-11-08T02:41:54.270Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/us-market.html</loc>\n    <lastmod>2026-11-08T02:41:54.337Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/skills.html</loc>\n    <lastmod>2026-11-08T02:41:54.336Z</lastmod>\n  </url>\n  <url>\n    <loc>https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/eda_pharma.html</loc>\n    <lastmod>2026-11-08T02:41:54.271Z</lastmod>\n  </url>\n</urlset>\n"
+    },
+    {
+      "url": "https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/robots.txt",
+      "status": 200,
+      "body": "Sitemap: https://nakulpadalkar.github.io/AD688-G0-F26-pharma-careers/sitemap.xml\n"
+    }
+  ]
+}

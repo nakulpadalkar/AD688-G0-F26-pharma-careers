@@ -146,3 +146,9 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Why: Windows reported an open-file lock; its owner was not established. The atomic writer preserved the prior target, and the retry regenerated dependent outputs. No code or standing-rule change proposed.
 - tags: windows,parquet,release
 - Follow-up: Quarto resource copying had also placed the failed-render temp file under _site. Check both source and rendered resource trees; verify_site.py now rejects any .tmp site artifact. Corrected release 413a002 passed publication and Pages deployment.
+
+## 2026-11-07 -- Preserve the homepage circular blue-and-pink graphic: the user explicitly values it. In Quarto, canonicalizeTitlePostprocessor can move the first H1 into a generated title header; a semantic hero header with quarto-title-block preserves the authored position. Verify the rendered hero, not just source markup.
+- Expected: Review and simplify generic presentation while preserving user-valued design and factual evidence.
+- Actual: Completed independent design/browser reviews and live SEO checks; restored the circular hero after user correction; fixed H1 positioning and verified responsive screenshots and 457 links.
+- Why: A generic anti-template heuristic overrode an unexpressed visual preference; the user clarified it. Quarto also relocates eligible H1 elements during HTML postprocessing. Preference and rendering behavior are now recorded; no standing-rule change proposed.
+- tags: design-preference,quarto,visual-verification

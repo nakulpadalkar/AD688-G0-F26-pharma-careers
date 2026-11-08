@@ -1,0 +1,32 @@
+[
+  {
+    "width": 1440,
+    "scroll": 1440,
+    "h1": "Pharmaceutical\ndata analytics careers",
+    "hero": {
+      "x": 170,
+      "y": 133,
+      "width": 1100,
+      "height": 519.25,
+      "top": 133,
+      "right": 1270,
+      "bottom": 652.25,
+      "left": 170
+    }
+  },
+  {
+    "width": 390,
+    "scroll": 390,
+    "h1": "Pharmaceutical\ndata analytics careers",
+    "hero": {
+      "x": 32,
+      "y": 103,
+      "width": 326,
+      "height": 639.703125,
+      "top": 103,
+      "right": 358,
+      "bottom": 742.703125,
+      "left": 32
+    }
+  }
+]
