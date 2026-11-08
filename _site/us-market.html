@@ -219,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
     </div>
     <p id="market-coverage" class="tiny"></p>
     <p class="tiny">Select a shape for detail. State shapes also support keyboard selection; the county dropdown provides the same county detail without using the map. Alaska and Hawaii use separately scaled insets. Missing values are gray; lower-quality county estimates are hatched.</p>
-    <p class="tiny">County source: <a href="https://ui-research.github.io/mobility-from-poverty-dictionary/variable_details/share_employed.html">Urban Institute · Mobility from Poverty</a>, ODC-BY 1.0. Adults ages 25–54 employed; these are population estimates, not pharma vacancies or certificate demand. <a href="outputs/market-visuals/web/county-employment.parquet">County data</a> · <a href="outputs/market-visuals/web/provenance.parquet">Provenance &amp; coverage</a></p>
+    <p class="tiny">County source: <a href="https://ui-research.github.io/mobility-from-poverty-dictionary/variable_details/share_employed.html">Urban Institute · Mobility from Poverty</a>, ODC-BY 1.0. Adults ages 25–54 employed; these are population estimates, not pharma vacancies or certificate demand. </p>
   </section>
   <div class="market-chart-grid">
     <section class="market-panel"><p class="eyebrow">WHO COULD SPONSOR?</p><h2 id="size-heading">The employer landscape</h2><label>Compare size bands<select id="size-measure"><option value="firms">Number of firms</option><option value="workforce">Industry workforce</option></select></label><div id="size-chart" class="market-bars"></div><p id="size-note" class="tiny"></p></section>
@@ -612,11 +612,10 @@ Open the full market tables, definitions and sources
 </tbody>
 </table>
 <p>Denominator: 253 commercial-fit identities. Terms overlap and mix requirements, preferences and duties. Commercial-fit screening partly uses data terms; these frequencies are not independent estimates of national skill prevalence.</p>
-<p>Degree mentions: Bachelor (141), Master (111), Doctorate (62), High school (14), Associate (14).</p>
+<p>Degree mentions: Bachelor (141), Master (111), Doctorate (62), Associate (14), High school (14).</p>
 <p>102 have no detected degree term; 22 contain equivalent-experience wording. Neither implies open eligibility. Non-degree describes the credential; employer degree and experience requirements still apply.</p>
 <p>Career-level labels from titles: Leadership (136), Manager (81), Analyst / specialist (36).</p>
 <p>Commercial fit reuses four saved relevance reasons: commercial analytics title, commercial-data duties, data product in a business role, or dataset/product in an analytical role. The broader analytics screen also includes clinical, scientific and operations specialties beyond this curriculum. Review duties individually before making a sales claim.</p>
-<p><a href="outputs/us-market/web/employers.parquet">Employer Parquet</a> · <a href="outputs/us-market/web/states.parquet">All states Parquet</a> · <a href="outputs/us-market/web/company-sizes.parquet">Company-size Parquet</a> · <a href="outputs/us-market/web/summary.parquet">Calculated evidence and hashes</a></p>
 </details>
 <p>The county map is an additional population-context layer. It neither allocates pharma postings to counties nor estimates the number of eligible learners. Historical county codes without a matching 2025 boundary are excluded rather than reassigned.</p>
 <p><a href="jobs.html">Inspect saved jobs</a> · <a href="eda_pharma.html">Sources and methods</a></p>

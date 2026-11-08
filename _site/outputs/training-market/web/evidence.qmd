@@ -41,7 +41,7 @@ Ranked first by early-career commercial-data candidates with posting dates in th
 | Astrazeneca | 23 | 1 | 0 | 0 | 2 | Python (1); SQL (1) |
 | Legend Biotech US | 7 | 1 | 0 | 0 | 0 |  |
 | Pharmaessentiausa | 6 | 1 | 0 | 0 | 0 | R (1); Python (1) |
-| IQVIA | 54 | 6 | 4 | 0 | 7 | Excel (4); Claims data (4); SQL (3); IQVIA (2); Tableau (1); Python (1); Power BI (1); R (1) |
+| IQVIA | 54 | 6 | 4 | 0 | 7 | Excel (4); Claims data (4); SQL (3); IQVIA (2); Power BI (1); Tableau (1); R (1); Python (1) |
 | GSK | 21 | 3 | 2 | 0 | 0 | SQL (2); Excel (2); Tableau (1); Python (1); Power BI (1) |
 | Bristolmyerssquibb | 107 | 5 | 0 | 0 | 4 | Excel (5); Python (1); SQL (1) |
 | Novartis | 21 | 3 | 0 | 0 | 1 | Python (1); Excel (1) |
@@ -52,7 +52,7 @@ Ranked first by early-career commercial-data candidates with posting dates in th
 | Regeneron | 20 | 1 | 0 | 0 | 1 | Python (1); SQL (1) |
 | Sanofi | 15 | 1 | 0 | 3 | 2 |  |
 | BioMarin Pharmaceutical Inc. | 10 | 1 | 0 | 0 | 2 |  |
-| Forge Biologics | 2 | 1 | 0 | 0 | 1 | R (1); Python (1); SAS (1) |
+| Forge Biologics | 2 | 1 | 0 | 0 | 1 | SAS (1); R (1); Python (1) |
 | West Pharmaceutical Services | 2 | 1 | 0 | 0 | 0 | Excel (1) |
 | Immunebiopharma | 1 | 1 | 0 | 0 | 0 |  |
 
@@ -288,4 +288,4 @@ Combined 357,230 source rows into 288,681 posting identities using source IDs, n
 
 Industry-code enrichments are unvalidated and do not establish company membership. Original descriptions drive analytics and skill screening; enriched qualification summaries are used only when original text is absent. This is a reproducible rules-based screen; individual matches require review before outreach or eligibility decisions.
 
-[Download all employer prospects](outputs/training-market/web/employer-prospects.parquet) · [Download US analytics posting evidence](outputs/training-market/web/analytics-postings.parquet) · [Saved calculations and extraction receipt](outputs/training-market/web/summary.parquet)
+
