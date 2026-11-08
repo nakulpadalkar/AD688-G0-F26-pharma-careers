@@ -152,3 +152,9 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: Completed independent design/browser reviews and live SEO checks; restored the circular hero after user correction; fixed H1 positioning and verified responsive screenshots and 457 links.
 - Why: A generic anti-template heuristic overrode an unexpressed visual preference; the user clarified it. Quarto also relocates eligible H1 elements during HTML postprocessing. Preference and rendering behavior are now recorded; no standing-rule change proposed.
 - tags: design-preference,quarto,visual-verification
+
+## 2026-11-08 -- For the pharma certificate, use about.qmd as the detailed program page and preserve its four numbered curriculum table rows because site_metrics derives course_count from them. The paralegal brochure has fixed two-week module deadlines; do not treat asynchronous delivery as evidence for self-paced timing or copy its fees and start dates.
+- Expected: Integrate the agreed 14-week non-credit self-paced certificate throughout the website using two paralegal brochures as presentation references.
+- Actual: Updated the certificate, home, work, and employer-market pages; Quarto build, 466 local link checks, and desktop/mobile browser checks passed.
+- Why: The comparator uses fixed module deadlines while the approved pharma design uses suggested pacing within a semester. Preserved the user decision and documented source-specific facts separately. No standing-rule fix needed.
+- tags: certificate,content,quarto
