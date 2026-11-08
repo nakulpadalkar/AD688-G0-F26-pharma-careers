@@ -220,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
     </div>
     <p id="market-coverage" class="tiny"></p>
     <p class="tiny">Select a shape for detail. State shapes also support keyboard selection; the county dropdown provides the same county detail without using the map. Alaska and Hawaii use separately scaled insets. Missing values are gray; lower-quality county estimates are hatched.</p>
-    <p class="tiny">County source: <a href="https://ui-research.github.io/mobility-from-poverty-dictionary/variable_details/share_employed.html">Urban Institute · Mobility from Poverty</a>, ODC-BY 1.0. Adults ages 25–54 employed; these are population estimates, not pharma vacancies or certificate demand. <a href="outputs/market-visuals/web/county-employment.parquet">County data</a> · <a href="outputs/market-visuals/web/provenance.parquet">Provenance &amp; coverage</a></p>
+    <p class="tiny">County source: <a href="https://ui-research.github.io/mobility-from-poverty-dictionary/variable_details/share_employed.html">Urban Institute · Mobility from Poverty</a>, ODC-BY 1.0. Adults ages 25–54 employed; these are population estimates, not pharma vacancies or certificate demand. </p>
   </section>
   <div class="market-chart-grid">
     <section class="market-panel"><p class="eyebrow">WHO COULD SPONSOR?</p><h2 id="size-heading">The employer landscape</h2><label>Compare size bands<select id="size-measure"><option value="firms">Number of firms</option><option value="workforce">Industry workforce</option></select></label><div id="size-chart" class="market-bars"></div><p id="size-note" class="tiny"></p></section>
@@ -617,7 +617,6 @@ Open the full market tables, definitions and sources
 <p>Outreach area: Boston, Cambridge, Watertown, Waltham, Lexington, Burlington, Billerica, Bedford, Woburn, Somerville, Newton, Needham, Medford, Framingham, Natick, Marlborough, Andover. This is a declared sales territory, not the official Boston metropolitan statistical area. Worcester and other Massachusetts locations appear only in the statewide row.</p>
 <p>State evidence uses the existing conservative parser: explicit Massachusetts or a comma-delimited MA abbreviation. City-only Cambridge, state-prefix strings such as “Ma Cambridge”, remote-only locations and conflicting multi-state locations stay outside local counts. Therefore these are conservative observed counts, not complete local hiring coverage.</p>
 <p>Commercial fit is the subset of analytics-relevant records with commercial analytics titles, commercial-data duties, data products in business roles, or data products/datasets in analytical roles. It reuses the saved relevance reasons, without treating all clinical, scientific or operations analytics roles as certificate matches. Review individual duties before outreach.</p>
-<p><a href="outputs/boston-market/web/employer-prospects.parquet">Download employer table</a> · <a href="outputs/boston-market/web/market-summary.parquet">Download calculated evidence and source hashes</a></p>
 </details>
 <p>The county map is an additional population-context layer. It neither allocates pharma postings to counties nor estimates the number of eligible learners. Historical county codes without a matching 2025 boundary are excluded rather than reassigned.</p>
 <p><a href="jobs.html">Inspect saved jobs</a> · <a href="eda_pharma.html">Sources and methods</a></p>

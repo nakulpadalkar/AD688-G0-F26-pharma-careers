@@ -970,7 +970,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="posting-dates-and-collection-date-proxies" class="level3">
 <h3 data-anchor-id="posting-dates-and-collection-date-proxies">Posting dates and collection-date proxies</h3>
 <p>The raw local extract contains 6,654 source-reported posting timestamps and 11,789 records without them. Azure has 2,360 source timestamps and 2,189 missing. Where a posting date is absent, the explorer uses the earliest creation timestamp in the combined record as <strong>Pulled (date proxy)</strong>. This is an approximate collection date, not a recovered or imputed posting date. Migration or batch ingestion can make it much later than the real posting.</p>
-<p>The <a href="outputs/us-employer-inventory/curated/all-employer-records.parquet">complete source metadata</a> contains all 22,992 source rows, including overlaps and excluded records. Posting dates and first-recorded dates remain separate. The US inventory contains the records that meet the employer and location criteria after matching duplicate identities. Analytics relevance is an optional filter, not an inclusion requirement.</p>
+<p>The complete source metadata contains all 22,992 source rows, including overlaps and excluded records. Posting dates and first-recorded dates remain separate. The US inventory contains the records that meet the employer and location criteria after matching duplicate identities. Analytics relevance is an optional filter, not an inclusion requirement.</p>
 </section>
 <section id="independent-filters-and-skills" class="level3">
 <h3 data-anchor-id="independent-filters-and-skills">Independent filters and skills</h3>
@@ -1105,21 +1105,21 @@ ul.task-list li input[type="checkbox"] {
 <p>The observed duties connect pharmaceutical source knowledge to data integration, quality checks and interpretation. This supports the curriculum’s emphasis on those relationships, while leaving the effectiveness of the proposed training to future evaluation. Vendor names and dataset types are distinct: <a href="https://www.iqvia.com/locations/united-states/solutions/life-sciences/information-solutions/laad-plus">IQVIA LAAD</a> integrates patient-level claims, while <a href="https://api.mmitnetwork.com/Home/QuickStart">MMIT’s documentation</a> describes drug formulary coverage by health plan. The proposed curriculum can teach these concepts with synthetic or authorized data.</p>
 </section>
 </section>
-<section id="reproducibility-and-downloads" class="level2">
-<h2 data-anchor-id="reproducibility-and-downloads">Reproducibility and downloads</h2>
+<section id="reproducibility-and-repository-datasets" class="level2">
+<h2 data-anchor-id="reproducibility-and-repository-datasets">Reproducibility and repository datasets</h2>
 <ul>
-<li><a href="outputs/site-reference/data/meteor.parquet">Aggregate METEOR evidence</a>: counts, geography, monthly records, skills, limitations and source SHA-256 hashes.</li>
-<li><a href="outputs/site-reference/data/benchmarks.parquet">Official benchmarks</a>: values, units, vintages and primary-source URLs.</li>
-<li><a href="outputs/us-employer-inventory/curated/us-jobs.parquet">Combined US posting inventory</a>: employer, role, US evidence, provenance, detected qualifications and source URLs; no full descriptions.</li>
-<li><a href="outputs/us-employer-inventory/curated/inventory-summary.parquet">Coverage and screening summary</a>: source counts, employer counts, exclusions and qualification observations.</li>
-<li><a href="outputs/us-employer-inventory/curated/employer-analysis.parquet">Skills analysis</a>: scope denominators and source-linked mention counts.</li>
-<li><a href="outputs/employer-page-review/data/current-jobs.parquet">Earlier direct-page research archive</a>: the original ten manually reviewed examples, separate from database inventory counts.</li>
-<li><a href="outputs/employer-page-review/data/reviewed-examples.parquet">Historical annotated examples</a>: 13 older METEOR examples.</li>
+<li>Aggregate METEOR evidence: counts, geography, monthly records, skills, limitations and source SHA-256 hashes.</li>
+<li>Official benchmarks: values, units, vintages and primary-source URLs.</li>
+<li>Combined US posting inventory: employer, role, US evidence, provenance, detected qualifications and source URLs; no full descriptions.</li>
+<li>Coverage and screening summary: source counts, employer counts, exclusions and qualification observations.</li>
+<li>Skills analysis: scope denominators and source-linked mention counts.</li>
+<li>Earlier direct-page research archive: the original ten manually reviewed examples, separate from database inventory counts.</li>
+<li>Historical annotated examples: 13 older METEOR examples.</li>
 </ul>
-<p>The downloads preserve source dates, definitions and analysis denominators. Employer advertisements describe hiring expectations; evaluation of certificate outcomes would require separate graduate follow-up data.</p>
+<p>The repository datasets preserve source dates, definitions and analysis denominators. Employer advertisements describe hiring expectations; evaluation of certificate outcomes would require separate graduate follow-up data.</p>
 <section id="shared-calculated-statistics" class="level3">
 <h3 data-anchor-id="shared-calculated-statistics">Shared calculated statistics</h3>
-<p>All pages use the <a href="outputs/site-reference/data/site-metrics.parquet">saved site metrics</a>, regenerated from the same saved records during each build. Inventory counts, date coverage and skill counts are recalculated; industry growth and compound annual growth use the saved BLS employment endpoints. Published occupational forecasts and wages remain attributed source inputs. The snapshot records its input hash so the displayed values can be traced to the evidence used.</p>
+<p>All pages use the saved site metrics, regenerated from the same saved records during each build. Inventory counts, date coverage and skill counts are recalculated; industry growth and compound annual growth use the saved BLS employment endpoints. Published occupational forecasts and wages remain attributed source inputs. The snapshot records its input hash so the displayed values can be traced to the evidence used.</p>
 
 
 </section>

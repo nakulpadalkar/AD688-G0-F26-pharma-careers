@@ -96,4 +96,4 @@ Career-level labels from titles: Leadership (136), Manager (81), Analyst / speci
 
 Commercial fit reuses four saved relevance reasons: commercial analytics title, commercial-data duties, data product in a business role, or dataset/product in an analytical role. The broader analytics screen also includes clinical, scientific and operations specialties beyond this curriculum. Review duties individually before making a sales claim.
 
-[Employer Parquet](outputs/us-market/web/employers.parquet) · [All states Parquet](outputs/us-market/web/states.parquet) · [Company-size Parquet](outputs/us-market/web/company-sizes.parquet) · [Calculated evidence and hashes](outputs/us-market/web/summary.parquet)
+
