@@ -6,7 +6,7 @@ format:
     css: styles/market-visuals.css
 ---
 
-Start with the Boston-area employer opportunity, compare the Massachusetts workforce of major firms, and explore the surrounding county context. The proposed non-degree certificate connects commercial pharma data to business decisions.
+Start with the Boston-area employer opportunity, compare the Massachusetts workforce of major firms, and explore the surrounding county context. The proposed non-credit certificate connects commercial pharma data to business decisions.
 
 [US employer market](us-market.html) · [Proposed curriculum](about.html)
 
@@ -28,7 +28,7 @@ Start with relevant commercial teams and a learning-and-development budget owner
 </div>
 ```
 
-These are illustrative planning cases, not forecasts or commitments. A starter is one learner beginning the certificate, not four course registrations. Program approval, admissions, delivery format and pricing remain pending; the capacity test requires separate staffing validation.
+These are illustrative planning cases, not forecasts or commitments. A starter is one learner beginning the certificate, not four course registrations. The [certificate](about.qmd) is designed for self-paced online study each semester, with a recommended 14-week pathway. Program approval, enrollment details, dates and pricing remain pending; the capacity test requires separate staffing validation.
 
 ::: {.panel}
 ### Adjust the sponsorship assumptions

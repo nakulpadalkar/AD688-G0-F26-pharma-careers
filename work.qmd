@@ -10,6 +10,8 @@ pagetitle: "Work in practice"
 </div>
 ```
 
+These scenarios connect to the [14-week, self-paced non-credit certificate](about.qmd#pathway), where one continuing case develops from source evaluation through an executive recommendation.
+
 {{< include _includes/footer.html >}}
 
 {{< include _includes/explorer-scripts.html >}}

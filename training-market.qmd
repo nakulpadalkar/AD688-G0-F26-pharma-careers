@@ -11,6 +11,8 @@ This analysis broadens the original selected-employer inventory using the local 
 
 {{< include outputs/training-market/web/evidence.qmd >}}
 
+The proposed [Pharmaceutical Commercial Data Certificate](about.qmd) provides a standalone, non-credit pathway for team development: four sequential courses with recommended pacing of 3, 4, 4, and 3 weeks. Self-paced online delivery is planned each semester; dates and pricing remain to be confirmed.
+
 ## Use the evidence for company training
 
 1. Review the source advertisements behind a company's early-career commercial-data count. Confirm that the work fits the proposed curriculum, including data integration, SQL, business intelligence, source quality and communication.

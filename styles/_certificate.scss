@@ -1,0 +1,14 @@
+.certificate-page {
+  > p, > ul, > section > p, > section > ul { max-width: 74ch; }
+  h2 { margin-top: 2.6rem; font-size: clamp(1.6rem, 3vw, 2.2rem); text-wrap: balance; }
+  h3 { margin-top: 2rem; text-wrap: balance; }
+  .certificate-format { padding: 1.25rem 0; margin: 1.5rem 0; border-block: 1px solid var(--line); color: var(--navy); }
+  .certificate-format p { margin: 0; }
+  table { font-size: .94rem; }
+  th, td { padding: .85rem; vertical-align: top; }
+  a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+}
+@media (max-width: 600px) {
+  .certificate-page table { font-size: .84rem; }
+  .certificate-page th, .certificate-page td { padding: .5rem .35rem; overflow-wrap: anywhere; }
+}

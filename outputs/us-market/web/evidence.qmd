@@ -88,7 +88,7 @@ The following states have the most commercial-fit records in this selected inven
 
 Denominator: 253 commercial-fit identities. Terms overlap and mix requirements, preferences and duties. Commercial-fit screening partly uses data terms; these frequencies are not independent estimates of national skill prevalence.
 
-Degree mentions: Bachelor (141), Master (111), Doctorate (62), Associate (14), High school (14).
+Degree mentions: Bachelor (141), Master (111), Doctorate (62), High school (14), Associate (14).
 
 102 have no detected degree term; 22 contain equivalent-experience wording. Neither implies open eligibility. Non-degree describes the credential; employer degree and experience requirements still apply.
 

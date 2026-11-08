@@ -1,49 +1,124 @@
 ---
-title: "The proposed certificate"
-description: "A pharmaceutical commercial data pathway with explicit learning outcomes and portfolio evidence."
+title: "Pharmaceutical Commercial Data Certificate"
+description: "A proposed standalone, non-credit certificate: four courses, a recommended 14-week pathway, and self-paced online learning each semester."
 ---
 
-Pharmaceutical decisions depend on data collected across manufacturers, payers, providers, pharmacies and patient-support services. These sources differ in coverage, timing and definitions. Analysts need to understand those differences before combining records or interpreting a change in performance.
+::: {.certificate-page}
 
-The proposed **Pharmaceutical Commercial Data Certificate** connects that domain knowledge with data management, analysis and communication. Its {{< var course_count >}} courses follow the work from understanding a source to explaining a decision. The curriculum reflects the August 30, 2026 syllabus draft; program approval and admissions criteria remain pending.
+Build the judgment to turn pharmaceutical commercial data into defensible business decisions. Follow the work from understanding claims and prescription data to integrating sources, evaluating models, and presenting an executive recommendation.
 
-## From data sources to decisions
+**A standalone, non-credit professional certificate.** Designed for online, asynchronous study, with four sequential courses and a recommended 14-week pathway. Planned to run each semester.
 
-| Course | Focus | Portfolio evidence |
+::: {.certificate-format}
+**14 weeks** recommended pacing · **4 courses** · **Self-paced online** · **Non-credit**
+:::
+
+The program is in development. Semester dates, tuition, enrollment criteria, and support arrangements will be published before enrollment opens.
+
+[Explore the curriculum](#curriculum) · [How self-paced study works](#learning-format) · [Preparation and completion](#completion)
+
+## Who this is for
+
+The pathway is designed for professionals working with commercial pharma data, analysts building domain knowledge, and career changers exploring commercial analytics. It is also intended for employer-sponsored development in market access, patient services, business intelligence, and data operations teams.
+
+You will practice evaluating source coverage, reconciling inconsistent records, defining meaningful measures, and explaining what the evidence supports. The focus is commercial decision-making; clinical research and scientific specialties may require different preparation.
+
+## Four courses, one connected project {#curriculum}
+
+Work through the courses in order. Foundations establish what the data represents; integration makes it usable; analytics connects it to a decision; the capstone brings the work together. The longer middle courses allow more time for hands-on practice.
+
+| Course | Suggested pacing | Portfolio evidence |
 |---|---|---|
-| 1. Pharmaceutical Commercial Systems and Data Foundations | Prescription, claims, formulary and patient-support data; coverage, identifiers and reporting delays | Dataset and system evaluation brief |
-| 2. Pharma Data Systems Analysis, Integration, and Business Intelligence | Business requirements, data models, integration, quality, governance and reporting | Data systems proposal and dashboard specification |
-| 3. Pharma Analytics, Modeling, and Decision Systems | Regression, classification, survival analysis, forecasting and model evaluation | Modeling and decision brief |
-| 4. Applied Capstone in Pharmaceutical Commercial Data Strategy | Domain knowledge, data management, analysis and strategy | Reproducible analysis and executive recommendation |
+| 1. Pharmaceutical Commercial Systems and Data Foundations | Weeks 1–3 · 3 weeks | Dataset and System Evaluation Brief |
+| 2. Pharma Data Systems Analysis, Integration, and Business Intelligence | Weeks 4–7 · 4 weeks | Pharma Data Systems Proposal with a BI prototype |
+| 3. Pharma Analytics, Modeling, and Decision Systems | Weeks 8–11 · 4 weeks | Modeling and Decision Brief |
+| 4. Applied Capstone in Pharmaceutical Commercial Data Strategy | Weeks 12–14 · 3 weeks | Capstone portfolio and executive presentation |
 
-The sequence addresses a practical dependency: a useful model requires comparable, interpretable data. Source evaluation establishes what the records represent. Integration and quality checks make comparisons defensible. Analysis then connects the evidence to a business question, and the capstone brings these steps together.
+### Course 1: Understand the commercial system
 
-The curriculum is vendor-agnostic. Synthetic or authorized datasets provide a basis for studying claims, prescriptions and formulary coverage without requiring access to a particular supplier's licensed products.
+**3 weeks · Suggested weeks 1–3**
 
-## Preparation and access
+- **Week 1:** The pharmaceutical ecosystem, drug lifecycle, manufacturers, payers, providers, pharmacies, and commercial stakeholders.
+- **Week 2:** Prescription flows, reimbursement, patient journeys, and claims, formulary, hub, specialty pharmacy, and other commercial data sources.
+- **Week 3:** Identifiers, source selection, reporting delays, missingness, coverage bias, and reasons sources disagree.
 
-The pathway is relevant to working analysts and career switchers with a foundation in SQL, spreadsheets and business intelligence. Modeling coursework may require additional quantitative preparation. Employer degree and experience requirements continue to apply to individual roles.
+**Apply it:** Select a commercial question and explain which sources can answer it, what they miss, and what cautions a decision-maker needs. This brief establishes the question for your continuing project.
 
-An experience-based admissions option could assess relevant work, quantitative preparation and a practical data task for applicants without a bachelor's degree. This remains a proposed route into the certificate, separate from an employer's hiring criteria.
+### Course 2: Make fragmented data usable
 
-## Career progression
+**4 weeks · Suggested weeks 4–7**
 
-Analyst and data operations roles involve reconciling sources, investigating discrepancies and maintaining reports. The reviewed AbbVie senior analyst posting specifies a bachelor's degree with three years of relevant experience, or a master's with two years.
+- **Week 4:** Frame the business problem, identify stakeholders, and document requirements.
+- **Week 5:** Map workflows, build logical data models, and examine entity-matching decisions.
+- **Week 6:** Integrate sources, run quality checks, and document governance and lineage.
+- **Week 7:** Define KPIs, develop a BI prototype, and recommend an appropriate data-system approach.
 
-Commercial analytics managers take responsibility for an analysis from the business question through the recommendation. The reviewed Iovance manager posting specifies a bachelor's degree and at least five years of relevant experience. Director roles extend this work into strategy, stakeholder leadership and decisions across teams.
+**Apply it:** Produce a systems proposal with requirements, an integration plan, quality and governance cautions, and a dashboard or BI prototype. Excel, SQL, and a BI tool support the work through guided exercises.
 
-These examples describe different responsibilities and entry conditions, rather than a guaranteed progression. The [job explorer](jobs.html) covers a broader set of pharmaceutical data careers, including clinical and scientific specialties that require preparation beyond this commercial curriculum.
+### Course 3: Evaluate models and decisions
 
-## Evidence for the pathway
+**4 weeks · Suggested weeks 8–11**
 
-The [US employer market](us-market.html) extends the employer view nationwide with Census firm-size bands, US posting evidence and national sponsorship scenarios.
+- **Week 8:** Frame the analytical question, prepare features, and conduct descriptive analysis.
+- **Week 9:** Apply regression and classification to commercial questions.
+- **Week 10:** Interpret forecasting and patient time-to-event analysis through guided cases.
+- **Week 11:** Evaluate performance, uncertainty, bias, leakage, and responsible AI use; connect findings to a commercial action.
 
-For employer-sponsored training, the [Boston employer market](boston-market.html) brings together regional company counts, Massachusetts workforce sizes, local posting evidence and explicit sponsorship scenarios. It identifies prospective accounts for validation rather than assuming that all pharma employees are potential enrollments.
+**Apply it:** Use one principal modeling approach in depth and interpret the others through cases. Submit a Modeling and Decision Brief explaining the conclusion, its limitations, and a defensible recommendation.
 
-Employer postings connect the curriculum to observed duties and qualifications. BLS provides national employment and wage context. The syllabus defines the intended learning outcomes and portfolio work; graduate placement, promotion and salary outcomes have not yet been measured.
+### Course 4: Defend a commercial recommendation
 
-[Sources and methods](eda_pharma.html) describe the populations, dates and limits of these measures.
+**3 weeks · Suggested weeks 12–14**
 
-```{=html}
-<section id="pathway" class="section-block"><p class="eyebrow">BUILD THE PORTFOLIO</p><h2>A learning pathway with tangible outputs.</h2><div class="pathway"><article><span>01</span><h3>Understand the system</h3><p>Commercial systems & data foundations</p><small>Output: dataset and system evaluation brief</small></article><article><span>02</span><h3>Make data usable</h3><p>Systems analysis, integration & BI</p><small>Output: systems proposal and dashboard specification</small></article><article><span>03</span><h3>Evaluate a decision</h3><p>Analytics, modeling & decision systems</p><small>Output: modeling and decision brief</small></article><article><span>04</span><h3>Defend the recommendation</h3><p>Applied commercial data strategy capstone</p><small>Output: reproducible analysis and executive recommendation</small></article></div><a class="button secondary" href="about.html">Explore the proposed certificate →</a></section>
-```
+- **Week 12:** Refine the business question and integrate earlier systems, data, and analytical work.
+- **Week 13:** Validate findings, examine alternatives, and develop recommendations.
+- **Week 14:** Submit the portfolio and a recorded or narrated executive presentation, with an asynchronous question-and-response component.
+
+**Apply it:** Deliver an executive presentation, technical appendix, data cautions and governance memo, reproducible analysis or BI artifact, and a reflection on limitations and transferability.
+
+## One case develops across the certificate {#pathway}
+
+For example, a synthetic specialty-therapy case could investigate why patients abandon treatment before receiving a first prescription fill. First, identify what claims, hub, and pharmacy data can reveal. Next, reconcile those sources and define an abandonment measure. Then evaluate an analytical approach and possible interventions. Finally, present a recommendation with explicit uncertainty and governance limits.
+
+The capstone starts with your question in Course 1. Its final three weeks are dedicated to integration, validation, and communication. [Explore related work scenarios](work.qmd).
+
+## How self-paced study works {#learning-format}
+
+The proposed format combines the flexibility of asynchronous learning with a clear sequence and a semester completion window.
+
+- **Study when it suits you.** Recorded lessons, readings, guided exercises, prepared datasets, and rubrics support independent progress. No scheduled live attendance is required.
+- **Use the weeks as a guide.** The 3 + 4 + 4 + 3 allocation is recommended pacing, not a set of mandatory weekly deadlines. Learners may move faster or spend longer on particular modules within the published offering window.
+- **Build on completed work.** Take the courses in sequence and carry your project forward. Course assessments provide the evidence for certificate completion.
+- **Plan around the semester.** A new offering is planned each semester. Exact access dates, expected weekly study hours, feedback arrangements, and extension policies will be confirmed before launch. Self-paced does not mean unlimited access.
+
+Any live support sessions would be optional, with an asynchronous alternative. The curriculum is vendor-agnostic and uses public, synthetic, or appropriately authorized data; access to proprietary commercial datasets is not required.
+
+## Preparation and completion {#completion}
+
+Comfort with spreadsheets and basic quantitative reasoning will help. SQL and BI work are introduced through guided exercises; heavy data engineering is not an entry requirement. Python or R may be used for optional exposure in Course 3. Formal enrollment criteria and any preparatory materials remain to be finalized.
+
+The proposed completion standard is successful assessment of all four courses and the integrated capstone against published competency criteria. Assessment thresholds, feedback timing, and resubmission policies will be available before launch.
+
+### Does the certificate award academic credit?
+
+No. This is designed as a standalone, non-credit professional certificate. It has no academic credit requirements and does not award academic credit.
+
+### Can I complete it while working?
+
+The asynchronous format is designed to accommodate work schedules. The recommended pathway spans 14 weeks; the expected study hours and semester completion window will be published so you can assess the commitment before enrolling.
+
+### When can I enroll, and what will it cost?
+
+An offering is planned each semester. Launch approval, dates, tuition, and enrollment details are pending. This page describes the proposed program rather than an open enrollment offer.
+
+### Does completion qualify me for every role on this website?
+
+Employer degree and experience requirements still apply. The [job explorer](jobs.qmd) includes clinical, scientific, and other data roles beyond this commercial curriculum. Placement, promotion, and salary outcomes have not yet been measured.
+
+## Connect learning to employer evidence
+
+Use the [skills and tasks explorer](skills.qmd) to examine the work behind the curriculum. For team development, the [employer training prospects](training-market.qmd), [Boston employer market](boston-market.qmd), and [US employer market](us-market.qmd) provide evidence for employer conversations. Posting counts identify prospects for validation; they do not establish demand for training or sponsorship commitments.
+
+[Sources and methods](eda_pharma.qmd) explain the populations, dates, and limitations of the career evidence.
+
+:::

@@ -51,7 +51,7 @@ The build publishes aggregate data and short annotated examples, never raw posti
 - `outputs/us-employer-inventory/web/dashboard-data.js` and `outputs/us-employer-inventory/web/evidence-tables.md`: reproducible generated assets.
 - `outputs/site-reference/reports/verification.md`: validation receipt and limitations.
 
-The four-course pathway follows the Pharma Certificate project's August 30, 2026 v2 syllabus draft. Work scenarios are editorial teaching examples. No graduate placement or salary-uplift claims are made.
+The four-course pathway follows the Pharma Certificate project's v2 syllabus, updated November 7, 2026: a standalone, non-credit, self-paced certificate planned each semester, with recommended pacing of 3 + 4 + 4 + 3 weeks. The website integration and brochure comparison are documented in docs/certificate-format.md. Work scenarios are editorial teaching examples. No graduate placement or salary-uplift claims are made.
 
 ## Quarto layout and HTML components
 
