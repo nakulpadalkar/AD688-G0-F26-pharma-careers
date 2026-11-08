@@ -53,7 +53,7 @@ for page in ['index.html','geography.html','outlook.html','jobs.html','skills.ht
     file=site/page;p=Links();p.feed(file.read_text(encoding='utf-8'));assert len(p.ids)==len(set(p.ids)),f'Duplicate id: {page}'
     for link in p.links:
         u=urlsplit(link)
-        assert Path(u.path).suffix.lower() not in {'.csv','.xlsx','.xls'}, f'Non-Parquet download: {page}: {link}'
+        assert Path(u.path).suffix.lower() not in {'.csv','.xlsx','.xls','.parquet'}, f'Unexpected dataset download: {page}: {link}'
         if u.scheme or link.startswith('//'):continue
         target=(file.parent/unquote(u.path)).resolve() if u.path else file
         assert target.exists(),f'Broken local link: {page}: {link}'

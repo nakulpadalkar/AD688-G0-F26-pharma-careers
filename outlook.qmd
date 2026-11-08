@@ -77,7 +77,7 @@ Inputs.table(comparison, {
 Openings include replacement needs; they are not currently advertised jobs. Growth covers {{< var projection_period >}}; wages are May {{< var wage_year >}} medians.
 :::
 
-[Download national benchmarks](outputs/site-reference/data/benchmarks.parquet)
+
 :::
 
 ::: {#industry .panel .industry-panel}

@@ -77,7 +77,7 @@ The inventory describes historical advertisements whose current availability has
 
 The raw local extract contains {{< var local_posted >}} source-reported posting timestamps and {{< var local_undated >}} records without them. Azure has {{< var azure_posted >}} source timestamps and {{< var azure_undated >}} missing. Where a posting date is absent, the explorer uses the earliest creation timestamp in the combined record as **Pulled (date proxy)**. This is an approximate collection date, not a recovered or imputed posting date. Migration or batch ingestion can make it much later than the real posting.
 
-The [complete source metadata](outputs/us-employer-inventory/curated/all-employer-records.parquet) contains all {{< var raw_records >}} source rows, including overlaps and excluded records. Posting dates and first-recorded dates remain separate. The US inventory contains the records that meet the employer and location criteria after matching duplicate identities. Analytics relevance is an optional filter, not an inclusion requirement.
+The complete source metadata contains all {{< var raw_records >}} source rows, including overlaps and excluded records. Posting dates and first-recorded dates remain separate. The US inventory contains the records that meet the employer and location criteria after matching duplicate identities. Analytics relevance is an optional filter, not an inclusion requirement.
 
 ### Independent filters and skills
 
@@ -95,18 +95,18 @@ Experience expressions can refer to total experience, a specialty, management wo
 
 The observed duties connect pharmaceutical source knowledge to data integration, quality checks and interpretation. This supports the curriculum's emphasis on those relationships, while leaving the effectiveness of the proposed training to future evaluation. Vendor names and dataset types are distinct: [IQVIA LAAD](https://www.iqvia.com/locations/united-states/solutions/life-sciences/information-solutions/laad-plus) integrates patient-level claims, while [MMIT's documentation](https://api.mmitnetwork.com/Home/QuickStart) describes drug formulary coverage by health plan. The proposed curriculum can teach these concepts with synthetic or authorized data.
 
-## Reproducibility and downloads
+## Reproducibility and repository datasets
 
-- [Aggregate METEOR evidence](outputs/site-reference/data/meteor.parquet): counts, geography, monthly records, skills, limitations and source SHA-256 hashes.
-- [Official benchmarks](outputs/site-reference/data/benchmarks.parquet): values, units, vintages and primary-source URLs.
-- [Combined US posting inventory](outputs/us-employer-inventory/curated/us-jobs.parquet): employer, role, US evidence, provenance, detected qualifications and source URLs; no full descriptions.
-- [Coverage and screening summary](outputs/us-employer-inventory/curated/inventory-summary.parquet): source counts, employer counts, exclusions and qualification observations.
-- [Skills analysis](outputs/us-employer-inventory/curated/employer-analysis.parquet): scope denominators and source-linked mention counts.
-- [Earlier direct-page research archive](outputs/employer-page-review/data/current-jobs.parquet): the original ten manually reviewed examples, separate from database inventory counts.
-- [Historical annotated examples](outputs/employer-page-review/data/reviewed-examples.parquet): {{< var reviewed_examples >}} older METEOR examples.
+- Aggregate METEOR evidence: counts, geography, monthly records, skills, limitations and source SHA-256 hashes.
+- Official benchmarks: values, units, vintages and primary-source URLs.
+- Combined US posting inventory: employer, role, US evidence, provenance, detected qualifications and source URLs; no full descriptions.
+- Coverage and screening summary: source counts, employer counts, exclusions and qualification observations.
+- Skills analysis: scope denominators and source-linked mention counts.
+- Earlier direct-page research archive: the original ten manually reviewed examples, separate from database inventory counts.
+- Historical annotated examples: {{< var reviewed_examples >}} older METEOR examples.
 
-The downloads preserve source dates, definitions and analysis denominators. Employer advertisements describe hiring expectations; evaluation of certificate outcomes would require separate graduate follow-up data.
+The repository datasets preserve source dates, definitions and analysis denominators. Employer advertisements describe hiring expectations; evaluation of certificate outcomes would require separate graduate follow-up data.
 
 ### Shared calculated statistics
 
-All pages use the [saved site metrics](outputs/site-reference/data/site-metrics.parquet), regenerated from the same saved records during each build. Inventory counts, date coverage and skill counts are recalculated; industry growth and compound annual growth use the saved BLS employment endpoints. Published occupational forecasts and wages remain attributed source inputs. The snapshot records its input hash so the displayed values can be traced to the evidence used.
+All pages use the saved site metrics, regenerated from the same saved records during each build. Inventory counts, date coverage and skill counts are recalculated; industry growth and compound annual growth use the saved BLS employment endpoints. Published occupational forecasts and wages remain attributed source inputs. The snapshot records its input hash so the displayed values can be traced to the evidence used.

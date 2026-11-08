@@ -124,7 +124,7 @@ Inputs.table(evidenceRows, {select: false, rows: 8, maxHeight: 360, layout: "aut
 Detected in stored role text; required/preferred status is not classified. These historical advertisements have not been verified as current openings, and source links may no longer be active.
 :::
 
-[Download skill counts and source annotations ↓](outputs/us-employer-inventory/curated/employer-analysis.parquet)
+
 :::
 
 ::: {.panel .task-panel}

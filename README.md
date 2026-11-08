@@ -79,7 +79,7 @@ Career-level, data-product/dataset, store and search filters update the full inv
 
 Canonical supporting data lives under outputs/, grouped by task: us-employer-inventory, employer-page-review, and site-reference. The active task has raw/ (local.parquet, azure.parquet; ignored and never published), curated/ (structured posting tables and summary snapshots), manifests/ (small JSON provenance and SHA-256 records), reports/, and web/ (generated JS and Markdown). Parquet uses Zstandard compression. Legacy heterogeneous reference documents retain exact original types in a compressed document column where needed; the main raw and posting tables have ordinary typed columns, including timestamp columns in raw snapshots.
 
-The browser consumes the generated JS bundle. Download links expose curated Parquet only. Source-reported posting dates and database-created proxies remain separate. Raw-name counts include non-US/unrelated roles and overlapping records; all-employer-records.parquet retains sanitized metadata for every raw row.
+The browser consumes the generated JS bundle. Pages omit dataset download links; curated Parquet snapshots remain bundled as site resources. Source-reported posting dates and database-created proxies remain separate. Raw-name counts include non-US/unrelated roles and overlapping records; all-employer-records.parquet retains sanitized metadata for every raw row.
 
 ## Acceptance gates
 

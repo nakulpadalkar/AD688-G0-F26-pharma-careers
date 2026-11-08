@@ -83,7 +83,7 @@ def build():
               f"{n['commercial_no_degree_detected']} have no detected degree term; {n['commercial_equivalent_experience']} contain equivalent-experience wording. Neither implies open eligibility. Non-degree describes the credential; employer degree and experience requirements still apply.", '',
               'Career-level labels from titles: '+', '.join(f'{k} ({v})' for k,v in n['commercial_levels'].items())+'.', '',
               'Commercial fit reuses four saved relevance reasons: commercial analytics title, commercial-data duties, data product in a business role, or dataset/product in an analytical role. The broader analytics screen also includes clinical, scientific and operations specialties beyond this curriculum. Review duties individually before making a sales claim.', '',
-              '[Employer Parquet](outputs/us-market/web/employers.parquet) · [All states Parquet](outputs/us-market/web/states.parquet) · [Company-size Parquet](outputs/us-market/web/company-sizes.parquet) · [Calculated evidence and hashes](outputs/us-market/web/summary.parquet)']
+              '']
     (web/'evidence.qmd').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print('US_MARKET_BUILT',total,'commercial',n['commercial'],'employers',d['commercial_employers'])
 

@@ -122,7 +122,7 @@ def build():
              'Outreach area: ' + ', '.join(TOWNS) + '. This is a declared sales territory, not the official Boston metropolitan statistical area. Worcester and other Massachusetts locations appear only in the statewide row.', '',
              'State evidence uses the existing conservative parser: explicit Massachusetts or a comma-delimited MA abbreviation. City-only Cambridge, state-prefix strings such as “Ma Cambridge”, remote-only locations and conflicting multi-state locations stay outside local counts. Therefore these are conservative observed counts, not complete local hiring coverage.', '',
              'Commercial fit is the subset of analytics-relevant records with commercial analytics titles, commercial-data duties, data products in business roles, or data products/datasets in analytical roles. It reuses the saved relevance reasons, without treating all clinical, scientific or operations analytics roles as certificate matches. Review individual duties before outreach.', '',
-             '[Download employer table](outputs/boston-market/web/employer-prospects.parquet) · [Download calculated evidence and source hashes](outputs/boston-market/web/market-summary.parquet)']
+             '']
     (OUT/'web/evidence.qmd').write_text('\n'.join(rows) + '\n', encoding='utf-8')
     print('BOSTON_MARKET_BUILT', json.dumps({k: result[k] for k in ['local', 'shortlist_employees', 'shortlist_covered']}))
 

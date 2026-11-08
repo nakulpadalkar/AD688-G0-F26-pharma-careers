@@ -96,4 +96,4 @@ State evidence uses the existing conservative parser: explicit Massachusetts or 
 
 Commercial fit is the subset of analytics-relevant records with commercial analytics titles, commercial-data duties, data products in business roles, or data products/datasets in analytical roles. It reuses the saved relevance reasons, without treating all clinical, scientific or operations analytics roles as certificate matches. Review individual duties before outreach.
 
-[Download employer table](outputs/boston-market/web/employer-prospects.parquet) · [Download calculated evidence and source hashes](outputs/boston-market/web/market-summary.parquet)
+

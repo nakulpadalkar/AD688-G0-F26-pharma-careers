@@ -27,6 +27,6 @@ with sync_playwright() as p:
     page.screenshot(path=str(OUT/'mobile.png'), full_page=True)
     page.screenshot(path=str(OUT/'mobile-top.png'))
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), 'Mobile overflow'
-    assert page.locator('a[href="outputs/us-market/web/employers.parquet"]').count() == 1
+    assert page.locator('a[href="outputs/us-market/web/employers.parquet"]').count() == 0
     browser.close()
 print('US_BROWSER_OK: calculator defaults, changes, invalid and zero inputs; mobile width')
