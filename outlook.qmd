@@ -1,5 +1,6 @@
 ---
 title: ""
+description: "Compare BLS employment projections and median pay for occupations related to pharmaceutical data analytics."
 pagetitle: "Growth & Pay"
 execute:
   echo: false
@@ -7,9 +8,8 @@ execute:
 
 ::: {.career-app .focused-page .native-analytics}
 ::: {#outlook .section-block}
-[THE BIGGER LABOR MARKET]{.eyebrow}
 
-## Growth, with the right context.
+# Employment growth and pay
 
 ::: {.section-intro}
 Compare national occupations that overlap with commercial analytics work. These benchmarks include all industries and experience levels; they are not expected certificate starting salaries.
@@ -82,7 +82,6 @@ Openings include replacement needs; they are not currently advertised jobs. Grow
 
 ::: {#industry .panel .industry-panel}
 ::: {}
-[NAICS {{< var industry_naics >}} / BLS MATRIX {{< var industry_matrix >}}]{.eyebrow}
 
 ### Pharmaceutical & medicine manufacturing
 

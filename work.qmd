@@ -1,11 +1,12 @@
 ---
 title: ""
+description: "Explore pharmaceutical analytics work through data-quality, market-access and commercial-analysis scenarios."
 pagetitle: "Work in practice"
 ---
 
 ```{=html}
 <div class="career-app focused-page">
-<section id="work" class="section-block work-section"><p class="eyebrow">WHAT THE WORK COULD LOOK LIKE</p><h2>From a messy feed to a defensible decision.</h2><p class="section-intro">A change in a dashboard can reflect business activity, source coverage or a processing error. These illustrative scenarios trace how analysts distinguish those explanations using synthetic or authorized data.</p><div class="scenario-tabs" role="group" aria-label="Choose a work scenario"><button type="button" data-scenario="0" aria-pressed="true">01 · Data quality</button><button type="button" data-scenario="1" aria-pressed="false">02 · Market access</button><button type="button" data-scenario="2" aria-pressed="false">03 · Commercial insights</button></div><div id="scenario" class="scenario"></div></section>
+<section id="work" class="section-block work-section"><h1>Pharmaceutical analytics in practice</h1><p class="section-intro">A change in a dashboard can reflect business activity, source coverage or a processing error. These illustrative scenarios trace how analysts distinguish those explanations using synthetic or authorized data.</p><div class="scenario-tabs" role="group" aria-label="Choose a work scenario"><button type="button" data-scenario="0" aria-pressed="true">01 · Data quality</button><button type="button" data-scenario="1" aria-pressed="false">02 · Market access</button><button type="button" data-scenario="2" aria-pressed="false">03 · Commercial insights</button></div><div id="scenario" class="scenario"></div></section>
 </div>
 ```
 

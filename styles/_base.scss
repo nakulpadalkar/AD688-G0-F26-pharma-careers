@@ -62,3 +62,5 @@ main.content {
   margin: auto;
   padding: 22px 0;
 }
+
+.focused-page .section-block > h1, .focused-page .section-heading h1 { font-size: clamp(1.9rem, 3.3vw, 2.7rem); line-height: 1.18; margin: 0 0 1.2rem; }

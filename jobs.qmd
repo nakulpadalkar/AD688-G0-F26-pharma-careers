@@ -1,12 +1,13 @@
 ---
 title: ""
+description: "Explore US pharmaceutical employer postings by analytics relevance, employer, career level and data source."
 pagetitle: "Job explorer"
 ---
 
 ```{=html}
 <div class="career-app focused-page">
 <section id="jobs" class="section-block">
-<div class="section-heading"><div><p class="eyebrow">US PHARMACEUTICAL EMPLOYERS</p><h2>Explore roles across employers.</h2></div></div>
+<div class="section-heading"><div><h1>US pharmaceutical jobs</h1></div></div>
 <p class="section-intro">Pharmaceutical data work spans commercial decisions, clinical research, informatics and operations. This collection brings those US roles together by employer, career level and data source.</p>
 <p id="raw-coverage" class="context-note"></p><p class="tiny">Dates refer to the original posting where available. First recorded identifies the collection date when the posting date is missing.</p><p id="employer-count" class="context-note" role="status"></p>
 <div class="filters">

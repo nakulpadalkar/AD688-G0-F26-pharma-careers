@@ -1,5 +1,6 @@
 ---
 title: ""
+description: "Compare the tools, datasets and skills mentioned in US pharmaceutical job postings."
 pagetitle: "Skills & tasks"
 execute:
   echo: false
@@ -7,9 +8,8 @@ execute:
 
 ::: {.career-app .focused-page .native-analytics}
 ::: {#skills .section-block}
-[THE SKILL SIGNAL]{.eyebrow}
 
-## Tools matter. Judgment connects them.
+# Skills in pharmaceutical job postings
 
 ::: {.section-intro}
 Pharmaceutical analysis combines technical tools with knowledge of the underlying data. Explore the tools, vendors and datasets mentioned in US postings across commercial, clinical, scientific and operational work.
@@ -80,7 +80,7 @@ bubbleSelection = {
 
 ::: {#selected-skill-summary .skill-detail role="region" aria-label="Selected skill evidence"}
 ```{ojs}
-selectedSkill ? html`<div role="status"><p class="eyebrow">SELECTED SKILL</p><h3>${selectedSkill.name}</h3>
+selectedSkill ? html`<div role="status"><h3>${selectedSkill.name}</h3>
 <div class="skill-detail-metrics"><div><strong>${selectedSkill.records.toLocaleString("en-US")}</strong><span>postings</span></div><div><strong>${selectedSkill.companies}</strong><span>employers</span></div></div>
 <p>${selectedSkill.share.toFixed(1)}% of the selected scope. Mentions include required and preferred skills.</p>
 <a href="#source-evidence">Inspect employer source records ↓</a></div>` : html`<p role="status">Choose a skill to inspect its evidence.</p>`

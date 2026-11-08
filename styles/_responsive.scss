@@ -48,7 +48,7 @@
     padding: 30px 24px;
   }
   .hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2.1rem, 8vw, 3rem);
   }
   .source-strip small {
     display: none;
@@ -114,10 +114,10 @@
     margin: 10px -12px;
   }
   .metric-label {
-    font-size: .59rem;
+    font-size: .75rem;
   }
   .metrics small {
-    font-size: .62rem;
+    font-size: .78rem;
   }
   .scenario-tabs button {
     padding: 10px;

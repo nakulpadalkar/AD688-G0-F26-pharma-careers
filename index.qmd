@@ -5,6 +5,8 @@ description: "Pharmaceutical analytics careers grounded in Career Compass, METEO
 
 ---
 
+```{=html}
 {{< include _includes/dashboard.html >}}
+```
 
 {{< include _includes/explorer-scripts.html >}}
