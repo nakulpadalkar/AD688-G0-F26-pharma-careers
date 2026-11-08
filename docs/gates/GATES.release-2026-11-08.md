@@ -6,7 +6,7 @@
   MANUAL: Reviewed Quarto/Python/Node/Edge checks, including four course rows and certificate anchors.
 - [x] G3: Targeted commits separate source, generated site and evidence; temporary artifacts removed.
   MANUAL: Staged path/diff inspection, no private or temporary files.
-- [ ] G4: Main synchronized and clean; publication and Pages deployment succeed.
+- [x] G4: Main synchronized and clean; publication and Pages deployment succeed.
   MANUAL: Remote HEAD, clean status/stashes and Actions results.
 
 Evidence: PowerShell, repository root. Fetch all/prune succeeded; main initially current, gh-pages is publication output. No stashes, symlinks or running previews. Quarto rendered 11 pages. Eight Python suites, three JS syntax checks, two Node suites and four Edge browser suites passed. EVIDENCE_OK checked 466 links; snapshot/homepage count parity passed. Additional certificate browser check passed four course rows, curriculum/format anchors and 1440/390px containment; fresh screenshots visually inspected. QA screenshot trees removed after verification; no .tmp files. No local server or database refresh started.
@@ -14,3 +14,5 @@ Evidence: PowerShell, repository root. Fetch all/prune succeeded; main initially
 AAR: Expected preserve the new certificate format and publish a complete verified build. All local checks passed and the proposed status, four-course count and semester pacing remained visible. No build failure or new mismatch occurred. Repeat the saved-evidence build and rendered certificate checks; existing lessons cover the pattern, with no new rule or skill changes needed.
 
 G3 evidence: source/content and generated-site changes committed separately. Staged paths and diff checks passed; generated trailing blanks preserved. Certificate format documentation and browser harness retained; temporary QA removed and private ignored data preserved.
+
+G4 evidence: release beb4ea5 pushed; Quarto Publish 42502750158 and Pages deployment 42502849821 succeeded. Deployed gh-pages ae2a00f5180d3d622f78028a027eb5022a7bc3f6. Concurrent local fetch advanced origin/gh-pages during verification; fresh fetch/prune succeeded. Four gates met, zero unmet or abandoned. Final checklist-only receipt uses [skip ci]; Git state rechecked after push.
