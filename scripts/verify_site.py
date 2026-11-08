@@ -49,6 +49,7 @@ class Links(HTMLParser):
         for k in ['src','href']:
             if k in a:self.links.append(a[k])
 site=ROOT/'_site'; checked=0
+assert not list(site.rglob('*.tmp')), 'Unexpected temporary build file in published site'
 for page in ['index.html','geography.html','outlook.html','jobs.html','skills.html','work.html','eda_pharma.html','about.html','boston-market.html','training-market.html','us-market.html']:
     file=site/page;p=Links();p.feed(file.read_text(encoding='utf-8'));assert len(p.ids)==len(set(p.ids)),f'Duplicate id: {page}'
     for link in p.links:
