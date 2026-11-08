@@ -139,3 +139,9 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: Found and corrected the malformed metrics paragraph; added the visual-market checks only inside the build code block.
 - Why: The earlier release used a global string replacement for a command present in both a code block and an inline reference. No standing-rule change required.
 - tags: documentation,release,editing
+
+## 2026-11-07 -- If snapshot_io.py raises WinError 32 during atomic Parquet replacement, treat the build as failed, inspect competing processes and rerun the full render before checking provenance. After success, remove only the identified orphan UUID .tmp file; do not commit partial output.
+- Expected: Build and verify all updated pages before committing.
+- Actual: First render stopped on a locked temporary employers.parquet file. No competing build process was found; a complete retry and all data, link and browser checks passed.
+- Why: Windows reported an open-file lock; its owner was not established. The atomic writer preserved the prior target, and the retry regenerated dependent outputs. No code or standing-rule change proposed.
+- tags: windows,parquet,release
