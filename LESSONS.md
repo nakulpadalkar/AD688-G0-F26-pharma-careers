@@ -145,3 +145,4 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: First render stopped on a locked temporary employers.parquet file. No competing build process was found; a complete retry and all data, link and browser checks passed.
 - Why: Windows reported an open-file lock; its owner was not established. The atomic writer preserved the prior target, and the retry regenerated dependent outputs. No code or standing-rule change proposed.
 - tags: windows,parquet,release
+- Follow-up: Quarto resource copying had also placed the failed-render temp file under _site. Check both source and rendered resource trees; verify_site.py now rejects any .tmp site artifact. Corrected release 413a002 passed publication and Pages deployment.
